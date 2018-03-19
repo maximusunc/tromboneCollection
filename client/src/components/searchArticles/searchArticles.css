@@ -1,0 +1,13 @@
+.article {
+    display: inline-block;
+    padding: 20px;
+    
+}
+.btn-info {
+    float: right;
+    margin: 13px 15px;
+}
+.articles {
+    border: 1px gray solid;
+    border-radius: 5px;
+}
