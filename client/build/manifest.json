@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Historic Trombone Collection",
+  "name": "Database of all historic trombones made before 1800",
   "icons": [
     {
       "src": "favicon.ico",
