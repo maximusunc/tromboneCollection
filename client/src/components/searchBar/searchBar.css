@@ -1,11 +1,31 @@
 #nav {
-
+    height: 70px !important;
+    background-color: #90CAF9 !important;
+    position: relative !important;
+    text-align: left !important;
 }
-#maker {
-    position: relative;
-    top: 0;
+#type, #pitch {
+    position: absolute !important;
+    top: -5px !important;
+    margin: 0 !important;
 }
-#type {
-    position: relative;
-    top: 0;
+label {
+    position: relative !important;
+    top: -5px !important;
+}
+.search {
+    width: 20% !important;
+    height: 50px !important;
+    margin: auto !important;
+    position: relative !important;
+    top: 0 !important;
+}
+.separator {
+    margin: auto !important;
+    background-color: black !important;
+}
+#searchTitle {
+    display: block !important;
+    text-align: center !important;
+    margin: auto !important;
 }

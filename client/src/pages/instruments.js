@@ -9,7 +9,9 @@ class Instruments extends Component {
         trombones: [],
         filtered: [],
         type: "",
-        maker: ""
+        maker: "",
+        date: "",
+        pitch: ""
     };
 
     componentDidMount() {
@@ -31,8 +33,20 @@ class Instruments extends Component {
         });
     };
 
+    pitchChange = (event, index, pitch) => {
+        this.setState({pitch: pitch}, () => {
+            this.updateSearch();
+        });
+    };
+
     makerChange = (event) => {
         this.setState({maker: event.target.value}, () => {
+            this.updateSearch();
+        });
+    };
+
+    dateChange = (event) => {
+        this.setState({date: event.target.value}, () => {
             this.updateSearch();
         });
     };
@@ -40,7 +54,9 @@ class Instruments extends Component {
     updateSearch = () => {
         this.setState({filtered: this.state.trombones.filter(trombone => 
             trombone.maker.toLowerCase().indexOf(this.state.maker.toLowerCase()) !== -1 && 
-            trombone.type.indexOf(this.state.type) !== -1)});
+            trombone.type.indexOf(this.state.type) !== -1 &&
+            trombone.date.indexOf(this.state.date) !== -1 &&
+            trombone.pitch.indexOf(this.state.pitch) !== -1)});
         
     };
 
@@ -50,8 +66,12 @@ class Instruments extends Component {
                 <SearchBar
                     type={this.state.type}
                     maker={this.state.maker} 
+                    date={this.state.date}
+                    pitch={this.state.pitch}
                     typeChange={this.typeChange}
                     makerChange={this.makerChange}
+                    dateChange={this.dateChange}
+                    pitchChange={this.pitchChange}
                 />
                 <h2>
                     Trombones:
