@@ -20,3 +20,7 @@ body {
 .trombone .text {
   position: relative;
 }
+.content {
+  min-height: 400px;
+  position: relative;
+}
