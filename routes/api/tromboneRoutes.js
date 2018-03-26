@@ -10,6 +10,7 @@ router.route("/")
 // matches with /api/trombones/:id
 router.route("/:id")
     .get(tromboneController.getTrombone)
+    .put(tromboneController.updateTrombone)
     .delete(tromboneController.remove);
 
 

@@ -6,6 +6,11 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const myPlaintextPassword = "s0/\/\P4$$w0rD";
+const someOtherPlaintextPassword = "not_bacon";
+
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ extended: false }));

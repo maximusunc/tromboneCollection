@@ -13,6 +13,14 @@ module.exports = {
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
+    updateTrombone: function(req, res) {
+        console.log("id: " + req.params.id);
+        console.log(req.body);
+        db.Trombone
+            .findOneAndUpdate({ _id: req.params.id }, req.body)
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+    },
     search: function(req, res) {
         db.Trombone
             .find({maker: req.body})

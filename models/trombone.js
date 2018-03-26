@@ -9,7 +9,7 @@ const tromboneSchema = new Schema({
         type: String
     },
     signature: {
-        type: Date
+        type: String
     },
     pitch: {
         type: String

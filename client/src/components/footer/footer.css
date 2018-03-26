@@ -6,3 +6,7 @@ footer {
     position: relative;
     bottom: 0;
 }
+#AMIS {
+    margin-top: 10px;
+    opacity: 0.75;
+}

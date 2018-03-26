@@ -1,13 +1,18 @@
-Link:active {
-    color: blue;
-}
 nav {
     text-align: center;
-    margin: 5px 0px;
+    margin: 10px 0px;
 }
-nav .link {
-    margin: 5px 5px;
-    background-color: green;
+nav .link, .link {
+    margin: 5px 10px;
+    /* background-color: #0052cc; */
     padding: 3px;
-    color: white;
+    color: #123c69;
+    text-decoration: none;
+}
+.link:hover {
+    color: #52B3D1;
+    /* font-size: 20px; */
+}
+a.link.active {
+    color: #659dbd;
 }

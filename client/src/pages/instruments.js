@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import API from "../utils/API.js";
 import Container from "../components/container";
 import SearchBar from "../components/searchBar";
-import { Link } from "react-router-dom";
+import Trombones from "../components/trombones";
 
 class Instruments extends Component {
     state = {
@@ -73,21 +73,11 @@ class Instruments extends Component {
                     dateChange={this.dateChange}
                     pitchChange={this.pitchChange}
                 />
-                <h2>
-                    Trombones:
-                </h2>
-
-                <ul>
-                {this.state.filtered.map(trombone => {
-                    return (
-                        <Link to="/details" key={trombone.id} >
-                            <li className="trombone" onClick={() => this.handleClick(trombone._id)}>
-                                {trombone.date} {trombone.maker} {trombone.type}
-                            </li>
-                        </Link>
-                    );
-                })}
-                </ul>
+                
+                <Trombones
+                    trombones={this.state.filtered}
+                    handleClick={this.handleClick}
+                />
 
                 
             </Container>

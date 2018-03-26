@@ -2,5 +2,6 @@ header {
     text-align: center;
     height: 100px;
     margin: auto;
-    background-color: teal;
+    background-color: #29648A;
+    border: 1px black solid;
 }

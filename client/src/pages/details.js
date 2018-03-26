@@ -1,10 +1,13 @@
 import React, {Component} from "react";
 import API from "../utils/API.js";
 import Container from "../components/container";
+import TromboneDetail from "../components/tromboneDetail";
 import { Link } from "react-router-dom";
 
 class Details extends Component {
     state = {
+        maker: "",
+        date: "",
         type: "",
         location: "",
         signature: "",
@@ -18,6 +21,8 @@ class Details extends Component {
     componentDidMount() {
         API.getTrombone(localStorage.getItem("id"))
             .then(res => this.setState({
+                maker: res.data.maker,
+                date: res.data.date,
                 type: res.data.type,
                 location: res.data.location,
                 signature: res.data.signature,
@@ -34,15 +39,11 @@ class Details extends Component {
     render() {
         return (
             <Container>
-                <p>Type: {this.state.type}</p>
-                <p>Location: {this.state.location}</p>
-                <p>Signature: {this.state.signature}</p>
-                <p>Pitch: {this.state.pitch}</p>
-                <p>Dimensions: {this.state.dimensions}</p>
-                <p>Found: {this.state.found}</p>
-                <p>Literature: {this.state.literature}</p>
-                <p>Remarks: {this.state.remarks}</p>
-                <Link to="/instruments">Back</Link>
+                <TromboneDetail
+                    trombone={this.state}
+                />
+                
+                <Link to="/instruments" className="link">Back</Link>
                 
             </Container>
         )

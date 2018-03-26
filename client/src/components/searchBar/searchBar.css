@@ -1,6 +1,6 @@
 #nav {
     height: 70px !important;
-    background-color: #90CAF9 !important;
+    background-color: #557A95 !important;
     position: relative !important;
     text-align: left !important;
 }
@@ -22,10 +22,11 @@ label {
 }
 .separator {
     margin: auto !important;
-    background-color: black !important;
+    background-color: #5d5c61 !important;
 }
 #searchTitle {
     display: block !important;
     text-align: center !important;
     margin: auto !important;
+    color: #5d5c61 !important;
 }
