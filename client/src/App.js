@@ -1,12 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 import './App.css';
+import history from "./history.js";
 import Header from "./components/header";
 import Navbar from "./components/navbar";
 import Home from "./pages/home.js";
 import Instruments from "./pages/instruments.js";
 import Details from "./pages/details.js";
 import Update from "./pages/update.js";
+import Create from "./pages/create.js";
 import UnderConstruction from "./pages/underConstruction.js";
 import Login from "./pages/login.js";
 import fakeAuth from "./utils/auth.js";
@@ -26,7 +28,7 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 )
 
 const App = () => 
-  <Router>
+  <Router history={history}>
     <MuiThemeProvider>
     <div>
       <Header />
@@ -41,7 +43,8 @@ const App = () =>
           <Route exact path="/bibliography" component={UnderConstruction} />
           <Route exact path="/about" component={UnderConstruction} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/update" component={Update} />
+          <PrivateRoute exact path="/update" component={Update} />
+          <PrivateRoute exact path="/create" component={Create} />
           <PrivateRoute exact path="/admin" component={Admin} />
           <Route path="/*" component={Home} />
         </Switch>

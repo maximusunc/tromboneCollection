@@ -31,7 +31,14 @@ class Login extends Component {
                     Log in to view admin.
                 </p>
                 <form>
-                  <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.handlePassword} />
+                    <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="Password"
+                        autoFocus="autoFocus" 
+                        value={this.state.password} 
+                        onChange={this.handlePassword} 
+                    />
                   <button id="login" onClick={this.login}>Login</button>
                 </form>
   

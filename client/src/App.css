@@ -16,3 +16,7 @@ h1 {
 #login {
   margin-left: 10px;
 }
+#delete {
+  margin-left: 20px;
+  background-color: red;
+}

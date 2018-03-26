@@ -2,7 +2,6 @@ import React from "react";
 import TextField from 'material-ui/TextField';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import { Link } from "react-router-dom";
 
 const UpdateForm = (props) => 
     <div>
@@ -101,9 +100,6 @@ const UpdateForm = (props) =>
             fullWidth={true}
         />
         <br />
-        <Link to="/admin">
-            <button onClick={props.onClick}>Update</button>
-        </Link>
     </div>;
 
 export default UpdateForm;

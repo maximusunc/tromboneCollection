@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const tromboneSchema = new Schema({
+    maker: {
+        type: String
+    },
+    date: {
+        type: String
+    },
     type: {
         type: String
     },

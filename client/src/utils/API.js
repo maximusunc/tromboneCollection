@@ -1,27 +1,25 @@
 import axios from "axios";
 
 export default {
-    // performs the API request
+    // gets all trombones
     getTrombones: function() {
         return axios.get("/api/trombones");
     },
+    // gets the details of a specific trombone
     getTrombone: function(id) {
         return axios.get("/api/trombones/" + id);
     },
+    // admin can update existing trombones
     updateTrombone: function(id, state) {
         console.log(state);
         return axios.put("/api/trombones/" + id, state);
     },
-    // loads the saved articles from the database
-    loadSaved: function() {
-        return axios.get("/api/articles");
+    // admin can delete existing trombones
+    deleteTrombone: function(id) {
+        return axios.delete("/api/trombones/" + id);
     },
-    // saves an article to the database
-    saveArticle: function(article) {
-        return axios.post("/api/articles", article);
-    },
-    // deletes an article from the database
-    deleteArticle: function(id) {
-        return axios.delete("/api/articles/" + id);
+    // admin can add trombones to db
+    addTrombone: function(trombone) {
+        return axios.post("/api/trombones", trombone);
     }
 };

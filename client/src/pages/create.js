@@ -1,11 +1,10 @@
 import React, {Component} from "react";
-import { Link } from "react-router-dom";
 import history from "../history";
 import API from "../utils/API.js";
 import Container from "../components/container";
 import UpdateForm from "../components/updateForm";
 
-class Update extends Component {
+class Create extends Component {
     state = {
         maker: "",
         date: "",
@@ -20,42 +19,16 @@ class Update extends Component {
     };
 
     componentDidMount() {
-        API.getTrombone(localStorage.getItem("id"))
-            .then(res => {
-                this.setState({
-                    maker: res.data.maker,
-                    date: res.data.date,
-                    type: res.data.type,
-                    location: res.data.location,
-                    signature: res.data.signature,
-                    pitch: res.data.pitch,
-                    dimensions: res.data.dimensions,
-                    found: res.data.found,
-                    literature: res.data.literature,
-                    remarks: res.data.remarks
-                });
-            })
-            .catch(err => console.log(err));
+        
     };
 
     handleSubmit = () => {
-        API.updateTrombone(localStorage.getItem("id"), {...this.state})
+        API.addTrombone({...this.state})
             .then(res => {
-                console.log(res.data);
-                alert("Trombone Updated");
+                alert("Trombone Added!");
+                history.push("/admin");
             })
             .catch(err => console.log(err));
-    };
-
-    handleDelete = () => {
-        if (window.confirm("Are you sure you want to delete this trombone? This action cannot be undone.")) {
-            API.deleteTrombone(localStorage.getItem("id"))
-                .then(res => {
-                    alert("Trombone Permanently Deleted");
-                    history.push("/admin");
-                })
-                .catch(err => console.log(err));
-        };
     };
 
     typeChange = (event, index, type) => {
@@ -75,7 +48,7 @@ class Update extends Component {
         return (
             <Container>
                 <h1>
-                    Update!
+                    Create!
                 </h1>
 
                 <UpdateForm 
@@ -94,15 +67,12 @@ class Update extends Component {
                     onChange={this.handleUpdate}
                 />
                 
-                <Link to="/admin">
-                    <button onClick={this.handleSubmit}>Update</button>
-                </Link>
+                <button onClick={this.handleSubmit}>Create</button>
 
-                <button id="delete" onClick={this.handleDelete}>Delete</button>
 
             </Container>
         );
     };
 };
 
-export default Update;
+export default Create;

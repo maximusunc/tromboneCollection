@@ -57,7 +57,6 @@ class Admin extends Component {
             trombone.type.indexOf(this.state.type) !== -1 &&
             trombone.date.indexOf(this.state.date) !== -1 &&
             trombone.pitch.indexOf(this.state.pitch) !== -1)});
-        
     };
 
     render() {
@@ -73,6 +72,8 @@ class Admin extends Component {
                     dateChange={this.dateChange}
                     pitchChange={this.pitchChange}
                 />
+
+                <Link to="/create">Create</Link>
 
                 <h2>
                     Trombones:

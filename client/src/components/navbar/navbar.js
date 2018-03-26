@@ -9,7 +9,7 @@ const Navbar = () =>
         <NavLink to="/how-to-use" activeClassName="active" className="link">How To Use</NavLink>
         <NavLink to="/bibliography" activeClassName="active" className="link">Bibliography</NavLink>
         <NavLink to="/about" activeClassName="active" className="link">About</NavLink>
-        <NavLink to="/admin" activeClassName="active" className="link">Login</NavLink>
+        <NavLink to="/admin" activeClassName="active" className="link">Admin</NavLink>
     </nav>
 
 export default Navbar;
