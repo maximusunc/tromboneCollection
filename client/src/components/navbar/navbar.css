@@ -1,17 +1,16 @@
 nav {
     text-align: center;
     margin: 10px 0px;
+    background-color: #A8D0E6;
 }
 nav .link, .link {
     margin: 5px 10px;
-    /* background-color: #0052cc; */
     padding: 3px;
     color: #123c69;
     text-decoration: none;
 }
 .link:hover {
     color: #52B3D1;
-    /* font-size: 20px; */
 }
 a.link.active {
     color: #659dbd;

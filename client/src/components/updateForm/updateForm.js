@@ -1,105 +1,66 @@
 import React from "react";
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import "./updateForm.css";
 
 const UpdateForm = (props) => 
     <div>
-        <TextField
-            hintText="Date"
-            name="date"
-            value={props.date}
-            onChange={props.onChange}
-        />
-        <br />
-        <br />
-        <SelectField
-            floatingLabelText="Type"
-            name="type"
-            className="search"
-            id="type"
-            value={props.type}
-            onChange={props.typeChange}
-        >
-            <MenuItem value="" primaryText="" />
-            <MenuItem value="Alto" primaryText="Alto" />
-            <MenuItem value="Tenor" primaryText="Tenor" />
-            <MenuItem value="Bass" primaryText="Bass" />
-            <MenuItem value="Sackbut" primaryText="Sackbut" />
-        </SelectField>
-        <br />
-        <br />
-        <TextField
-            hintText="Maker"
-            name="maker"
-            value={props.maker || ""}
-            onChange={props.onChange}
-        />
-        <br />
-        <br />
-        <TextField
-            hintText="Location"
-            name="location"
-            value={props.location || ""}
-            onChange={props.onChange}
-        />
-        <br />
-        <br />
-        <TextField
-            hintText="Signature"
-            name="signature"
-            value={props.signature || ""}
-            onChange={props.onChange}
-            fullWidth={true}
-        />
-        <br />
-        <br />
-        <TextField
-            hintText="Pitch"
-            name="pitch"
-            value={props.pitch || ""}
-            onChange={props.onChange}
-            fullWidth={true}
-        />
-        <br />
-        <br />
-        <TextField
-            hintText="Dimensions"
-            name="dimensions"
-            value={props.dimensions || ""}
-            onChange={props.onChange}
-            fullWidth={true}
-        />
-        <br />
-        <br />
-        <TextField
-            hintText="Found"
-            name="found"
-            value={props.found || ""}
-            onChange={props.onChange}
-            fullWidth={true}
-        />
-        <br />
-        <br />
-        <TextField
-            hintText="Literature"
-            name="literature"
-            value={props.literature || ""}
-            onChange={props.onChange}
-            multiLine={true}
-            fullWidth={true}
-        />
-        <br />
-        <br />
-        <TextField
-            hintText="Remarks"
-            name="remarks"
-            value={props.remarks || ""}
-            onChange={props.onChange}
-            multiLine={true}
-            fullWidth={true}
-        />
-        <br />
+        <form className="col s12 search">
+            <div className="row">
+                <div className="input-field col s4">
+                    <input id="maker" type="text" className="active" value={props.maker || ""} onChange={props.makerChange} />
+                    <label className="active" htmlFor="maker">Maker</label>
+                </div>
+                <div className="input-field col s4">
+                    <input id="date" type="text" className="active" value={props.date || ""} onChange={props.dateChange} />
+                    <label className="active" htmlFor="date">Date</label>
+                </div>
+                <div className="input-field col s4">
+                    <select onChange={props.typeChange}>
+                        <option value=""></option>
+                        <option value="Alto">Alto</option>
+                        <option value="Tenor">Tenor</option>
+                        <option value="Bass">Bass</option>
+                        <option value="Sackbut">Sackbut</option>
+                    </select>
+                    <label className="active">Type</label>
+                </div>
+            </div>
+            <div className="row">
+                <div className="input-field col s4">
+                    <input id="location" type="text" className="active" value={props.location || ""} onChange={props.makerChange} />
+                    <label className="active" htmlFor="location">Location</label>
+                </div>
+                <div className="input-field col s4">
+                    <input id="signature" type="text" className="active" value={props.signature || ""} onChange={props.makerChange} />
+                    <label className="active" htmlFor="signature">Signature</label>
+                </div>
+                <div className="input-field col s4">
+                    <input id="pitch" type="text" className="active" value={props.pitch || ""} onChange={props.makerChange} />
+                    <label className="active" htmlFor="pitch">Pitch</label>
+                </div>
+            </div>
+            <div className="row">
+                <div className="input-field col s4">
+                    <input id="dimensions" type="text" className="active" value={props.dimensions || ""} onChange={props.makerChange} />
+                    <label className="active" htmlFor="dimensions">Dimensions</label>
+                </div>
+                <div className="input-field col s4">
+                    <input id="found" type="text" className="active" value={props.found || ""} onChange={props.makerChange} />
+                    <label className="active" htmlFor="found">Found</label>
+                </div>
+            </div>
+            <div className="row">
+                <div className="input-field col s12">
+                    <textarea id="literature" type="text" className="active" value={props.literature || ""} onChange={props.makerChange} />
+                    <label className="active" htmlFor="literature">Literature</label>
+                </div>
+            </div>
+            <div className="row">
+                <div className="input-field col s12">
+                    <textarea id="remarks" type="text" className="active" value={props.remarks || ""} onChange={props.makerChange} />
+                    <label className="active" htmlFor="remarks">Remarks</label>
+                </div>
+            </div>
+        </form>
     </div>;
 
 export default UpdateForm;

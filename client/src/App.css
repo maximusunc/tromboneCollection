@@ -20,3 +20,23 @@ h1 {
   margin-left: 20px;
   background-color: red;
 }
+#create {
+  font-size: 20px;
+  background-color: #659DBD;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 47%;
+  margin-top: 20px;
+}
+#password {
+  margin-left: 38%;
+}
+ol li {
+  text-align: left;
+  margin: 10px 0px;
+}
+.bibliography li {
+  text-align: left;
+  margin: 20px 0px;
+}

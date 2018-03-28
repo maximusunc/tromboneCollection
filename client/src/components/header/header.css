@@ -1,7 +1,10 @@
 header {
     text-align: center;
-    height: 100px;
+    height: 100%;
     margin: auto;
-    background-color: #29648A;
-    border: 1px black solid;
+    color: #29648A;
+    border-bottom: 1px black solid;
+    background-image: url("../../images/trombone.jpeg");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }

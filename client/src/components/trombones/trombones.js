@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Instruments = (props) => 
     <div>
         <h2>
-            Trombones:
+            Instruments:
         </h2>
 
         <ul>

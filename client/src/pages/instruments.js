@@ -27,26 +27,9 @@ class Instruments extends Component {
         localStorage.setItem("id", id);
     };
 
-    typeChange = (event, index, type) => {
-        this.setState({type: type}, () => {
-            this.updateSearch();
-        });
-    };
-
-    pitchChange = (event, index, pitch) => {
-        this.setState({pitch: pitch}, () => {
-            this.updateSearch();
-        });
-    };
-
-    makerChange = (event) => {
-        this.setState({maker: event.target.value}, () => {
-            this.updateSearch();
-        });
-    };
-
-    dateChange = (event) => {
-        this.setState({date: event.target.value}, () => {
+    searchChange = (event) => {
+        var { name, value } = event.target;
+        this.setState({[name]: value}, () => {
             this.updateSearch();
         });
     };
@@ -63,15 +46,16 @@ class Instruments extends Component {
     render() {
         return (
             <Container>
-                <SearchBar
+
+                <SearchBar 
                     type={this.state.type}
                     maker={this.state.maker} 
                     date={this.state.date}
                     pitch={this.state.pitch}
-                    typeChange={this.typeChange}
-                    makerChange={this.makerChange}
-                    dateChange={this.dateChange}
-                    pitchChange={this.pitchChange}
+                    typeChange={this.searchChange}
+                    makerChange={this.searchChange}
+                    dateChange={this.searchChange}
+                    pitchChange={this.searchChange}
                 />
                 
                 <Trombones

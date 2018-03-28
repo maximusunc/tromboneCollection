@@ -4,17 +4,18 @@ import './App.css';
 import history from "./history.js";
 import Header from "./components/header";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 import Home from "./pages/home.js";
 import Instruments from "./pages/instruments.js";
 import Details from "./pages/details.js";
 import Update from "./pages/update.js";
 import Create from "./pages/create.js";
+import HowToUse from "./pages/howToUse.js";
+import Bibliography from "./pages/bibliography.js";
 import UnderConstruction from "./pages/underConstruction.js";
 import Login from "./pages/login.js";
 import fakeAuth from "./utils/auth.js";
 import Admin from "./pages/admin.js";
-import Footer from "./components/footer";
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route {...rest} exact path="/admin" render={(props) => (
@@ -29,7 +30,6 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 
 const App = () => 
   <Router history={history}>
-    <MuiThemeProvider>
     <div>
       <Header />
       <Navbar />
@@ -39,8 +39,8 @@ const App = () =>
           <Route exact path="/home" component={Home} />
           <Route exact path="/instruments" component={Instruments} />
           <Route exact path="/details/" component={Details} />
-          <Route exact path="/how-to-use" component={UnderConstruction} />
-          <Route exact path="/bibliography" component={UnderConstruction} />
+          <Route exact path="/how-to-use" component={HowToUse} />
+          <Route exact path="/bibliography" component={Bibliography} />
           <Route exact path="/about" component={UnderConstruction} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/update" component={Update} />
@@ -51,7 +51,6 @@ const App = () =>
       </div>
       <Footer />
     </div>
-    </MuiThemeProvider>
   </Router>;
 
 export default App;

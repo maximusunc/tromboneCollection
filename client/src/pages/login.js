@@ -30,16 +30,22 @@ class Login extends Component {
                 <p>
                     Log in to view admin.
                 </p>
-                <form>
-                    <input 
-                        type="password" 
-                        name="password" 
-                        placeholder="Password"
-                        autoFocus="autoFocus" 
-                        value={this.state.password} 
-                        onChange={this.handlePassword} 
-                    />
-                  <button id="login" onClick={this.login}>Login</button>
+
+                <form className="col s3" >
+                    <div className="row">
+                        <div className="input-field col s3" id="password">
+                            <input 
+                                type="password" 
+                                name="password" 
+                                autoFocus="autoFocus" 
+                                className="validate"
+                                value={this.state.password}
+                                onChange={this.handlePassword}
+                            />
+                            <label htmlFor="password">Password</label>
+                        </div>
+                    </div>
+                    <button id="login" onClick={this.login}>Login</button>
                 </form>
   
             </div>
