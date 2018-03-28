@@ -7,9 +7,9 @@ class Bibliography extends Component {
     render() {
         return (
             <Container>
-                <h1>
+                <h2>
                     Bibliography:
-                </h1>
+                </h2>
 
                 <ul className="bibliography">
                     <li>300 Jahre 1985    300 Jahre Johann Sebastian Bach: Sein Werk in Handschriften und Dokumenten Musikinstrumente seine Zeit seine Zeitgenossen: Eine Ausstellung der Internationalen Bachademie. Tutzing: Hans Schnedier, 1985</li>

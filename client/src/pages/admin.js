@@ -3,6 +3,7 @@ import SearchBar from "../components/searchBar";
 import API from "../utils/API.js";
 import Container from "../components/container";
 import { Link } from "react-router-dom";
+import Trombones from "../components/trombones";
 
 class Admin extends Component {
     state = {
@@ -56,23 +57,15 @@ class Admin extends Component {
                     pitchChange={this.searchChange}
                 />
 
-                <h2>
-                    Instruments:
-                </h2>
-
-                <ul>
-                    {this.state.filtered.map(trombone => {
-                        return (
-                            <Link to="/update" key={trombone._id} >
-                                <li className="trombone" onClick={() => this.handleClick(trombone._id)}>
-                                    {trombone.date} {trombone.maker}
-                                </li>
-                            </Link>
-                        );
-                    })}
-                </ul>
-
                 <Link className="link" id="create" to="/create">Create</Link>
+
+                <Trombones
+                    trombones={this.state.filtered}
+                    link="/update"
+                    handleClick={this.handleClick}
+                    className="clearfix"
+                />
+
             </Container>
         );
     };

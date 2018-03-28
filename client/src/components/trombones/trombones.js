@@ -11,7 +11,7 @@ const Instruments = (props) =>
         <ul>
             {props.trombones.map(trombone => {
                 return (
-                    <Link className="tromboneList" to="/details" key={trombone._id} >
+                    <Link className="tromboneList" to={props.link} key={trombone._id} >
                         <li className="trombone" onClick={() => props.handleClick(trombone._id)}>
                             {trombone.date} {trombone.maker}
                         </li>

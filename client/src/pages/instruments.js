@@ -60,6 +60,7 @@ class Instruments extends Component {
                 
                 <Trombones
                     trombones={this.state.filtered}
+                    link="/details"
                     handleClick={this.handleClick}
                 />
 

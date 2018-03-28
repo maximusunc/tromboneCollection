@@ -23,9 +23,9 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <h1>
+                <h3>
                     Admin Login!
-                </h1>
+                </h3>
   
                 <p>
                     Log in to view admin.
@@ -38,7 +38,6 @@ class Login extends Component {
                                 type="password" 
                                 name="password" 
                                 autoFocus="autoFocus" 
-                                className="validate"
                                 value={this.state.password}
                                 onChange={this.handlePassword}
                             />

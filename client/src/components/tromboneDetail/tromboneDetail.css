@@ -8,6 +8,6 @@
 .detail {
     margin: 15px 0px;
 }
-ul {
-    list-style-type: none;
+h6 {
+    display: inline-block;
 }

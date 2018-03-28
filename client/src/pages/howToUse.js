@@ -7,9 +7,9 @@ class HowToUse extends Component {
     render() {
         return (
             <Container>
-                <h1>
+                <h2>
                     Guide to use:
-                </h1>
+                </h2>
 
                 <ol>
                     <li>Abbreviations: be = bell; bo = bore (where only a single measurement is cited; bo1 refers to the inside bore of the initial or "descending" slide tube, bo2 to the inside bore of the "ascending" slide tube; diam. = diameter; ext. = exterior; int. = interior; h = height (i.e. length from tip of bell-bow to tip of slide-bow); le = overall length of tube (without mouthpiece unless otherwise specified); mp = mouthpiece; orig. = original; pos. = position, positions; sec. = section. Bibliographical abbreviations: Abb. = Abbildung, Abbildungen (illustration, illustrations)</li>
