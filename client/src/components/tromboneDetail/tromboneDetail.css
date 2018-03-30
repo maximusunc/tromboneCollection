@@ -4,6 +4,7 @@
 }
 .details {
     text-align: left;
+    display: inline;
 }
 .detail {
     margin: 15px 0px;

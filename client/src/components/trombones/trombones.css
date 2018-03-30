@@ -1,34 +1,32 @@
-.trombone {
-    cursor: pointer;
+.tromboneLink {
     position: relative;
-    left: 20px;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;
-    width: 15em;
-    list-style-type: none;
-    box-shadow: 2px 2px;
-    transition: width 1s, height 1s;
-}
-.trombone .text {
-    position: relative;
-}
-.tromboneList {
-    text-decoration: none;
-    height: 30px;
-    position: relative;
-}
-#tromboneList {
     display: inline-block;
-    width: 100%;
+    width: calc(25% - 30px);
+    /* width: 90%; */
+    margin: 15px;
+    padding: 5px;
+    background: white;
+    border: 1px solid #9e9e9e;
+    border-radius: 5px;
+    z-index: 1;
+    transition: all 0.4s ease-in-out;
 }
-li.trombone {
-    margin-right: 5px;
-    display: inline-block;
+.tromboneLink:hover {
+    transform: scale(1.1);
 }
-.trombone:hover {
-    height: 2em;
-    width: 17em;
+/* React animations for changes in trombone search */
+.tromboneAnimate-enter {
+    opacity: 0.01;
+}
+.tromboneAnimate-enter.tromboneAnimate-enter-active {
+    opacity: 1;
+    transition: all 2s ease-in;
+}
+.tromboneAnimate-leave {
+    opacity: 1;
+}
+.tromboneAnimate-leave.tromboneAnimate-leave-active {
+    opacity: 0.01;
+    transform: translate(0px, 5px);
+    transition: all 1s ease-in;
 }

@@ -4,6 +4,7 @@ import API from "../utils/API.js";
 import Container from "../components/container";
 import { Link } from "react-router-dom";
 import Trombones from "../components/trombones";
+import { CSSTransitionGroup } from "react-transition-group";
 
 class Admin extends Component {
     state = {
@@ -44,6 +45,16 @@ class Admin extends Component {
     };
 
     render() {
+        const trombones = this.state.filtered.map(trombone => (
+            <Trombones
+                key={trombone._id}
+                id={trombone._id}
+                maker={trombone.maker}
+                date={trombone.date}
+                link="/update"
+                handleClick={() => this.handleClick(trombone._id)}
+            />
+        ));
         return (
             <Container>
                 <SearchBar
@@ -57,14 +68,23 @@ class Admin extends Component {
                     pitchChange={this.searchChange}
                 />
 
-                <Link className="link" id="create" to="/create">Create</Link>
+                <Link id="create" to="/create">Create</Link>
 
-                <Trombones
-                    trombones={this.state.filtered}
-                    link="/update"
-                    handleClick={this.handleClick}
-                    className="clearfix"
-                />
+                <h2>
+                    Instruments:
+                </h2>
+
+                <section className="tromboneList">
+                    <ul>
+                        <CSSTransitionGroup
+                            transitionName="tromboneAnimate"
+                            transitionEnterTimeout={1000}
+                            transitionLeaveTimeout={1000}
+                        >
+                            {trombones}
+                        </CSSTransitionGroup>
+                    </ul>
+                </section>
 
             </Container>
         );
