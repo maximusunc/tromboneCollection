@@ -9,15 +9,26 @@
     border-radius: 4px;
     width: 15em;
     list-style-type: none;
+    box-shadow: 2px 2px;
+    transition: width 1s, height 1s;
 }
 .trombone .text {
     position: relative;
 }
 .tromboneList {
     text-decoration: none;
+    height: 30px;
+    position: relative;
+}
+#tromboneList {
+    display: inline-block;
+    width: 100%;
 }
 li.trombone {
     margin-right: 5px;
-    float: left;
-    clear: left;
+    display: inline-block;
+}
+.trombone:hover {
+    height: 2em;
+    width: 17em;
 }

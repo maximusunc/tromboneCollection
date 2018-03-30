@@ -1,12 +1,9 @@
 import React from "react";
 import "./searchBar.css";
-// import { Row, Input } from "react-materialize";
-// import ReactMaterialSelect from "react-material-select";
-// import 'react-material-select/lib/css/reactMaterialSelect.css'
 
 
 const SearchBar = (props) => 
-    <div id="newNav">
+    <div id="searchBar">
         <form className="col s12 search">
             <h4 >Search</h4>
                 <div className="row">

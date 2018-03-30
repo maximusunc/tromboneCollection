@@ -1,10 +1,24 @@
 body {
   text-align: center;
   background-color: #A8D0E6;
+  position: relative;
+}
+body::after {
+  content: "";
+  background-image: url("./images/trombone1.jpg");
+  background-size: 100% 115%;
+  opacity: 0.30;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
 }
 .content {
   min-height: 400px;
   position: relative;
+  height: 100%;
 }
 h3 {
   display: inline;
@@ -13,28 +27,36 @@ h1 {
   margin-top: 0px;
   padding-top: 2%;
 }
+p {
+  font-size: 20px;
+}
 ul {
   list-style-type: none;
 }
 #login {
   margin-left: 10px;
 }
-#delete {
-  margin-left: 20px;
-  background-color: red;
-}
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-#create {
+#create, #createTrombone, #update, #delete {
   font-size: 20px;
   background-color: #659DBD;
   border-radius: 5px;
   position: relative;
   top: 20px;
   padding: 10px;
+  box-shadow: 0px 0px 2px 2px;
+  color: #123c69;
+  cursor: pointer;
+}
+#create:hover, #createTrombone:hover, #update:hover {
+  background-color: white;
+  color: #659DBD;
+}
+#delete {
+  margin-left: 20px;
+  background-color: red;
+}
+#delete:hover {
+  background-color: #BD0000;
 }
 #password {
   margin-left: 38%;
@@ -42,6 +64,9 @@ ul {
 ol li {
   text-align: left;
   margin: 10px 0px;
+}
+li {
+  font-size: 17px;
 }
 .bibliography li {
   text-align: left;

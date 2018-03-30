@@ -11,7 +11,6 @@ export default {
     },
     // admin can update existing trombones
     updateTrombone: function(id, state) {
-        console.log(state);
         return axios.put("/api/trombones/" + id, state);
     },
     // admin can delete existing trombones

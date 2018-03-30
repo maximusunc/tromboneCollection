@@ -18,10 +18,6 @@ class Create extends Component {
         remarks: ""
     };
 
-    componentDidMount() {
-        
-    };
-
     handleSubmit = () => {
         API.addTrombone({...this.state})
             .then(res => {
@@ -33,10 +29,6 @@ class Create extends Component {
 
     typeChange = (event, index, type) => {
         this.setState({type: type});
-    };
-
-    pitchChange = (event, index, pitch) => {
-        this.setState({pitch: pitch});
     };
 
     handleUpdate = (event) => {
@@ -63,11 +55,10 @@ class Create extends Component {
                     literature={this.state.literature}
                     remarks={this.state.remarks}
                     typeChange={this.typeChange}
-                    pitchChange={this.pitchChange}
                     onChange={this.handleUpdate}
                 />
                 
-                <button onClick={this.handleSubmit}>Create</button>
+                <button id="createTrombone" onClick={this.handleSubmit}>Create</button>
 
 
             </Container>

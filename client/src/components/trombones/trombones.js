@@ -8,7 +8,7 @@ const Instruments = (props) =>
             Instruments:
         </h2>
 
-        <ul>
+        <ul id="tromboneList">
             {props.trombones.map(trombone => {
                 return (
                     <Link className="tromboneList" to={props.link} key={trombone._id} >

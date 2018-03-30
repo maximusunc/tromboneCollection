@@ -41,7 +41,6 @@ class Update extends Component {
     handleSubmit = () => {
         API.updateTrombone(localStorage.getItem("id"), {...this.state})
             .then(res => {
-                console.log(res.data);
                 alert("Trombone Updated");
             })
             .catch(err => console.log(err));
@@ -56,14 +55,6 @@ class Update extends Component {
                 })
                 .catch(err => console.log(err));
         };
-    };
-
-    typeChange = (event, index, type) => {
-        this.setState({type: type});
-    };
-
-    pitchChange = (event, index, pitch) => {
-        this.setState({pitch: pitch});
     };
 
     handleUpdate = (event) => {
@@ -89,13 +80,11 @@ class Update extends Component {
                     found={this.state.found}
                     literature={this.state.literature}
                     remarks={this.state.remarks}
-                    typeChange={this.typeChange}
-                    pitchChange={this.pitchChange}
                     onChange={this.handleUpdate}
                 />
                 
                 <Link to="/admin">
-                    <button onClick={this.handleSubmit}>Update</button>
+                    <button id="update" onClick={this.handleSubmit}>Update</button>
                 </Link>
 
                 <button id="delete" onClick={this.handleDelete}>Delete</button>
