@@ -31,6 +31,10 @@ const tromboneSchema = new Schema({
     },
     remarks: {
         type: String
+    },
+    image: {
+        data: Buffer,
+        type: String
     }
 });
 

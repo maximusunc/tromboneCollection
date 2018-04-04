@@ -3,10 +3,10 @@ import "./updateForm.css";
 
 const UpdateForm = (props) => 
     <div>
-        <form className="col s12 search">
+        <form className="col s12 search" encType="multipart/form-data" method="POST">
             <div className="row">
                 <div className="input-field col s4">
-                    <input id="maker" name="maker" type="text" className="active" value={props.maker || ""} onChange={props.onChange} />
+                    <input id="maker" name="maker" type="text" className="active" value={props.maker || ""} onChange={props.onChange} required />
                     <label className="active" htmlFor="maker">Maker</label>
                 </div>
                 <div className="input-field col s4">
@@ -14,7 +14,7 @@ const UpdateForm = (props) =>
                     <label className="active" htmlFor="date">Date</label>
                 </div>
                 <div className="input-field col s4">
-                    <select name="type" className="browser-default" onChange={props.onChange} value={props.type || ""}>
+                    <select name="type" className="browser-default" value={props.type || ""} onChange={props.onChange}>
                         <option value=""></option>
                         <option value="Alto">Alto</option>
                         <option value="Tenor">Tenor</option>
@@ -59,6 +59,17 @@ const UpdateForm = (props) =>
                     <textarea id="remarks" name="remarks" type="text" className="active" value={props.remarks || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="remarks">Remarks</label>
                 </div>
+            </div>
+            <div className="row">
+                <div className="file-field input-field">
+                    <div className="btn">
+                        <span>Upload Image</span>
+                        <input name="image" type="file" accept="image/*" onChange={props.onChange} />
+                    </div>
+                    <div className="file-path-wrapper">
+                        <input name="imagePath" className="file-path validate" type="text" value={props.imagePath || ""} onChange={props.onChange} />
+                    </div>
+            </div>
             </div>
         </form>
     </div>;

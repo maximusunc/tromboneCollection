@@ -16,27 +16,32 @@ class Update extends Component {
         dimensions: "",
         found: "",
         literature: "",
-        remarks: ""
+        remarks: "",
+        image: ""
     };
 
     componentDidMount() {
-        API.getTrombone(localStorage.getItem("id"))
-            .then(res => {
-                this.setState({
-                    maker: res.data.maker,
-                    date: res.data.date,
-                    type: res.data.type,
-                    location: res.data.location,
-                    signature: res.data.signature,
-                    pitch: res.data.pitch,
-                    dimensions: res.data.dimensions,
-                    found: res.data.found,
-                    literature: res.data.literature,
-                    remarks: res.data.remarks
-                });
-            })
-            .catch(err => console.log(err));
+        this.getTrombone();
     };
+
+    getTrombone() {
+        API.getTrombone(localStorage.getItem("id"))
+        .then(res => {
+            this.setState({
+                maker: res.data.maker,
+                date: res.data.date,
+                type: res.data.type,
+                location: res.data.location,
+                signature: res.data.signature,
+                pitch: res.data.pitch,
+                dimensions: res.data.dimensions,
+                found: res.data.found,
+                literature: res.data.literature,
+                remarks: res.data.remarks
+            });
+        })
+        .catch(err => console.log(err));
+    }
 
     handleSubmit = () => {
         API.updateTrombone(localStorage.getItem("id"), {...this.state})

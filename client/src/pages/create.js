@@ -3,6 +3,7 @@ import history from "../history";
 import API from "../utils/API.js";
 import Container from "../components/container";
 import UpdateForm from "../components/updateForm";
+const axios = require("axios");
 
 class Create extends Component {
     state = {
@@ -15,25 +16,47 @@ class Create extends Component {
         dimensions: "",
         found: "",
         literature: "",
-        remarks: ""
+        remarks: "",
+        image: "",
+        imagePath: ""
     };
 
     handleSubmit = () => {
-        API.addTrombone({...this.state})
-            .then(res => {
-                alert("Trombone Added!");
-                history.push("/admin");
-            })
-            .catch(err => console.log(err));
+        const { maker } = this.state;
+        if (maker.length < 2) {
+            alert("You must at least provide a maker");
+        } else {
+            this.uploadTest();
+        };
     };
 
-    typeChange = (event, index, type) => {
-        this.setState({type: type});
+    addTrombone() {
+        API.addTrombone({...this.state})
+        .then(res => {
+            alert("Trombone Added!");
+            history.push("/admin");
+        })
+        .catch(err => console.log(err));
+    };
+
+    uploadTest() {
+        console.log(this.state);
+        // axios.post("/create", {...this.state});
     };
 
     handleUpdate = (event) => {
-        const {name, value} = event.target;
-        this.setState({[name]: value});
+        const state = this.state;
+
+        switch (event.target.name) {
+            case "image":
+                state.image = event.target.files[0];
+                console.log(event.target.files[0]);
+                break;
+            default:
+                state[event.target.name] = event.target.value;
+        }
+
+        this.setState(state);
     };
 
     render() {
@@ -54,7 +77,8 @@ class Create extends Component {
                     found={this.state.found}
                     literature={this.state.literature}
                     remarks={this.state.remarks}
-                    typeChange={this.typeChange}
+                    image={this.state.image}
+                    imagePath={this.state.imagePath}
                     onChange={this.handleUpdate}
                 />
                 
