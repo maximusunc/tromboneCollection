@@ -33,9 +33,8 @@ const tromboneSchema = new Schema({
         type: String
     },
     image: {
-        data: Buffer,
         type: String
-    }
+    },
 });
 
 const Trombone = mongoose.model("Trombone", tromboneSchema);

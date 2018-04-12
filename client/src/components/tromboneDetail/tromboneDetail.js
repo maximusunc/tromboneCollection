@@ -3,7 +3,7 @@ import "./tromboneDetail.css";
 
 const Details = (props) =>
     <div>
-        <a id="pic" href="https://placeholder.com"><img src="http://via.placeholder.com/400x400" alt="placeholder" /></a>
+        <img id="pic" src={props.trombone.image ? (window.location.origin + "/images/trombones/" + props.trombone.image) : "http://via.placeholder.com/400x400"} alt="placeholder" />
         <ul className="details">
             <li className="detail"><h6>Maker:</h6> {props.trombone.maker}</li>
             <li className="detail"><h6>Date:</h6> {props.trombone.date}</li>
@@ -19,3 +19,5 @@ const Details = (props) =>
     </div>;
 
 export default Details;
+
+// http://via.placeholder.com/400x400

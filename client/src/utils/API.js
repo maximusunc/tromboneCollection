@@ -20,5 +20,11 @@ export default {
     // admin can add trombones to db
     addTrombone: function(trombone) {
         return axios.post("/api/trombones", trombone);
-    }
+    },
+    imageUpload: function(image) {
+        return axios.post("/create", image);
+    },
+    deleteImage: function(fileName) {
+        return axios.delete("/delete/" + fileName);
+    },
 };

@@ -3,7 +3,7 @@ import "./updateForm.css";
 
 const UpdateForm = (props) => 
     <div>
-        <form className="col s12 search" encType="multipart/form-data" method="POST">
+        <form className="col s12 search" encType="multipart/form-data">
             <div className="row">
                 <div className="input-field col s4">
                     <input id="maker" name="maker" type="text" className="active" value={props.maker || ""} onChange={props.onChange} required />
@@ -64,12 +64,18 @@ const UpdateForm = (props) =>
                 <div className="file-field input-field">
                     <div className="btn">
                         <span>Upload Image</span>
-                        <input name="image" type="file" accept="image/*" onChange={props.onChange} />
+                        <input ref={(ref) => {props.file = ref}} type="file" accept="image/*" />
                     </div>
                     <div className="file-path-wrapper">
-                        <input name="imagePath" className="file-path validate" type="text" value={props.imagePath || ""} onChange={props.onChange} />
+                        <input name="imagePath" className="file-path validate" type="text" />
                     </div>
+                </div>
             </div>
+            <div className="row">
+                <button id="createTrombone" type="submit" onSubmit={props.handleSubmit}>{props.button}</button>
+                {props.delete ? (
+                    <button id="delete" onClick={props.delete}>Delete</button>
+                ): (null)}
             </div>
         </form>
     </div>;
