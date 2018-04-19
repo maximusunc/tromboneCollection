@@ -47,7 +47,23 @@ class Update extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.updateTrombone();
+        const file = this.file.files[0];
+        // user must input a maker
+        const { maker } = this.state;
+        if (maker.length < 2) {
+            alert("You must at least provide a maker");
+        } else {
+            // if there's an old image and a new image, delete the old one. this function then adds the new picture
+            if (this.state.fileName && file) {
+                this.deleteOldImage(this.state.fileName, file);
+            // if there was no previos picture, just upload the new one, and this then calls updateTrombone
+            } else if (file) {
+                this.getSignedRequest(file);
+            // if there was no old pic and no new pic, just updateTrombone
+            } else {
+                this.updateTrombone();
+            };
+        };
     };
 
     updateTrombone() {
@@ -64,15 +80,14 @@ class Update extends Component {
         event.preventDefault();
         // simple confirm before permanently deleting item
         if (window.confirm("Are you sure you want to delete this trombone? This action cannot be undone.")) {
+            // if this trombone had a picture, delete the picture
+            if (this.state.fileName) {
+                this.deleteOldImage(this.state.fileName);
+            }
             API.deleteTrombone(localStorage.getItem("id"))
                 .then(res => {
-                    // item is removed from database and then image is removed from filesystem
-                    API.deleteImage(this.state.image)
-                    .then(res => {
-                        alert("Trombone Permanently Deleted");
-                        history.push("/admin");
-                    })
-                    .catch(err => console.log(err));
+                    alert("Trombone Permanently Deleted");
+                    history.push("/admin");
                 })
                 .catch(err => console.log(err));
         };
@@ -84,21 +99,13 @@ class Update extends Component {
         this.setState({[name]: value});
     };
 
-    handleFileChange = () => {
-        const file = this.file.files[0];
-        if (this.state.fileName) {
-            this.deleteOldImage(this.state.fileName);
-        }
-        this.getSignedRequest(file);
-    };
-
-    deleteOldImage(file) {
+    deleteOldImage(oldFile, newFile) {
         const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', `/removeImage?file-name=${file}`);
+        xhr.open('DELETE', `/removeImage?file-name=${oldFile}`);
         xhr.onreadystatechange = () => {
           if(xhr.readyState === 4){
             if(xhr.status === 200){
-              console.log("old image deleted");
+              this.getSignedRequest(newFile);
             }
             else{
               alert('Unable to delete old image.');
@@ -131,7 +138,7 @@ class Update extends Component {
         xhr.onreadystatechange = () => {
           if(xhr.readyState === 4){
             if(xhr.status === 200){
-              this.setState({"image": url, "fileName": file.name});
+              this.setState({"image": url, "fileName": file.name}, () => this.updateTrombone());
             }
             else{
               alert('Could not upload file.');
@@ -228,7 +235,7 @@ class Update extends Component {
                             <div className="file-field input-field">
                                 <div className="btn">
                                     <span>Upload Image</span>
-                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" onChange={this.handleFileChange} />
+                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
                                 </div>
                                 <div className="file-path-wrapper">
                                     <input name="imagePath" className="file-path validate" type="text" />

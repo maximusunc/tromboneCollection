@@ -23,12 +23,17 @@ class Create extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        const file = this.file.files[0];
         // user must input a maker
         const { maker } = this.state;
         if (maker.length < 2) {
             alert("You must at least provide a maker");
         } else {
-            this.addTrombone();
+            if (file) {
+                this.getSignedRequest(file);
+            } else {
+                this.addTrombone();
+            };
         };
     };
 
@@ -44,11 +49,6 @@ class Create extends Component {
     handleUpdate = (event) => {
         const {name, value} = event.target;
         this.setState({[name]: value});
-    };
-
-    handleFileChange = () => {
-        const file = this.file.files[0];
-        this.getSignedRequest(file);
     };
 
     getSignedRequest(file){
@@ -74,7 +74,7 @@ class Create extends Component {
         xhr.onreadystatechange = () => {
           if(xhr.readyState === 4){
             if(xhr.status === 200){
-              this.setState({"image": url, "fileName": file.name});
+              this.setState({"image": url, "fileName": file.name}, () => this.addTrombone());
             }
             else{
               alert('Could not upload file.');
@@ -172,7 +172,7 @@ class Create extends Component {
                             <div className="file-field input-field">
                                 <div className="btn">
                                     <span>Upload Image</span>
-                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" onChange={this.handleFileChange} />
+                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
                                 </div>
                                 <div className="file-path-wrapper">
                                     <input name="imagePath" className="file-path validate" type="text" />
