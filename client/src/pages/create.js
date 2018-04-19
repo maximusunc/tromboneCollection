@@ -67,24 +67,57 @@ class Create extends Component {
         this.getSignedRequest(file);
     };
 
-    getSignedRequest(file) {
-        API.getSignedRequest(file)
-        .then(res => {
-            this.setState({
-                "image": res.data.url,
-            });
-            const s3request = res.data.signedRequest;
-            console.log(res.data.url);
-            console.log(s3request);
-            this.uploadFile(file, s3request);
-        })
-        .catch(err => console.log(err));
+    // getSignedRequest(file) {
+    //     API.getSignedRequest(file)
+    //     .then(res => {
+    //         this.setState({
+    //             "image": res.data.url,
+    //         });
+    //         const s3request = res.data.signedRequest;
+    //         console.log(res.data.url);
+    //         console.log(s3request);
+    //         this.uploadFile(file, s3request);
+    //     })
+    //     .catch(err => console.log(err));
+    // };
+
+    // uploadFile(file, s3request) {
+    //     API.uploadImage(file, s3request)
+    //     .then(res => console.log("image uploaded"))
+    //     .catch(err => console.log(err));
+    // };
+
+    getSignedRequest(file){
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+        xhr.onreadystatechange = () => {
+          if(xhr.readyState === 4){
+            if(xhr.status === 200){
+              const response = JSON.parse(xhr.responseText);
+              this.uploadFile(file, response.signedRequest, response.url);
+            }
+            else{
+              alert('Could not get signed URL.');
+            }
+          }
+        };
+        xhr.send();
     };
 
-    uploadFile(file, s3request) {
-        API.uploadImage(file, s3request)
-        .then(res => console.log("image uploaded"))
-        .catch(err => console.log(err));
+    uploadFile(file, signedRequest, url){
+        const xhr = new XMLHttpRequest();
+        xhr.open('PUT', signedRequest);
+        xhr.onreadystatechange = () => {
+          if(xhr.readyState === 4){
+            if(xhr.status === 200){
+              this.setState({"image": url});
+            }
+            else{
+              alert('Could not upload file.');
+            }
+          }
+        };
+        xhr.send(file);
     };
 
     render() {
