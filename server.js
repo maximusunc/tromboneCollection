@@ -40,9 +40,17 @@ app.get('/sign-s3', (req, res) => {
   });
 });
 
-app.post('/save-details', (req, res) => {
-  
-  // TODO: Read POSTed form data and do something useful
+app.get('/removeImage', (req, res) => {
+  const s3 = new aws.s3();
+  const fileName = req.query['file-name'];
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName,
+  };
+  s3.deleteObject(params, function(err, data) {
+    if (err) console.log(err);
+    else res.end();
+  });
 });
 
 const bcrypt = require("bcrypt");

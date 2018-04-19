@@ -17,6 +17,7 @@ class Update extends Component {
         literature: "",
         remarks: "",
         image: "",
+        fileName: "",
     };
 
     componentDidMount() {
@@ -38,6 +39,7 @@ class Update extends Component {
                 literature: res.data.literature,
                 remarks: res.data.remarks,
                 image: res.data.image,
+                fileName: res.data.fileName,
             });
         })
         .catch(err => console.log(err));
@@ -45,33 +47,7 @@ class Update extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // handles file upload, appends to formData before sending to back end for multer
-        let image = new FormData();
-        if (this.file.files[0]) {
-            image.append("image", this.file.files[0]);
-        }
-        if (image.get("image")) {
-            // if an image exists, delete it before adding the new one
-            if (this.state.image) {
-                API.deleteImage(this.state.image)
-                .then(res => {
-                    console.log("image deleted");
-                })
-                .catch(err => console.log(err));
-            };
-            
-            // if user chose image file, upload it to filesystem
-            API.imageUpload(image)
-            .then(res => {
-                // setting image in state to filename
-                this.setState({"image": res.data}, () => {
-                    this.updateTrombone();
-                });
-            })
-            .catch(err => console.log(err));
-        } else {
-            this.updateTrombone();
-        }
+        this.updateTrombone();
     };
 
     updateTrombone() {
@@ -106,6 +82,44 @@ class Update extends Component {
     handleUpdate = (event) => {
         const {name, value} = event.target;
         this.setState({[name]: value});
+    };
+
+    handleFileChange = () => {
+        const file = this.file.files[0];
+        this.getSignedRequest(file);
+    };
+
+    getSignedRequest(file){
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+        xhr.onreadystatechange = () => {
+          if(xhr.readyState === 4){
+            if(xhr.status === 200){
+              const response = JSON.parse(xhr.responseText);
+              this.uploadFile(file, response.signedRequest, response.url);
+            }
+            else{
+              alert('Could not get signed URL.');
+            }
+          }
+        };
+        xhr.send();
+    };
+
+    uploadFile(file, signedRequest, url){
+        const xhr = new XMLHttpRequest();
+        xhr.open('PUT', signedRequest);
+        xhr.onreadystatechange = () => {
+          if(xhr.readyState === 4){
+            if(xhr.status === 200){
+              this.setState({"image": url, "fileName": file.name});
+            }
+            else{
+              alert('Could not upload file.');
+            }
+          }
+        };
+        xhr.send(file);
     };
 
     render() {
@@ -195,7 +209,7 @@ class Update extends Component {
                             <div className="file-field input-field">
                                 <div className="btn">
                                     <span>Upload Image</span>
-                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
+                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" onChange={this.handleFileChange} />
                                 </div>
                                 <div className="file-path-wrapper">
                                     <input name="imagePath" className="file-path validate" type="text" />

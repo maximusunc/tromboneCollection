@@ -18,33 +18,17 @@ class Create extends Component {
         literature: "",
         remarks: "",
         image: "",
+        fileName: "",
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // if user uploads an image, puts it in formData for back end multer
-        // let image = new FormData();
-        // if (this.file.files[0]) {
-        //     image.append("image", this.file.files[0]);
-        // }
         // user must input a maker
         const { maker } = this.state;
         if (maker.length < 2) {
             alert("You must at least provide a maker");
         } else {
-            // if user uploads an image, store it in filesystem, otherwise create item
-            // if (image.get("image")) {
-            //     API.imageUpload(image)
-            //     .then(res => {
-            //         // setting state of image to filename
-            //         this.setState({"image": res.data}, () => {
-            //             this.addTrombone();
-            //         });
-            //     })
-            //     .catch(err => console.log(err));
-            // } else {
-                this.addTrombone();
-            // }
+            this.addTrombone();
         };
     };
 
@@ -66,26 +50,6 @@ class Create extends Component {
         const file = this.file.files[0];
         this.getSignedRequest(file);
     };
-
-    // getSignedRequest(file) {
-    //     API.getSignedRequest(file)
-    //     .then(res => {
-    //         this.setState({
-    //             "image": res.data.url,
-    //         });
-    //         const s3request = res.data.signedRequest;
-    //         console.log(res.data.url);
-    //         console.log(s3request);
-    //         this.uploadFile(file, s3request);
-    //     })
-    //     .catch(err => console.log(err));
-    // };
-
-    // uploadFile(file, s3request) {
-    //     API.uploadImage(file, s3request)
-    //     .then(res => console.log("image uploaded"))
-    //     .catch(err => console.log(err));
-    // };
 
     getSignedRequest(file){
         const xhr = new XMLHttpRequest();
@@ -110,7 +74,7 @@ class Create extends Component {
         xhr.onreadystatechange = () => {
           if(xhr.readyState === 4){
             if(xhr.status === 200){
-              this.setState({"image": url});
+              this.setState({"image": url, "fileName": file.name});
             }
             else{
               alert('Could not upload file.');
