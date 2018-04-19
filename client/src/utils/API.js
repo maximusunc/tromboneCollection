@@ -20,5 +20,8 @@ export default {
     // admin can add trombones to db
     addTrombone: function(trombone) {
         return axios.post("/api/trombones", trombone);
-    }
+    },
+    login: function(password) {
+        return axios.get("/login/" + password);
+    },
 };

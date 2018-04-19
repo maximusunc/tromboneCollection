@@ -31,7 +31,13 @@ const tromboneSchema = new Schema({
     },
     remarks: {
         type: String
-    }
+    },
+    image: {
+        type: String
+    },
+    fileName: {
+        type: String
+    },
 });
 
 const Trombone = mongoose.model("Trombone", tromboneSchema);

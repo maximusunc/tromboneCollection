@@ -15,7 +15,8 @@ class Details extends Component {
         dimensions: "",
         found: "",
         literature: "",
-        remarks: ""
+        remarks: "",
+        image:"",
     };
 
     componentDidMount() {
@@ -30,7 +31,8 @@ class Details extends Component {
                 dimensions: res.data.dimensions,
                 found: res.data.found,
                 literature: res.data.literature,
-                remarks: res.data.remarks
+                remarks: res.data.remarks,
+                image: res.data.image,
             }))
             .catch(err => console.log(err));
     };

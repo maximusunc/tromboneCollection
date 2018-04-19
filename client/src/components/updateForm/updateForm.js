@@ -3,10 +3,10 @@ import "./updateForm.css";
 
 const UpdateForm = (props) => 
     <div>
-        <form className="col s12 search">
+        <form className="col s12 search" encType="multipart/form-data">
             <div className="row">
                 <div className="input-field col s4">
-                    <input id="maker" name="maker" type="text" className="active" value={props.maker || ""} onChange={props.onChange} />
+                    <input id="maker" name="maker" type="text" className="active" value={props.maker || ""} onChange={props.onChange} required />
                     <label className="active" htmlFor="maker">Maker</label>
                 </div>
                 <div className="input-field col s4">
@@ -14,7 +14,7 @@ const UpdateForm = (props) =>
                     <label className="active" htmlFor="date">Date</label>
                 </div>
                 <div className="input-field col s4">
-                    <select name="type" className="browser-default" onChange={props.onChange} value={props.type || ""}>
+                    <select name="type" className="browser-default" value={props.type || ""} onChange={props.onChange}>
                         <option value=""></option>
                         <option value="Alto">Alto</option>
                         <option value="Tenor">Tenor</option>
@@ -59,6 +59,23 @@ const UpdateForm = (props) =>
                     <textarea id="remarks" name="remarks" type="text" className="active" value={props.remarks || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="remarks">Remarks</label>
                 </div>
+            </div>
+            <div className="row">
+                <div className="file-field input-field">
+                    <div className="btn">
+                        <span>Upload Image</span>
+                        <input ref={(ref) => {props.file = ref}} type="file" accept="image/*" />
+                    </div>
+                    <div className="file-path-wrapper">
+                        <input name="imagePath" className="file-path validate" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <button id="createTrombone" type="submit" onSubmit={props.handleSubmit}>{props.button}</button>
+                {props.delete ? (
+                    <button id="delete" onClick={props.delete}>Delete</button>
+                ): (null)}
             </div>
         </form>
     </div>;
