@@ -40,7 +40,7 @@ app.get('/sign-s3', (req, res) => {
   });
 });
 
-app.get('/removeImage', (req, res) => {
+app.delete('/removeImage', (req, res) => {
   const s3 = new aws.s3();
   const fileName = req.query['file-name'];
   const s3Params = {

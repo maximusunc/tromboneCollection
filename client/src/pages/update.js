@@ -92,7 +92,7 @@ class Update extends Component {
 
     deleteOldImage() {
         const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/removeImage?file-name=${this.state.fileName}`);
+        xhr.open('DELETE', `/removeImage?file-name=${this.state.fileName}`);
         xhr.onreadystatechange = () => {
           if(xhr.readyState === 4){
             if(xhr.status === 200){
