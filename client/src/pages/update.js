@@ -47,6 +47,7 @@ class Update extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        console.log("Update pressed");
         const file = this.file.files[0];
         // user must input a maker
         const { maker } = this.state;
@@ -55,12 +56,15 @@ class Update extends Component {
         } else {
             // if there's an old image and a new image, delete the old one. this function then adds the new picture
             if (this.state.fileName && file) {
+                console.log("going to delete old image");
                 this.deleteOldImage(this.state.fileName, file);
             // if there was no previos picture, just upload the new one, and this then calls updateTrombone
             } else if (file) {
+                console.log("no old image, so uploading new image");
                 this.getSignedRequest(file);
             // if there was no old pic and no new pic, just updateTrombone
             } else {
+                console.log("no image involved");
                 this.updateTrombone();
             };
         };
@@ -68,6 +72,7 @@ class Update extends Component {
 
     updateTrombone() {
         // update trombone with entire state
+        console.log("updating trombone db");
         API.updateTrombone(localStorage.getItem("id"), {...this.state})
         .then(res => {
             alert("Trombone Updated");
@@ -82,6 +87,7 @@ class Update extends Component {
         if (window.confirm("Are you sure you want to delete this trombone? This action cannot be undone.")) {
             // if this trombone had a picture, delete the picture
             if (this.state.fileName) {
+                console.log("deleting old image");
                 this.deleteOldImage(this.state.fileName);
             }
             API.deleteTrombone(localStorage.getItem("id"))
@@ -100,6 +106,9 @@ class Update extends Component {
     };
 
     deleteOldImage(oldFile, newFile) {
+        console.log("inside delete image function");
+        console.log("Old file: " + oldFile);
+        console.log("New file: " + newFile);
         const xhr = new XMLHttpRequest();
         xhr.open('DELETE', `/removeImage?file-name=${oldFile}`);
         xhr.onreadystatechange = () => {
@@ -117,6 +126,7 @@ class Update extends Component {
     };
 
     getSignedRequest(file){
+        console.log("inside getSignedRequest function");
         const xhr = new XMLHttpRequest();
         xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
         xhr.onreadystatechange = () => {
@@ -135,6 +145,7 @@ class Update extends Component {
     };
 
     uploadFile(file, signedRequest, url){
+        console.log("inside uploadFile function");
         const xhr = new XMLHttpRequest();
         xhr.open('PUT', signedRequest);
         xhr.onreadystatechange = () => {
