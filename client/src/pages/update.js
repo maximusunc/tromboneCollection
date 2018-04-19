@@ -105,7 +105,8 @@ class Update extends Component {
         xhr.onreadystatechange = () => {
           if(xhr.readyState === 4){
             if(xhr.status === 200){
-              this.getSignedRequest(newFile);
+                console.log("successfully deleted");
+                this.getSignedRequest(newFile);
             }
             else{
               alert('Unable to delete old image.');
@@ -123,6 +124,7 @@ class Update extends Component {
             if(xhr.status === 200){
               const response = JSON.parse(xhr.responseText);
               this.uploadFile(file, response.signedRequest, response.url);
+              console.log("received signed request");
             }
             else{
               alert('Could not get signed URL.');
@@ -138,7 +140,8 @@ class Update extends Component {
         xhr.onreadystatechange = () => {
           if(xhr.readyState === 4){
             if(xhr.status === 200){
-              this.setState({"image": url, "fileName": file.name}, () => this.updateTrombone());
+                console.log("successfully added new image");
+                this.setState({"image": url, "fileName": file.name}, () => this.updateTrombone());
             }
             else{
               alert('Could not upload file.');
