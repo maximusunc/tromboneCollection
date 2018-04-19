@@ -49,7 +49,7 @@ app.delete('/removeImage', (req, res) => {
   };
   s3.deleteObject(s3Params, function(err, data) {
     if (err) console.log(err);
-    else console.log("image deleted");
+    else res.send(data);
   });
 });
 
@@ -72,13 +72,6 @@ app.post('/create', upload.single('image'), function(req, res, next) {
   console.log(req.body);
   console.log(req.file);
   res.json(req.file.filename);
-});
-
-app.delete('/delete/:fileName', function(req, res) {
-  fs.unlink('./client/public/images/trombones/' + req.params.fileName, (err) => {
-    if (err) throw err;
-    res.send("Image Deleted");
-  });
 });
 
 app.get("/login/:password", function(req, res) {

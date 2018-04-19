@@ -21,20 +21,7 @@ export default {
     addTrombone: function(trombone) {
         return axios.post("/api/trombones", trombone);
     },
-    imageUpload: function(image) {
-        return axios.post("/create", image);
-    },
-    deleteImage: function(fileName) {
-        return axios.delete("/delete/" + fileName);
-    },
     login: function(password) {
         return axios.get("/login/" + password);
     },
-    getSignedRequest: function(file) {
-        return axios.get("/sign-s3?file-name=" + file.name + "&file-type=" + file.type);
-    },
-    uploadImage: function(file, s3request) {
-        console.log(s3request);
-        return axios.put(s3request, file);
-    }
 };
