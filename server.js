@@ -41,7 +41,7 @@ app.get('/sign-s3', (req, res) => {
 });
 
 app.delete('/removeImage', (req, res) => {
-  const s3 = new aws.s3();
+  const s3 = new aws.S3();
   const fileName = req.query['file-name'];
   const s3Params = {
     Bucket: S3_BUCKET,
@@ -49,7 +49,7 @@ app.delete('/removeImage', (req, res) => {
   };
   s3.deleteObject(params, function(err, data) {
     if (err) console.log(err);
-    else res.end();
+    else console.log("image deleted");
   });
 });
 
