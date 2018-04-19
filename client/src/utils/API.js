@@ -33,4 +33,8 @@ export default {
     getSignedRequest: function(file) {
         return axios.get("/sign-s3?file-name=" + file.name + "&file-type=" + file.type);
     },
+    uploadImage: function(file, s3request) {
+        console.log(s3request);
+        return axios.put(s3request, file);
+    }
 };

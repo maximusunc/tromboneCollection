@@ -17,7 +17,7 @@ class Create extends Component {
         found: "",
         literature: "",
         remarks: "",
-        image: ""
+        image: "",
     };
 
     handleSubmit = (event) => {
@@ -70,9 +70,20 @@ class Create extends Component {
     getSignedRequest(file) {
         API.getSignedRequest(file)
         .then(res => {
-            this.setState({"image": res.url});
-            console.log(res);
+            this.setState({
+                "image": res.data.url,
+            });
+            const s3request = res.data.signedRequest;
+            console.log(res.data.url);
+            console.log(s3request);
+            this.uploadFile(file, s3request);
         })
+        .catch(err => console.log(err));
+    };
+
+    uploadFile(file, s3request) {
+        API.uploadImage(file, s3request)
+        .then(res => console.log("image uploaded"))
         .catch(err => console.log(err));
     };
 
