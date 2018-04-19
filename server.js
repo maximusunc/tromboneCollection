@@ -47,7 +47,7 @@ app.delete('/removeImage', (req, res) => {
     Bucket: S3_BUCKET,
     Key: fileName,
   };
-  s3.deleteObject(params, function(err, data) {
+  s3.deleteObject(s3Params, function(err, data) {
     if (err) console.log(err);
     else console.log("image deleted");
   });
