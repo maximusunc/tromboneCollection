@@ -15,12 +15,12 @@ import HowToUse from "./pages/howToUse.js";
 import Bibliography from "./pages/bibliography.js";
 import UnderConstruction from "./pages/underConstruction.js";
 import Login from "./pages/login.js";
-import fakeAuth from "./utils/auth.js";
+import auth from "./utils/auth.js";
 import Admin from "./pages/admin.js";
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route {...rest} exact path="/admin" render={(props) => (
-    fakeAuth.isAuthenticated === true
+    auth.isAuthenticated === true
       ? <Component {...props} />
       : <Redirect to={{
           pathname: '/login',

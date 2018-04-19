@@ -3,12 +3,48 @@ const path = require("path");
 const fs = require("fs");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const aws = require("aws-sdk");
 const crypto = require("crypto");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const multer = require("multer");
 const upload = multer({dest: "./client/public/images/trombones/"});
+const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME;
+
+aws.config.region = "us-east-1";
+
+app.get('/sign-s3', (req, res) => {
+  const s3 = new aws.S3();
+  const fileName = req.query['file-name'];
+  const fileType = req.query['file-type'];
+  const s3Params = {
+    Bucket: S3_BUCKET_NAME,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: 'public-read'
+  };
+
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    
+    if(err){
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET_NAME}.s3.amazonaws.com/${fileName}`,
+    };
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
+
+app.post('/save-details', (req, res) => {
+  
+  // TODO: Read POSTed form data and do something useful
+});
 
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
@@ -25,14 +61,6 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-// app.post("/create", upload.any(), function(req, res, next) {
-//   let base64string = req.body.image.replace(/^data:image\/[a-z]+;base64,/, "");
-//   let imageType = req.body.image.match(/image\/[a-z]+/)[0];
-//   let imageBuffer = new Buffer(base64string, "base64");
-//   console.log(imageBuffer);
-//   res.send("Trombone Uploaded");
-// });
-
 app.post('/create', upload.single('image'), function(req, res, next) {
   console.log(req.body);
   console.log(req.file);
@@ -44,6 +72,12 @@ app.delete('/delete/:fileName', function(req, res) {
     if (err) throw err;
     res.send("Image Deleted");
   });
+});
+
+app.get("/login/:password", function(req, res) {
+  if (req.params.password === "test") {
+    res.send("Good password");    
+  };
 });
 
 // Add routes, both API and view

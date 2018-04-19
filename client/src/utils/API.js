@@ -27,4 +27,10 @@ export default {
     deleteImage: function(fileName) {
         return axios.delete("/delete/" + fileName);
     },
+    login: function(password) {
+        return axios.get("/login/" + password);
+    },
+    getSignedRequest: function(file) {
+        return axios.get("/sign-s3?file-name=" + file.name + "&file-type=" + file.type);
+    },
 };

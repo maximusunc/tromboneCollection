@@ -23,28 +23,28 @@ class Create extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         // if user uploads an image, puts it in formData for back end multer
-        let image = new FormData();
-        if (this.file.files[0]) {
-            image.append("image", this.file.files[0]);
-        }
+        // let image = new FormData();
+        // if (this.file.files[0]) {
+        //     image.append("image", this.file.files[0]);
+        // }
         // user must input a maker
         const { maker } = this.state;
         if (maker.length < 2) {
             alert("You must at least provide a maker");
         } else {
             // if user uploads an image, store it in filesystem, otherwise create item
-            if (image.get("image")) {
-                API.imageUpload(image)
-                .then(res => {
-                    // setting state of image to filename
-                    this.setState({"image": res.data}, () => {
-                        this.addTrombone();
-                    });
-                })
-                .catch(err => console.log(err));
-            } else {
+            // if (image.get("image")) {
+            //     API.imageUpload(image)
+            //     .then(res => {
+            //         // setting state of image to filename
+            //         this.setState({"image": res.data}, () => {
+            //             this.addTrombone();
+            //         });
+            //     })
+            //     .catch(err => console.log(err));
+            // } else {
                 this.addTrombone();
-            }
+            // }
         };
     };
 
@@ -60,6 +60,20 @@ class Create extends Component {
     handleUpdate = (event) => {
         const {name, value} = event.target;
         this.setState({[name]: value});
+    };
+
+    handleFileChange = () => {
+        const file = this.file.files[0];
+        this.getSignedRequest(file);
+    };
+
+    getSignedRequest(file) {
+        API.getSignedRequest(file)
+        .then(res => {
+            this.setState({"image": res.url});
+            console.log(res);
+        })
+        .catch(err => console.log(err));
     };
 
     render() {
@@ -150,7 +164,7 @@ class Create extends Component {
                             <div className="file-field input-field">
                                 <div className="btn">
                                     <span>Upload Image</span>
-                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
+                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" onChange={this.handleFileChange} />
                                 </div>
                                 <div className="file-path-wrapper">
                                     <input name="imagePath" className="file-path validate" type="text" />
