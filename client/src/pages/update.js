@@ -86,7 +86,24 @@ class Update extends Component {
 
     handleFileChange = () => {
         const file = this.file.files[0];
+        this.deleteOldImage();
         this.getSignedRequest(file);
+    };
+
+    deleteOldImage() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `/removeImage?file-name=${this.state.fileName}`);
+        xhr.onreadystatechange = () => {
+          if(xhr.readyState === 4){
+            if(xhr.status === 200){
+              console.log("old image deleted");
+            }
+            else{
+              alert('Unable to delete old image.');
+            }
+          }
+        };
+        xhr.send();
     };
 
     getSignedRequest(file){
