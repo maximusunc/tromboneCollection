@@ -125,7 +125,6 @@ class Update extends Component {
             if(xhr.status === 200){
               const response = JSON.parse(xhr.responseText);
               this.uploadFile(file, response.signedRequest, response.url);
-              console.log("received signed request");
             }
             else{
               alert('Could not get signed URL.');
@@ -141,7 +140,6 @@ class Update extends Component {
         xhr.onreadystatechange = () => {
           if(xhr.readyState === 4){
             if(xhr.status === 200){
-                console.log("successfully added new image");
                 this.setState({"image": url, "fileName": file.name}, () => this.updateTrombone());
             }
             else{
