@@ -10,18 +10,17 @@ class Login extends Component {
     login = (event) => {
         event.preventDefault();
         const { history } = this.props;
-        API.login(this.state.password)
-        .then(res => {
-            auth.authenticate(() => {
-                history.push("/admin");
-            });
-        })
-        .catch(err => console.log("Password incorrect"));
-        // if (this.state.password === "test") {
-        //     auth.authenticate(() => {
-        //         history.push("/admin");
-        //     });
-        // };
+        if (this.state.password.length > 0) {
+            API.login(this.state.password)
+            .then(res => {
+                auth.authenticate(() => {
+                    history.push("/admin");
+                });
+            })
+            .catch(err => console.log("Password incorrect"));
+        } else {
+            alert("Please enter a password");
+        };
     };
   
     handlePassword = (event) => {

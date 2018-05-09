@@ -69,14 +69,14 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.post('/create', upload.single('image'), function(req, res, next) {
-  console.log(req.body);
-  console.log(req.file);
   res.json(req.file.filename);
 });
 
 app.get("/login/:password", function(req, res) {
   if (req.params.password === "test") {
-    res.send("Good password");    
+    res.status(200).send("Good password");    
+  } else {
+    res.status(401).send("Bad password");
   };
 });
 
