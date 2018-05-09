@@ -3,7 +3,7 @@ import "./tromboneDetail.css";
 
 const Details = (props) =>
     <div>
-        <img id="pic" src={props.trombone.image ? (props.trombone.image) : "https://via.placeholder.com/400x400"} alt="placeholder" />
+        <img id="pic" src={props.trombone.image ? (props.trombone.image) : "../../images/no_image_available.jpeg"} alt="Trombone" />
         <ul className="details">
             <li className="detail"><h6>Maker:</h6> {props.trombone.maker}</li>
             <li className="detail"><h6>Date:</h6> {props.trombone.date}</li>

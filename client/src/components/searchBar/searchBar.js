@@ -19,10 +19,12 @@ const SearchBar = (props) =>
                 <div className="input-field col s3">
                     <select className="browser-default" name="pitch" onChange={props.pitchChange}>
                         <option value="" defaultValue></option>
+                        <option value="A">A</option>
                         <option value="B-flat">B-flat</option>
-                        <option value="C">C</option>
+                        <option value="D">D</option>
                         <option value="E-flat">E-flat</option>
                         <option value="F">F</option>
+                        <option value="G">G</option>
                     </select>
                     <label className="active">Pitch</label>
                 </div>
@@ -30,10 +32,10 @@ const SearchBar = (props) =>
                 <div className="input-field col s3">
                     <select className="browser-default" name="type" onChange={props.typeChange}>
                         <option value="" defaultValue></option>
+                        <option value="Soprano">Soprano</option>
                         <option value="Alto">Alto</option>
                         <option value="Tenor">Tenor</option>
                         <option value="Bass">Bass</option>
-                        <option value="Sackbut">Sackbut</option>
                     </select>
                     <label className="active">Type</label>
                 </div>
