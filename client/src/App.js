@@ -13,7 +13,7 @@ import Update from "./pages/update.js";
 import Create from "./pages/create.js";
 import HowToUse from "./pages/howToUse.js";
 import Bibliography from "./pages/bibliography.js";
-import UnderConstruction from "./pages/underConstruction.js";
+import Contact from "./pages/contact.js";
 import Login from "./pages/login.js";
 import auth from "./utils/auth.js";
 import Admin from "./pages/admin.js";
@@ -42,7 +42,7 @@ const App = () =>
           <Route exact path="/details/" component={Details} />
           <Route exact path="/how-to-use" component={HowToUse} />
           <Route exact path="/bibliography" component={Bibliography} />
-          <Route exact path="/about" component={UnderConstruction} />
+          <Route exact path="/contact" component={Contact} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/update" component={Update} />
           <PrivateRoute exact path="/create" component={Create} />

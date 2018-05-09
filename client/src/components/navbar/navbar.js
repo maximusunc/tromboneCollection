@@ -8,7 +8,7 @@ const Navbar = () =>
         <NavLink to="/instruments" activeClassName="active" className="link">Instruments</NavLink>
         <NavLink to="/how-to-use" activeClassName="active" className="link">How To Use</NavLink>
         <NavLink to="/bibliography" activeClassName="active" className="link">Bibliography</NavLink>
-        <NavLink to="/about" activeClassName="active" className="link">About</NavLink>
+        <NavLink to="/contact" activeClassName="active" className="link">Contact</NavLink>
         <NavLink to="/admin" activeClassName="active" className="link">Admin</NavLink>
     </nav>
 
