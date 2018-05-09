@@ -9,3 +9,8 @@ header {
     background-color: #29648A;
     opacity: 0.70;
 }
+@media screen and (max-width: 650px) {
+    #header {
+        font-size: 28px;
+    }
+}

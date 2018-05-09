@@ -20,3 +20,8 @@ nav .link, .link {
 a.link.active {
     color: white;
 }
+@media screen and (max-width: 650px) {
+    nav {
+        height: 100%;
+    }
+}
