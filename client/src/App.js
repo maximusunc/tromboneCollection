@@ -1,14 +1,14 @@
 import React from 'react';
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Redirect, Switch } from "react-router-dom";
 import './App.css';
 import "./pages/pages.css"
 import history from "./history.js";
-import Header from "./components/header";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
+import MainLayout from "./components/mainLayout";
+import EmptyLayout from "./components/emptyLayout";
 import Home from "./pages/home.js";
 import Instruments from "./pages/instruments.js";
 import Details from "./pages/details.js";
+import MinDetails from "./pages/minDetails.js";
 import Update from "./pages/update.js";
 import Create from "./pages/create.js";
 import HowToUse from "./pages/howToUse.js";
@@ -32,25 +32,25 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 const App = () => 
   <Router history={history}>
     <div>
-      <Header />
-      <Navbar />
-      <div className="content">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/instruments" component={Instruments} />
-          <Route exact path="/details/" component={Details} />
-          <Route exact path="/how-to-use" component={HowToUse} />
-          <Route exact path="/bibliography" component={Bibliography} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/update" component={Update} />
-          <PrivateRoute exact path="/create" component={Create} />
-          <PrivateRoute exact path="/admin" component={Admin} />
-          <Route path="/*" component={Home} />
-        </Switch>
-      </div>
-      <Footer />
+      <Switch>
+      {/* <Route path="/api" component={EmptyLayout}>
+        <Route exact path="api/details/*" component={MinDetails} />
+      </Route> */}
+      {/* <Route component={MainLayout}> */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/instruments" component={Instruments} />
+        <Route exact path="/details" component={Details} />
+        <Route exact path="/how-to-use" component={HowToUse} />
+        <Route exact path="/bibliography" component={Bibliography} />
+        <Route exact path="/contact" component={Contact} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute exact path="/update" component={Update} />
+        <PrivateRoute exact path="/create" component={Create} />
+        <PrivateRoute exact path="/admin" component={Admin} />
+        <Route path="/*" component={Home} />
+      {/* </Route> */}
+      </Switch>
     </div>
   </Router>;
 
