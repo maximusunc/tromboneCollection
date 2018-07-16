@@ -1,7 +1,8 @@
 import React from "react";
+import Container from "../components/container";
 
 const Contact = props => 
-    <div>
+    <Container>
         <p>
             This is the page where you can submit edits or new instruments.
         </p>
@@ -11,6 +12,6 @@ const Contact = props =>
         <p>
             Once you've filled out the form, attach it and email to <a href="mailto:mkris@email.unc.edu">mkris@email.unc.edu</a> so we can review it. Thank you!
         </p>
-    </div>;
+    </Container>;
 
 export default Contact;

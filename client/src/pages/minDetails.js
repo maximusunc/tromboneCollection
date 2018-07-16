@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import API from "../utils/API.js";
-import Container from "../components/container";
-import TromboneDetail from "../components/tromboneDetail";
 import { Link } from "react-router-dom";
 
 class Details extends Component {
@@ -40,16 +38,24 @@ class Details extends Component {
 
     render() {
         return (
-            <Container>
-                <TromboneDetail
-                    trombone={this.state}
-                />
-                
-                <Link to="/instruments" className="link">Back</Link>
+            <div>
+                <ul className="details">
+                    <li className="detail"><h6>Maker:</h6> {this.state.maker}</li>
+                    <li className="detail"><h6>Date:</h6> {this.state.date}</li>
+                    <li className="detail"><h6>Type:</h6> {this.state.type}</li>
+                    <li className="detail"><h6>Location:</h6> {this.state.location}</li>
+                    <li className="detail"><h6>Signature:</h6> {this.state.signature}</li>
+                    <li className="detail"><h6>Pitch:</h6> {this.state.pitch}</li>
+                    <li className="detail"><h6>Dimensions:</h6> {this.state.dimensions}</li>
+                    <li className="detail"><h6>Found:</h6> {this.state.found}</li>
+                    <li className="detail"><h6>Literature:</h6> {this.state.literature}</li>
+                    <li className="detail"><h6>Remarks:</h6> {this.state.remarks}</li>
+                </ul>
 
-                <Link to={"/api/details/" + localStorage.getItem("id")} className="link">Test</Link>
                 
-            </Container>
+                <Link to="/details" className="link">Back</Link>
+                
+            </div>
         )
     };
 };

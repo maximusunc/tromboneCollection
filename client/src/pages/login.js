@@ -34,9 +34,9 @@ class Login extends Component {
                     Admin Login!
                 </h3>
   
-                <p>
+                <h5>
                     Log in to view admin.
-                </p>
+                </h5>
 
                 <form className="col s3" >
                     <div className="row">

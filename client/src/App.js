@@ -33,23 +33,27 @@ const App = () =>
   <Router history={history}>
     <div>
       <Switch>
-      {/* <Route path="/api" component={EmptyLayout}>
-        <Route exact path="api/details/*" component={MinDetails} />
-      </Route> */}
-      {/* <Route component={MainLayout}> */}
-        <Route exact path="/" component={Home} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/instruments" component={Instruments} />
-        <Route exact path="/details" component={Details} />
-        <Route exact path="/how-to-use" component={HowToUse} />
-        <Route exact path="/bibliography" component={Bibliography} />
-        <Route exact path="/contact" component={Contact} />
-        <Route exact path="/login" component={Login} />
-        <PrivateRoute exact path="/update" component={Update} />
-        <PrivateRoute exact path="/create" component={Create} />
-        <PrivateRoute exact path="/admin" component={Admin} />
-        <Route path="/*" component={Home} />
-      {/* </Route> */}
+        <Route exact path="/api/details/*">
+          <EmptyLayout>
+            <MinDetails />
+          </EmptyLayout>
+        </Route>
+        <MainLayout>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/instruments" component={Instruments} />
+            <Route exact path="/details" component={Details} />
+            <Route exact path="/how-to-use" component={HowToUse} />
+            <Route exact path="/bibliography" component={Bibliography} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/update" component={Update} />
+            <PrivateRoute exact path="/create" component={Create} />
+            <PrivateRoute exact path="/admin" component={Admin} />
+            <Route path="/*" component={Home} />
+          </Switch>
+        </MainLayout>
       </Switch>
     </div>
   </Router>;

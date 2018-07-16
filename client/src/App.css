@@ -1,19 +1,5 @@
 body {
-  text-align: center;
-  background-color: #A8D0E6;
   position: relative;
-}
-body::after {
-  content: "";
-  background-image: url("./images/tromboneBackground.jpeg");
-  background-size: 100% 115%;
-  opacity: 0.30;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: -1;
 }
 .content {
   min-height: 400px;
@@ -29,6 +15,7 @@ h1 {
 }
 p {
   font-size: 20px;
+  text-align: justify;
 }
 ul {
   list-style-type: none;
