@@ -2,12 +2,13 @@
     text-align: center;
     background-color: #A8D0E6;
     position: relative;
+    opacity: 0.90;
 }
 .mainLayout::after {
     content: "";
     background-image: url("../../images/tromboneBackground.jpeg");
     background-size: 100% 115%;
-    opacity: 0.30;
+    opacity: 0.40;
     position: fixed;
     top: 0;
     left: 0;
