@@ -18,6 +18,7 @@ class Update extends Component {
         remarks: "",
         image: "",
         fileName: "",
+        footnotes: "",
     };
 
     componentDidMount() {
@@ -40,6 +41,7 @@ class Update extends Component {
                 remarks: res.data.remarks,
                 image: res.data.image,
                 fileName: res.data.fileName,
+                footnotes: res.data.footnotes,
             });
         })
         .catch(err => console.log(err));
@@ -231,6 +233,12 @@ class Update extends Component {
                             <div className="input-field col s12">
                                 <textarea id="remarks" name="remarks" type="text" className="active" value={this.state.remarks || ""} onChange={this.handleUpdate} />
                                 <label className="active" htmlFor="remarks">Remarks</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <textarea id="footnotes" name="footnotes" type="text" className="active" value={this.state.footnotes || ""} onChange={this.handleUpdate} />
+                                <label className="active" htmlFor="footnotes">Foot Notes</label>
                             </div>
                         </div>
                         <div className="row">

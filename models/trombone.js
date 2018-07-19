@@ -38,6 +38,9 @@ const tromboneSchema = new Schema({
     fileName: {
         type: String
     },
+    footnotes: {
+        type: String
+    }
 });
 
 const Trombone = mongoose.model("Trombone", tromboneSchema);

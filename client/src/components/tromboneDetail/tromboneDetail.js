@@ -15,6 +15,7 @@ const Details = (props) =>
             <li className="detail"><h6>Found:</h6> {props.trombone.found}</li>
             <li className="detail"><h6>Literature:</h6> {props.trombone.literature}</li>
             <li className="detail"><h6>Remarks:</h6> {props.trombone.remarks}</li>
+            <li className="detail"><h6>Foot Notes:</h6> {props.trombone.footnotes}</li>
         </ul>
     </div>;
 

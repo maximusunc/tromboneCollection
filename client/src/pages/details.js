@@ -17,6 +17,7 @@ class Details extends Component {
         literature: "",
         remarks: "",
         image:"",
+        footnotes:"",
     };
 
     componentDidMount() {
@@ -33,6 +34,7 @@ class Details extends Component {
                 literature: res.data.literature,
                 remarks: res.data.remarks,
                 image: res.data.image,
+                footnotes: res.data.footnotes,
             }))
             .catch(err => console.log(err));
     };
