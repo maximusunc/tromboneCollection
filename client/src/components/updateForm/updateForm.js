@@ -61,6 +61,12 @@ const UpdateForm = (props) =>
                 </div>
             </div>
             <div className="row">
+                <div className="input-field col s12">
+                    <textarea id="footnotes" name="footnotes" type="text" className="active" value={props.footnotes || ""} onChange={props.onChange} />
+                    <label className="active" htmlFor="footnotes">Foot Notes</label>
+                </div>
+            </div>
+            <div className="row">
                 <div className="file-field input-field">
                     <div className="btn">
                         <span>Upload Image</span>

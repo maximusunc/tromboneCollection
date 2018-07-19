@@ -19,6 +19,7 @@ class Create extends Component {
         remarks: "",
         image: "",
         fileName: "",
+        footnotes: "",
     };
 
     handleSubmit = (event) => {
@@ -166,6 +167,12 @@ class Create extends Component {
                             <div className="input-field col s12">
                                 <textarea id="remarks" name="remarks" type="text" className="active" value={this.state.remarks || ""} onChange={this.handleUpdate} />
                                 <label className="active" htmlFor="remarks">Remarks</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <textarea id="footnotes" name="footnotes" type="text" className="active" value={this.state.footnotes || ""} onChange={this.handleUpdate} />
+                                <label className="active" htmlFor="footnotes">Foot Notes</label>
                             </div>
                         </div>
                         <div className="row">
