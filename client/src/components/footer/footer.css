@@ -9,6 +9,7 @@ footer {
     box-shadow: 0px -1px 5px 1px;
     background-color: white;
     opacity: 0.70;
+    z-index: 2;
 }
 #AMIS {
     margin-top: 10px;

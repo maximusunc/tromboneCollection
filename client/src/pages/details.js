@@ -48,6 +48,8 @@ class Details extends Component {
                 />
                 
                 <Link to="/instruments" className="link">Back</Link>
+
+                <Link to={"/api/details/" + localStorage.getItem("id")} className="link">Plain Info</Link>
                 
             </Container>
         )

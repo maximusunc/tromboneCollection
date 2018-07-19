@@ -8,6 +8,7 @@ header {
     position: relative;
     background-color: #29648A;
     opacity: 0.70;
+    z-index: 2;
 }
 @media screen and (max-width: 650px) {
     #header {
