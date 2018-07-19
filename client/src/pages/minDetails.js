@@ -14,7 +14,7 @@ class Details extends Component {
         found: "",
         literature: "",
         remarks: "",
-        image:"",
+        footnotes:""
     };
 
     componentDidMount() {
@@ -30,7 +30,7 @@ class Details extends Component {
                 found: res.data.found,
                 literature: res.data.literature,
                 remarks: res.data.remarks,
-                image: res.data.image,
+                footnotes: res.data.footnotes,
             }))
             .catch(err => console.log(err));
     };
@@ -50,6 +50,7 @@ class Details extends Component {
                     <li className="detail"><h6>Found:</h6> {this.state.found}</li>
                     <li className="detail"><h6>Literature:</h6> {this.state.literature}</li>
                     <li className="detail"><h6>Remarks:</h6> {this.state.remarks}</li>
+                    <li className="detail"><h6>Foot Notes:</h6> {this.state.footnotes}</li>
                 </ul>
 
                 <div id="backLink">
