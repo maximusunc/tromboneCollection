@@ -1,4 +1,4 @@
-const FakeAuth = {
+const auth = {
     isAuthenticated: false,
     authenticate(cb) {
       this.isAuthenticated = true
@@ -10,4 +10,4 @@ const FakeAuth = {
     }
 }
 
-export default FakeAuth;
+module.exports = auth;

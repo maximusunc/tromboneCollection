@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import fakeAuth from "../utils/auth.js";
+import API from "../utils/API.js";
+import auth from "../utils/auth.js";
 
 class Login extends Component {
     state = {
@@ -7,13 +8,19 @@ class Login extends Component {
     };
   
     login = (event) => {
-      event.preventDefault();
-      const { history } = this.props;
-      if (this.state.password === "test") {
-        fakeAuth.authenticate(() => {
-            history.push("/admin");
-        });
-      };
+        event.preventDefault();
+        const { history } = this.props;
+        if (this.state.password.length > 0) {
+            API.login(this.state.password)
+            .then(res => {
+                auth.authenticate(() => {
+                    history.push("/admin");
+                });
+            })
+            .catch(err => console.log("Password incorrect"));
+        } else {
+            alert("Please enter a password");
+        };
     };
   
     handlePassword = (event) => {
@@ -27,9 +34,9 @@ class Login extends Component {
                     Admin Login!
                 </h3>
   
-                <p>
+                <h5>
                     Log in to view admin.
-                </p>
+                </h5>
 
                 <form className="col s3" >
                     <div className="row">

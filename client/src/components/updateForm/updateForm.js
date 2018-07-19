@@ -3,18 +3,18 @@ import "./updateForm.css";
 
 const UpdateForm = (props) => 
     <div>
-        <form className="col s12 search">
+        <form className="col s12 search" encType="multipart/form-data">
             <div className="row">
                 <div className="input-field col s4">
-                    <input id="maker" type="text" className="active" value={props.maker || ""} onChange={props.makerChange} />
+                    <input id="maker" name="maker" type="text" className="active" value={props.maker || ""} onChange={props.onChange} required />
                     <label className="active" htmlFor="maker">Maker</label>
                 </div>
                 <div className="input-field col s4">
-                    <input id="date" type="text" className="active" value={props.date || ""} onChange={props.dateChange} />
+                    <input id="date" name="date" type="text" className="active" value={props.date || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="date">Date</label>
                 </div>
                 <div className="input-field col s4">
-                    <select onChange={props.typeChange}>
+                    <select name="type" className="browser-default" value={props.type || ""} onChange={props.onChange}>
                         <option value=""></option>
                         <option value="Alto">Alto</option>
                         <option value="Tenor">Tenor</option>
@@ -26,39 +26,62 @@ const UpdateForm = (props) =>
             </div>
             <div className="row">
                 <div className="input-field col s4">
-                    <input id="location" type="text" className="active" value={props.location || ""} onChange={props.makerChange} />
+                    <input id="location" name="location" type="text" className="active" value={props.location || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="location">Location</label>
                 </div>
                 <div className="input-field col s4">
-                    <input id="signature" type="text" className="active" value={props.signature || ""} onChange={props.makerChange} />
+                    <input id="signature" name="signature" type="text" className="active" value={props.signature || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="signature">Signature</label>
                 </div>
                 <div className="input-field col s4">
-                    <input id="pitch" type="text" className="active" value={props.pitch || ""} onChange={props.makerChange} />
+                    <input id="pitch" name="pitch" type="text" className="active" value={props.pitch || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="pitch">Pitch</label>
                 </div>
             </div>
             <div className="row">
                 <div className="input-field col s4">
-                    <input id="dimensions" type="text" className="active" value={props.dimensions || ""} onChange={props.makerChange} />
+                    <input id="dimensions" name="dimensions" type="text" className="active" value={props.dimensions || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="dimensions">Dimensions</label>
                 </div>
                 <div className="input-field col s4">
-                    <input id="found" type="text" className="active" value={props.found || ""} onChange={props.makerChange} />
+                    <input id="found" name="found" type="text" className="active" value={props.found || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="found">Found</label>
                 </div>
             </div>
             <div className="row">
                 <div className="input-field col s12">
-                    <textarea id="literature" type="text" className="active" value={props.literature || ""} onChange={props.makerChange} />
+                    <textarea id="literature" name="literature" type="text" className="active" value={props.literature || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="literature">Literature</label>
                 </div>
             </div>
             <div className="row">
                 <div className="input-field col s12">
-                    <textarea id="remarks" type="text" className="active" value={props.remarks || ""} onChange={props.makerChange} />
+                    <textarea id="remarks" name="remarks" type="text" className="active" value={props.remarks || ""} onChange={props.onChange} />
                     <label className="active" htmlFor="remarks">Remarks</label>
                 </div>
+            </div>
+            <div className="row">
+                <div className="input-field col s12">
+                    <textarea id="footnotes" name="footnotes" type="text" className="active" value={props.footnotes || ""} onChange={props.onChange} />
+                    <label className="active" htmlFor="footnotes">Foot Notes</label>
+                </div>
+            </div>
+            <div className="row">
+                <div className="file-field input-field">
+                    <div className="btn">
+                        <span>Upload Image</span>
+                        <input ref={(ref) => {props.file = ref}} type="file" accept="image/*" />
+                    </div>
+                    <div className="file-path-wrapper">
+                        <input name="imagePath" className="file-path validate" type="text" />
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <button id="createTrombone" type="submit" onSubmit={props.handleSubmit}>{props.button}</button>
+                {props.delete ? (
+                    <button id="delete" onClick={props.delete}>Delete</button>
+                ): (null)}
             </div>
         </form>
     </div>;

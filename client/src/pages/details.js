@@ -15,7 +15,9 @@ class Details extends Component {
         dimensions: "",
         found: "",
         literature: "",
-        remarks: ""
+        remarks: "",
+        image:"",
+        footnotes:"",
     };
 
     componentDidMount() {
@@ -30,7 +32,9 @@ class Details extends Component {
                 dimensions: res.data.dimensions,
                 found: res.data.found,
                 literature: res.data.literature,
-                remarks: res.data.remarks
+                remarks: res.data.remarks,
+                image: res.data.image,
+                footnotes: res.data.footnotes,
             }))
             .catch(err => console.log(err));
     };
@@ -44,6 +48,8 @@ class Details extends Component {
                 />
                 
                 <Link to="/instruments" className="link">Back</Link>
+
+                <Link to={"/api/details/" + localStorage.getItem("id")} className="link">Plain Info</Link>
                 
             </Container>
         )

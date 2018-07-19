@@ -1,25 +1,26 @@
 import React from 'react';
-import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Redirect, Switch } from "react-router-dom";
 import './App.css';
+import "./pages/pages.css"
 import history from "./history.js";
-import Header from "./components/header";
-import Navbar from "./components/navbar";
-import Footer from "./components/footer";
+import MainLayout from "./components/mainLayout";
+import EmptyLayout from "./components/emptyLayout";
 import Home from "./pages/home.js";
 import Instruments from "./pages/instruments.js";
 import Details from "./pages/details.js";
+import MinDetails from "./pages/minDetails.js";
 import Update from "./pages/update.js";
 import Create from "./pages/create.js";
 import HowToUse from "./pages/howToUse.js";
 import Bibliography from "./pages/bibliography.js";
-import UnderConstruction from "./pages/underConstruction.js";
+import Contact from "./pages/contact.js";
 import Login from "./pages/login.js";
-import fakeAuth from "./utils/auth.js";
+import auth from "./utils/auth.js";
 import Admin from "./pages/admin.js";
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route {...rest} exact path="/admin" render={(props) => (
-    fakeAuth.isAuthenticated === true
+    auth.isAuthenticated === true
       ? <Component {...props} />
       : <Redirect to={{
           pathname: '/login',
@@ -31,25 +32,29 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 const App = () => 
   <Router history={history}>
     <div>
-      <Header />
-      <Navbar />
-      <div className="content">
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/instruments" component={Instruments} />
-          <Route exact path="/details/" component={Details} />
-          <Route exact path="/how-to-use" component={HowToUse} />
-          <Route exact path="/bibliography" component={Bibliography} />
-          <Route exact path="/about" component={UnderConstruction} />
-          <Route exact path="/login" component={Login} />
-          <PrivateRoute exact path="/update" component={Update} />
-          <PrivateRoute exact path="/create" component={Create} />
-          <PrivateRoute exact path="/admin" component={Admin} />
-          <Route path="/*" component={Home} />
-        </Switch>
-      </div>
-      <Footer />
+      <Switch>
+        <Route exact path="/api/details/*">
+          <EmptyLayout>
+            <MinDetails />
+          </EmptyLayout>
+        </Route>
+        <MainLayout>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/instruments" component={Instruments} />
+            <Route exact path="/details" component={Details} />
+            <Route exact path="/how-to-use" component={HowToUse} />
+            <Route exact path="/bibliography" component={Bibliography} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/update" component={Update} />
+            <PrivateRoute exact path="/create" component={Create} />
+            <PrivateRoute exact path="/admin" component={Admin} />
+            <Route path="/*" component={Home} />
+          </Switch>
+        </MainLayout>
+      </Switch>
     </div>
   </Router>;
 

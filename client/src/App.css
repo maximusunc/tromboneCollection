@@ -1,10 +1,10 @@
 body {
-  text-align: center;
-  background-color: #A8D0E6;
+  position: relative;
 }
 .content {
   min-height: 400px;
   position: relative;
+  height: 100%;
 }
 h3 {
   display: inline;
@@ -13,37 +13,22 @@ h1 {
   margin-top: 0px;
   padding-top: 2%;
 }
+p {
+  font-size: 20px;
+  text-align: justify;
+}
 ul {
   list-style-type: none;
-}
-#login {
-  margin-left: 10px;
-}
-#delete {
-  margin-left: 20px;
-  background-color: red;
-}
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-#create {
-  font-size: 20px;
-  background-color: #659DBD;
-  border-radius: 5px;
-  position: relative;
-  top: 20px;
-  padding: 10px;
-}
-#password {
-  margin-left: 38%;
+  display: flex;
+  flex-wrap: wrap;
 }
 ol li {
   text-align: left;
   margin: 10px 0px;
 }
-.bibliography li {
-  text-align: left;
-  margin: 20px 0px;
+li {
+  font-size: 17px;
+}
+span {
+  display: contents;
 }
