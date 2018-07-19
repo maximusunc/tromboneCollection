@@ -2,8 +2,8 @@
     text-align: center;
     background-color: #A8D0E6;
     position: relative;
-  }
-  .mainLayout::after {
+}
+.mainLayout::after {
     content: "";
     background-image: url("../../images/tromboneBackground.jpeg");
     background-size: 100% 115%;
@@ -14,9 +14,9 @@
     bottom: 0;
     right: 0;
     z-index: -1;
-  }
-  .content {
+}
+.content {
     min-height: 400px;
     position: relative;
     height: 100%;
-  }
+}

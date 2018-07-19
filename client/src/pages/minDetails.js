@@ -52,8 +52,9 @@ class Details extends Component {
                     <li className="detail"><h6>Remarks:</h6> {this.state.remarks}</li>
                 </ul>
 
-                
-                <Link to="/details" className="link">Back</Link>
+                <div id="backLink">
+                    <Link to="/details" id="minLink">Back</Link>
+                </div>
                 
             </div>
         )
