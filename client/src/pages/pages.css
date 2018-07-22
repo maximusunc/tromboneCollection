@@ -36,3 +36,10 @@
 .contactLink:hover {
     color: white;
 }
+#printScreen {
+    border: none;
+    cursor: pointer;
+}
+#backLink {
+    margin-right: 30px;
+}

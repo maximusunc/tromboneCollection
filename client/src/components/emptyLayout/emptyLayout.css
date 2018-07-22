@@ -1,11 +1,4 @@
-#backLink {
+#minLinks {
     width: 100%;
     text-align: center;
-}
-#minLink {
-    margin: auto;
-    color: blue;
-}
-#minLink:hover {
-    color: darkblue;
 }
