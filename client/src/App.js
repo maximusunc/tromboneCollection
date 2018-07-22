@@ -32,13 +32,17 @@ const PrivateRoute = ({component: Component, ...rest}) => (
 const App = () => 
   <Router history={history}>
     <div>
+    {/* this outer switch case is just for the empty layout to not load all the css */}
       <Switch>
         <Route exact path="/api/details/*">
+          {/* this loads minimal css and just the information for a specific instrument */}
           <EmptyLayout>
             <MinDetails />
           </EmptyLayout>
         </Route>
+        {/* if the empty layout isn't hit, load the rest of the css in */}
         <MainLayout>
+          {/* this inner switch is for the main page routes */}
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />

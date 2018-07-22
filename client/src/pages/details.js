@@ -47,9 +47,9 @@ class Details extends Component {
                     trombone={this.state}
                 />
                 
-                <Link to="/instruments" className="link">Back</Link>
+                <Link to="/instruments" className="link" id="backLink">Back</Link>
 
-                <Link to={"/api/details/" + localStorage.getItem("id")} className="link">Plain Info</Link>
+                <Link to={"/api/details/" + localStorage.getItem("id")} className="link">Printable Version</Link>
                 
             </Container>
         )
