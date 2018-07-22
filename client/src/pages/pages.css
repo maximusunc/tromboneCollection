@@ -1,3 +1,16 @@
+.link {
+    margin: 5px 10px;
+    padding: 3px;
+    color: #123c69;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    transition: transform 0.2s ease-in-out;
+}
+.link:hover {
+    transform: scale(1.2);
+    color: #52B3D1;
+}
 #login {
     margin-left: 10px;
 }
@@ -42,4 +55,8 @@
 }
 #backLink {
     margin-right: 30px;
+}
+#minLinks {
+    width: 100%;
+    text-align: center;
 }

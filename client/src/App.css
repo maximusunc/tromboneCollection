@@ -1,17 +1,22 @@
+html {
+  min-height: 100%;
+}
 body {
   position: relative;
-}
-.content {
-  min-height: 400px;
-  position: relative;
-  height: 100%;
-}
-h3 {
-  display: inline;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Rosarivo', serif;
 }
 h1 {
   margin-top: 0px;
   padding-top: 2%;
+}
+h3 {
+  display: inline;
+}
+a {
+  color: rgb(0, 57, 77);
 }
 p {
   font-size: 20px;

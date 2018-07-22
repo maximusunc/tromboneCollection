@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import API from "../utils/API.js";
 import { Link } from "react-router-dom";
 
+// This page is for printing purposes mainly, minimal css
 class Details extends Component {
     state = {
         maker: "",
@@ -35,6 +36,7 @@ class Details extends Component {
             .catch(err => console.log(err));
     };
 
+    // this takes out the buttons on the bottom and prints out just the information then puts everything back
     printScreen() {
         var printContents = document.getElementById("printContents").innerHTML;
         var wholePage = document.body.innerHTML;
