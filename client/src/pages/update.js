@@ -248,12 +248,12 @@ class Update extends Component {
                             </div>
                         </div>
                         <div className="row">
-                        {this.state.fileName ? 
+                        {this.state.fileName.length > 4 ? 
                             <div>
                                 <img src={this.state.image} alt="tromboneImage" />
                                 <div className="file-field input-field">
                                     <div className="btn">
-                                        <span>Upload New Image</span>
+                                        <span>Change Image</span>
                                         <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
                                     </div>
                                     <div className="file-path-wrapper">
