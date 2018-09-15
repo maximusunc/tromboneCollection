@@ -20,10 +20,13 @@ const tromboneSchema = new Schema({
     pitch: {
         type: String
     },
+    mouthpiece: {
+        type: String
+    },
     dimensions: {
         type: String
     },
-    found: {
+    provenance: {
         type: String
     },
     literature: {

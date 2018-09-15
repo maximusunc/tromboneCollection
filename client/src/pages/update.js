@@ -12,8 +12,9 @@ class Update extends Component {
         location: "",
         signature: "",
         pitch: "",
+        mouthpiece: "",
         dimensions: "",
-        found: "",
+        provenance: "",
         literature: "",
         remarks: "",
         image: "",
@@ -35,8 +36,9 @@ class Update extends Component {
                 location: res.data.location,
                 signature: res.data.signature,
                 pitch: res.data.pitch,
+                mouthpiece: res.data.mouthpiece,
                 dimensions: res.data.dimensions,
-                found: res.data.found,
+                provenance: res.data.provenance,
                 literature: res.data.literature,
                 remarks: res.data.remarks,
                 image: res.data.image,
@@ -167,7 +169,7 @@ class Update extends Component {
                     signature={this.state.signature}
                     pitch={this.state.pitch}
                     dimensions={this.state.dimensions}
-                    found={this.state.found}
+                    provenance={this.state.provenance}
                     literature={this.state.literature}
                     remarks={this.state.remarks}
                     onChange={this.handleUpdate}
@@ -219,8 +221,12 @@ class Update extends Component {
                                 <label className="active" htmlFor="dimensions">Dimensions</label>
                             </div>
                             <div className="input-field col s4">
-                                <input id="found" name="found" type="text" className="active" value={this.state.found || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="found">Found</label>
+                                <input id="provenance" name="provenance" type="text" className="active" value={this.state.provenance || ""} onChange={this.handleUpdate} />
+                                <label className="active" htmlFor="provenance">Provenance</label>
+                            </div>
+                            <div className="input-field col s4">
+                                <input id="mouthpiece" name="mouthpiece" type="text" className="active" value={this.state.mouthpiece || ""} onChange={this.handleUpdate} />
+                                <label className="active" htmlFor="mouthpiece">Mouthpiece</label>
                             </div>
                         </div>
                         <div className="row">

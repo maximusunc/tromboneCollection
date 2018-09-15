@@ -13,8 +13,9 @@ class Create extends Component {
         location: "",
         signature: "",
         pitch: "",
+        mouthpiece: "",
         dimensions: "",
-        found: "",
+        provenance: "",
         literature: "",
         remarks: "",
         image: "",
@@ -125,10 +126,10 @@ class Create extends Component {
                             <div className="input-field col s4">
                                 <select name="type" className="browser-default" value={this.state.type || ""} onChange={this.handleUpdate}>
                                     <option value=""></option>
+                                    <option value="Soprano">Soprano</option>
                                     <option value="Alto">Alto</option>
                                     <option value="Tenor">Tenor</option>
                                     <option value="Bass">Bass</option>
-                                    <option value="Sackbut">Sackbut</option>
                                 </select>
                                 <label className="active">Type</label>
                             </div>
@@ -153,8 +154,12 @@ class Create extends Component {
                                 <label className="active" htmlFor="dimensions">Dimensions</label>
                             </div>
                             <div className="input-field col s4">
-                                <input id="found" name="found" type="text" className="active" value={this.state.found || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="found">Found</label>
+                                <input id="provenance" name="provenance" type="text" className="active" value={this.state.provenance || ""} onChange={this.handleUpdate} />
+                                <label className="active" htmlFor="provenance">Provenance</label>
+                            </div>
+                            <div className="input-field col s4">
+                                <input id="mouthpiece" name="mouthpiece" type="text" className="active" value={this.state.mouthpiece || ""} onChange={this.handleUpdate} />
+                                <label className="active" htmlFor="mouthpiece">Mouthpiece</label>
                             </div>
                         </div>
                         <div className="row">
