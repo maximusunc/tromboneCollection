@@ -248,6 +248,20 @@ class Update extends Component {
                             </div>
                         </div>
                         <div className="row">
+                        {this.state.fileName.length > 4 ? 
+                            <div>
+                                <img src={this.state.image} alt="tromboneImage" />
+                                <div className="file-field input-field">
+                                    <div className="btn">
+                                        <span>Change Image</span>
+                                        <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
+                                    </div>
+                                    <div className="file-path-wrapper">
+                                        <input name="imagePath" className="file-path validate" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                            :
                             <div className="file-field input-field">
                                 <div className="btn">
                                     <span>Upload Image</span>
@@ -257,6 +271,7 @@ class Update extends Component {
                                     <input name="imagePath" className="file-path validate" type="text" />
                                 </div>
                             </div>
+                        }
                         </div>
                         <div className="row">
                             <button id="createTrombone" type="submit" onClick={this.handleSubmit}>Update</button>
