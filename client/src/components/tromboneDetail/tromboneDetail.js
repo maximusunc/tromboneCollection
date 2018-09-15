@@ -11,8 +11,9 @@ const Details = (props) =>
             <li className="detail"><h6>Location:</h6> {props.trombone.location}</li>
             <li className="detail"><h6>Signature:</h6> {props.trombone.signature}</li>
             <li className="detail"><h6>Pitch:</h6> {props.trombone.pitch}</li>
+            <li className="detail"><h6>Mouthpiece:</h6> {props.trombone.mouthpiece}</li>
             <li className="detail"><h6>Dimensions:</h6> {props.trombone.dimensions}</li>
-            <li className="detail"><h6>Found:</h6> {props.trombone.found}</li>
+            <li className="detail"><h6>Provenance:</h6> {props.trombone.provenance}</li>
             <li className="detail"><h6>Literature:</h6> {props.trombone.literature}</li>
             <li className="detail"><h6>Remarks:</h6> {props.trombone.remarks}</li>
             <li className="detail"><h6>Foot Notes:</h6> {props.trombone.footnotes}</li>

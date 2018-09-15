@@ -11,8 +11,9 @@ class Details extends Component {
         location: "",
         signature: "",
         pitch: "",
+        mouthpiece: "",
         dimensions: "",
-        found: "",
+        provenance: "",
         literature: "",
         remarks: "",
         footnotes:""
@@ -27,8 +28,9 @@ class Details extends Component {
                 location: res.data.location,
                 signature: res.data.signature,
                 pitch: res.data.pitch,
+                mouthpiece: res.data.mouthpiece,
                 dimensions: res.data.dimensions,
-                found: res.data.found,
+                provenance: res.data.provenance,
                 literature: res.data.literature,
                 remarks: res.data.remarks,
                 footnotes: res.data.footnotes,
@@ -57,8 +59,9 @@ class Details extends Component {
                         <li className="detail"><h6>Location:</h6> {this.state.location}</li>
                         <li className="detail"><h6>Signature:</h6> {this.state.signature}</li>
                         <li className="detail"><h6>Pitch:</h6> {this.state.pitch}</li>
+                        <li className="detail"><h6>Mouthpiece:</h6> {this.state.mouthpiece}</li>
                         <li className="detail"><h6>Dimensions:</h6> {this.state.dimensions}</li>
-                        <li className="detail"><h6>Found:</h6> {this.state.found}</li>
+                        <li className="detail"><h6>Provenance:</h6> {this.state.provenance}</li>
                         <li className="detail"><h6>Literature:</h6> {this.state.literature}</li>
                         <li className="detail"><h6>Remarks:</h6> {this.state.remarks}</li>
                         <li className="detail"><h6>Foot Notes:</h6> {this.state.footnotes}</li>
