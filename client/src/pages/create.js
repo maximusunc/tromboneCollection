@@ -20,7 +20,7 @@ class Create extends Component {
         remarks: "",
         image: "",
         fileName: "",
-        footnotes: "",
+        footnotes: [],
     };
 
     handleSubmit = (event) => {
@@ -52,6 +52,16 @@ class Create extends Component {
         const {name, value} = event.target;
         this.setState({[name]: value});
     };
+
+    handleFootnotes = (event) => {
+        console.log(event.target);
+    };
+
+    handleNewFootnote = (event) => {
+        event.preventDefault();
+        
+        console.log("You done clicked it.");
+    }
 
     getSignedRequest(file){
         const xhr = new XMLHttpRequest();
@@ -87,6 +97,7 @@ class Create extends Component {
     };
 
     render() {
+        var i = 0;
         return (
             <Container>
                 <h1>
@@ -174,12 +185,13 @@ class Create extends Component {
                                 <label className="active" htmlFor="remarks">Remarks</label>
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row" id="footnotes">
+                            <label className="active" htmlFor="footnotes">Foot Notes</label>
                             <div className="input-field col s12">
-                                <textarea id="footnotes" name="footnotes" type="text" className="active" value={this.state.footnotes || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="footnotes">Foot Notes</label>
+                                <textarea name="footnote" type="text" className="active" value={this.state.footnotes[i] || ""} onChange={this.handleFootnotes} />
                             </div>
                         </div>
+                        <button id="newFootnote" onClick={this.handleNewFootnote}>New Footnote</button>
                         <div className="row">
                             <div className="file-field input-field">
                                 <div className="btn">
