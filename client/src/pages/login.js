@@ -4,20 +4,28 @@ import auth from "../utils/auth.js";
 
 class Login extends Component {
     state = {
-        password: ""
+        password: "",
+        tries: 3
     };
   
     login = (event) => {
         event.preventDefault();
         const { history } = this.props;
         if (this.state.password.length > 0) {
-            API.login(this.state.password)
+            API.login(encodeURIComponent(this.state.password))
             .then(res => {
                 auth.authenticate(() => {
                     history.push("/admin");
                 });
             })
-            .catch(err => console.log("Password incorrect"));
+            .catch(err => {
+                this.setState({password: "", tries: this.state.tries - 1});
+                alert("Password Incorrect. You have " + this.state.tries + " tries left.");
+                if (this.state.tries < 1) {
+                    document.getElementById("login").setAttribute("disabled", true);
+                    document.getElementById("login").style.backgroundColor = "red";
+                }
+            });
         } else {
             alert("Please enter a password");
         };
@@ -30,13 +38,9 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <h3>
+                <h4>
                     Admin Login!
-                </h3>
-  
-                <h5>
-                    Log in to view admin.
-                </h5>
+                </h4>
 
                 <form className="col s3" >
                     <div className="row">
