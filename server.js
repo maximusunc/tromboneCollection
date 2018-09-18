@@ -60,7 +60,7 @@ if (process.env.NODE_ENV === "production") {
 
 // handles admin password
 app.get("/login/:password", function(req, res) {
-  if (req.params.password === "test") {
+  if (decodeURI(req.params.password) === "SackBut#1") {
     res.status(200).send("Good password");    
   } else {
     res.status(401).send("Bad password");
