@@ -1,9 +1,9 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import history from "../history";
 import API from "../utils/API.js";
 import Container from "../components/container";
+import Footnotes from "../components/footnotes";
 // import UpdateForm from "../components/updateForm";
-// const axios = require("axios");
 
 class Create extends Component {
     state = {
@@ -20,7 +20,7 @@ class Create extends Component {
         remarks: "",
         image: "",
         fileName: "",
-        footnotes: [],
+        footnotes: [""],
     };
 
     handleSubmit = (event) => {
@@ -31,6 +31,7 @@ class Create extends Component {
         if (maker.length < 2) {
             alert("You must at least provide a maker");
         } else {
+            this.removeBlankFootnotes(this.state.footnotes);
             if (file) {
                 this.getSignedRequest(file);
             } else {
@@ -40,64 +41,88 @@ class Create extends Component {
     };
 
     addTrombone() {
-        API.addTrombone({...this.state})
-        .then(res => {
-            alert("Trombone Added!");
-            history.push("/admin");
-        })
-        .catch(err => console.log(err));
+        API.addTrombone({ ...this.state })
+            .then(res => {
+                alert("Trombone Added!");
+                history.push("/admin");
+            })
+            .catch(err => console.log(err));
     };
 
     handleUpdate = (event) => {
-        const {name, value} = event.target;
-        this.setState({[name]: value});
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     };
 
     handleFootnotes = (event) => {
-        console.log(event.target);
+        const { id, value } = event.target;
+        let newFootnotes = this.state.footnotes;
+        newFootnotes[id] = value;
+        this.setState({ footnotes : newFootnotes })
     };
 
     handleNewFootnote = (event) => {
         event.preventDefault();
-        
-        console.log("You done clicked it.");
-    }
+        let newFootnote = this.state.footnotes;
+        newFootnote.push("");
+        this.setState({ footnotes: newFootnote });
+    };
 
-    getSignedRequest(file){
+    removeBlankFootnotes = (footnotes) => {
+        let blank = false;
+        footnotes.forEach(function(footnote, index) {
+            if (footnote.length === 0) {
+                blank = true;
+                footnotes.splice(index, 1);
+            }
+        });
+        if (blank) {
+            this.removeBlankFootnotes(footnotes);
+        };
+    };
+
+    getSignedRequest(file) {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
         xhr.onreadystatechange = () => {
-          if(xhr.readyState === 4){
-            if(xhr.status === 200){
-              const response = JSON.parse(xhr.responseText);
-              this.uploadFile(file, response.signedRequest, response.url);
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    this.uploadFile(file, response.signedRequest, response.url);
+                }
+                else {
+                    alert('Could not get signed URL.');
+                }
             }
-            else{
-              alert('Could not get signed URL.');
-            }
-          }
         };
         xhr.send();
     };
 
-    uploadFile(file, signedRequest, url){
+    uploadFile(file, signedRequest, url) {
         const xhr = new XMLHttpRequest();
         xhr.open('PUT', signedRequest);
         xhr.onreadystatechange = () => {
-          if(xhr.readyState === 4){
-            if(xhr.status === 200){
-              this.setState({"image": url, "fileName": file.name}, () => this.addTrombone());
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    this.setState({ "image": url, "fileName": file.name }, () => this.addTrombone());
+                }
+                else {
+                    alert('Could not upload file.');
+                }
             }
-            else{
-              alert('Could not upload file.');
-            }
-          }
         };
         xhr.send(file);
     };
 
     render() {
-        var i = 0;
+        const footnotes = this.state.footnotes.map((footnote, index) => (
+            <Footnotes
+                key={index}
+                id={index}
+                footnote={footnote}
+                handleUpdate={this.handleFootnotes}
+            />
+        ));
         return (
             <Container>
                 <h1>
@@ -187,16 +212,14 @@ class Create extends Component {
                         </div>
                         <div className="row" id="footnotes">
                             <label className="active" htmlFor="footnotes">Foot Notes</label>
-                            <div className="input-field col s12">
-                                <textarea name="footnote" type="text" className="active" value={this.state.footnotes[i] || ""} onChange={this.handleFootnotes} />
-                            </div>
+                            {footnotes}
                         </div>
                         <button id="newFootnote" onClick={this.handleNewFootnote}>New Footnote</button>
                         <div className="row">
                             <div className="file-field input-field">
                                 <div className="btn">
                                     <span>Upload Image</span>
-                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
+                                    <input ref={(ref) => { this.file = ref }} type="file" accept="image/*" />
                                 </div>
                                 <div className="file-path-wrapper">
                                     <input name="imagePath" className="file-path validate" type="text" />

@@ -11,6 +11,12 @@
 .detail {
     margin: 15px 0px;
 }
+.footnote {
+    list-style-type: lower-roman;
+}
+ol.detail {
+    text-align: center;
+}
 h6 {
     display: inline-block;
 }
