@@ -11,8 +11,9 @@
 .detail {
     margin: 15px 0px;
 }
-.footnote {
+li.footnote {
     list-style-type: lower-roman;
+    font-size: 13px;
 }
 ol.detail {
     text-align: center;

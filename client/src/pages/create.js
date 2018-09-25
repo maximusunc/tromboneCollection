@@ -69,15 +69,10 @@ class Create extends Component {
     };
 
     removeBlankFootnotes = (footnotes) => {
-        let blank = false;
-        footnotes.forEach(function(footnote, index) {
-            if (footnote.length === 0) {
-                blank = true;
-                footnotes.splice(index, 1);
+        for (var i = footnotes.length - 1; i >= 0; i--) {
+            if (footnotes[i].length === 0) {
+                footnotes.splice(i, 1);
             }
-        });
-        if (blank) {
-            this.removeBlankFootnotes(footnotes);
         };
     };
 

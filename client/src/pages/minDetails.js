@@ -16,7 +16,7 @@ class Details extends Component {
         provenance: "",
         literature: "",
         remarks: "",
-        footnotes:""
+        footnotes: []
     };
 
     componentDidMount() {
@@ -49,6 +49,19 @@ class Details extends Component {
 
 
     render() {
+        const footnoteHeader = {
+            textAlign: "left",
+            paddingLeft: 0,
+        };
+        const footnoteStyle = {
+            display: "inline",
+            listStyleType: "lower-roman",
+            paddingLeft: 5,
+            paddingRight: 5,
+        };
+        const footnotes = this.state.footnotes.map((footnote, index) => (
+            <li className="footnote" style={footnoteStyle}>  {index + 1}. {footnote}  </li>
+        ));
         return (
             <div>
                 <div id="printContents">
@@ -64,13 +77,13 @@ class Details extends Component {
                         <li className="detail"><h6>Provenance:</h6> {this.state.provenance}</li>
                         <li className="detail"><h6>Literature:</h6> {this.state.literature}</li>
                         <li className="detail"><h6>Remarks:</h6> {this.state.remarks}</li>
-                        <li className="detail"><h6>Foot Notes:</h6> {this.state.footnotes}</li>
+                        <ol className="detail" style={footnoteHeader}><h6>Foot Notes:</h6> {footnotes}</ol>
                     </ul>
                 </div>
 
                 <div id="minLinks">
                     <Link to="/details" id="backLink" className="link">Back</Link>
-                    <button id="printScreen" className="link" type="button" onClick={this.printScreen}>Print Screen</button>
+                    <button id="printScreen" className="link" type="button" onClick={this.printScreen}>Print or Save Screen</button>
                 </div>
                 
             </div>
