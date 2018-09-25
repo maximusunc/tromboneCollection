@@ -11,6 +11,13 @@
 .detail {
     margin: 15px 0px;
 }
+li.footnote {
+    list-style-type: lower-roman;
+    font-size: 13px;
+}
+ol.detail {
+    text-align: center;
+}
 h6 {
     display: inline-block;
 }

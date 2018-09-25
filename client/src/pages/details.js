@@ -18,7 +18,7 @@ class Details extends Component {
         literature: "",
         remarks: "",
         image:"",
-        footnotes:"",
+        footnotes:[],
     };
 
     componentDidMount() {

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import history from "../history";
 import API from "../utils/API.js";
 import Container from "../components/container";
+import Footnotes from "../components/footnotes";
 // import UpdateForm from "../components/updateForm";
 
 class Update extends Component {
@@ -19,7 +20,7 @@ class Update extends Component {
         remarks: "",
         image: "",
         fileName: "",
-        footnotes: "",
+        footnotes: [],
     };
 
     componentDidMount() {
@@ -57,6 +58,7 @@ class Update extends Component {
         if (maker.length < 2) {
             alert("You must at least provide a maker");
         } else {
+            this.removeBlankFootnotes(this.state.footnotes);
             // if there's an old image and a new image, delete the old one. this function then adds the new picture
             if (this.state.fileName && file) {
                 this.deleteOldImage(this.state.fileName, file);
@@ -101,6 +103,28 @@ class Update extends Component {
     handleUpdate = (event) => {
         const {name, value} = event.target;
         this.setState({[name]: value});
+    };
+
+    handleFootnotes = (event) => {
+        const { id, value } = event.target;
+        let newFootnotes = this.state.footnotes;
+        newFootnotes[id] = value;
+        this.setState({ footnotes : newFootnotes })
+    };
+
+    handleNewFootnote = (event) => {
+        event.preventDefault();
+        let newFootnote = this.state.footnotes;
+        newFootnote.push("");
+        this.setState({ footnotes: newFootnote });
+    };
+
+    removeBlankFootnotes = (footnotes) => {
+        for (var i = footnotes.length - 1; i >= 0; i--) {
+            if (footnotes[i].length === 0) {
+                footnotes.splice(i, 1);
+            }
+        };
     };
 
     deleteOldImage(oldFile, newFile) {
@@ -155,6 +179,14 @@ class Update extends Component {
     };
 
     render() {
+        const footnotes = this.state.footnotes.map((footnote, index) => (
+            <Footnotes
+                key={index}
+                id={index}
+                footnote={footnote}
+                handleUpdate={this.handleFootnotes}
+            />
+        ));
         return (
             <Container>
                 <h1>
@@ -241,12 +273,11 @@ class Update extends Component {
                                 <label className="active" htmlFor="remarks">Remarks</label>
                             </div>
                         </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <textarea id="footnotes" name="footnotes" type="text" className="active" value={this.state.footnotes || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="footnotes">Foot Notes</label>
-                            </div>
+                        <div className="row" id="footnotes">
+                            <label className="active" htmlFor="footnotes">Foot Notes</label>
+                            {footnotes}
                         </div>
+                        <button id="newFootnote" onClick={this.handleNewFootnote}>New Footnote</button>
                         <div className="row">
                         {this.state.fileName.length > 4 ? 
                             <div>

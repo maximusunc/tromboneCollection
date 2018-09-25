@@ -42,7 +42,7 @@ const tromboneSchema = new Schema({
         type: String
     },
     footnotes: {
-        type: String
+        type: []
     }
 });
 
