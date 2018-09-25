@@ -279,7 +279,7 @@ class Update extends Component {
                         </div>
                         <button id="newFootnote" onClick={this.handleNewFootnote}>New Footnote</button>
                         <div className="row">
-                        {this.state.fileName.length > 4 ? 
+                        {this.state.fileName && this.state.fileName.length > 4 ? 
                             <div>
                                 <img src={this.state.image} alt="tromboneImage" />
                                 <div className="file-field input-field">
