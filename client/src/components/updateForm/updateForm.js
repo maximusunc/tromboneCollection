@@ -26,10 +26,10 @@ const UpdateForm = (props) => {
                     <div className="input-field col s4">
                         <select name="type" className="browser-default" value={props.type || ""} onChange={props.onChange}>
                             <option value=""></option>
+                            <option value="Soprano">Soprano</option>
                             <option value="Alto">Alto</option>
                             <option value="Tenor">Tenor</option>
                             <option value="Bass">Bass</option>
-                            <option value="Sackbut">Sackbut</option>
                         </select>
                         <label className="active">Type</label>
                     </div>
