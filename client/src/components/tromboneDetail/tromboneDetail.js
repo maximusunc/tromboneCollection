@@ -16,7 +16,9 @@ const Details = (props) =>
             <li className="detail"><h6>Provenance:</h6> {props.trombone.provenance}</li>
             <li className="detail"><h6>Literature:</h6> {props.trombone.literature}</li>
             <li className="detail"><h6>Remarks:</h6> {props.trombone.remarks}</li>
-            <li className="detail"><h6>Foot Notes:</h6> {props.trombone.footnotes}</li>
+            <ol className="detail"><h6>Foot Notes:</h6> {props.trombone.footnotes.map((footnote, index) => 
+                <li className="footnote" key={index}> {footnote} </li>
+            )}</ol>
         </ul>
     </div>;
 

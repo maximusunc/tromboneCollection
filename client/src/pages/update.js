@@ -1,8 +1,8 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import history from "../history";
 import API from "../utils/API.js";
 import Container from "../components/container";
-// import UpdateForm from "../components/updateForm";
+import UpdateForm from "../components/updateForm";
 
 class Update extends Component {
     state = {
@@ -18,8 +18,7 @@ class Update extends Component {
         literature: "",
         remarks: "",
         image: "",
-        fileName: "",
-        footnotes: "",
+        footnotes: [],
     };
 
     componentDidMount() {
@@ -28,56 +27,46 @@ class Update extends Component {
 
     getTrombone() {
         API.getTrombone(localStorage.getItem("id"))
-        .then(res => {
-            this.setState({
-                maker: res.data.maker,
-                date: res.data.date,
-                type: res.data.type,
-                location: res.data.location,
-                signature: res.data.signature,
-                pitch: res.data.pitch,
-                mouthpiece: res.data.mouthpiece,
-                dimensions: res.data.dimensions,
-                provenance: res.data.provenance,
-                literature: res.data.literature,
-                remarks: res.data.remarks,
-                image: res.data.image,
-                fileName: res.data.fileName,
-                footnotes: res.data.footnotes,
-            });
-        })
-        .catch(err => console.log(err));
+            .then(res => {
+                this.setState({
+                    maker: res.data.maker,
+                    date: res.data.date,
+                    type: res.data.type,
+                    location: res.data.location,
+                    signature: res.data.signature,
+                    pitch: res.data.pitch,
+                    mouthpiece: res.data.mouthpiece,
+                    dimensions: res.data.dimensions,
+                    provenance: res.data.provenance,
+                    literature: res.data.literature,
+                    remarks: res.data.remarks,
+                    image: res.data.image,
+                    footnotes: res.data.footnotes,
+                });
+            })
+            .catch(err => console.log(err));
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const file = this.file.files[0];
         // user must input a maker
         const { maker } = this.state;
         if (maker.length < 2) {
             alert("You must at least provide a maker");
         } else {
-            // if there's an old image and a new image, delete the old one. this function then adds the new picture
-            if (this.state.fileName && file) {
-                this.deleteOldImage(this.state.fileName, file);
-            // if there was no previos picture, just upload the new one, and this then calls updateTrombone
-            } else if (file) {
-                this.getSignedRequest(file);
-            // if there was no old pic and no new pic, just updateTrombone
-            } else {
-                this.updateTrombone();
-            };
+            this.removeBlankFootnotes(this.state.footnotes);
+            this.updateTrombone();
         };
     };
 
     updateTrombone() {
         // update trombone with entire state
-        API.updateTrombone(localStorage.getItem("id"), {...this.state})
-        .then(res => {
-            alert("Trombone Updated");
-            history.push("/admin");
-        })
-        .catch(err => console.log(err));
+        API.updateTrombone(localStorage.getItem("id"), { ...this.state })
+            .then(res => {
+                alert("Trombone Updated");
+                history.push("/admin");
+            })
+            .catch(err => console.log(err));
     }
 
     handleDelete = (event) => {
@@ -99,59 +88,46 @@ class Update extends Component {
 
     // handles user input changes
     handleUpdate = (event) => {
-        const {name, value} = event.target;
-        this.setState({[name]: value});
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     };
 
-    deleteOldImage(oldFile, newFile) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('DELETE', `/removeImage?file-name=${oldFile}`);
-        xhr.onreadystatechange = () => {
-          if(xhr.readyState === 4){
-            if(xhr.status === 200){
-                if (newFile) {
-                    this.getSignedRequest(newFile);
-                }
-            }
-            else{
-              alert('Unable to delete old image.');
-            }
-          }
-        };
-        xhr.send();
+    fileUpload = (event) => {
+        var file = event.target.files[0] || undefined;
+        var image = "";
+        if (file) {
+            var reader = new FileReader();
+            reader.onloadend = () => {
+                image = reader.result;
+                this.setState({image: image});
+            };
+            reader.onerror = function (error) {
+                console.log('Error: ', error);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
-    getSignedRequest(file){
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
-        xhr.onreadystatechange = () => {
-          if(xhr.readyState === 4){
-            if(xhr.status === 200){
-              const response = JSON.parse(xhr.responseText);
-              this.uploadFile(file, response.signedRequest, response.url);
-            }
-            else{
-              alert('Could not get signed URL.');
-            }
-          }
-        };
-        xhr.send();
+    handleFootnotes = (event) => {
+        const { id, value } = event.target;
+        let newFootnotes = this.state.footnotes;
+        newFootnotes[id] = value;
+        this.setState({ footnotes: newFootnotes })
     };
 
-    uploadFile(file, signedRequest, url){
-        const xhr = new XMLHttpRequest();
-        xhr.open('PUT', signedRequest);
-        xhr.onreadystatechange = () => {
-          if(xhr.readyState === 4){
-            if(xhr.status === 200){
-                this.setState({"image": url, "fileName": file.name}, () => this.updateTrombone());
+    handleNewFootnote = (event) => {
+        event.preventDefault();
+        let newFootnote = this.state.footnotes;
+        newFootnote.push("");
+        this.setState({ footnotes: newFootnote });
+    };
+
+    removeBlankFootnotes = (footnotes) => {
+        for (var i = footnotes.length - 1; i >= 0; i--) {
+            if (footnotes[i].length === 0) {
+                footnotes.splice(i, 1);
             }
-            else{
-              alert('Could not upload file.');
-            }
-          }
         };
-        xhr.send(file);
     };
 
     render() {
@@ -161,7 +137,7 @@ class Update extends Component {
                     Update!
                 </h1>
 
-                {/* <UpdateForm 
+                <UpdateForm 
                     date={this.state.date}
                     maker={this.state.maker}
                     type={this.state.type}
@@ -170,115 +146,18 @@ class Update extends Component {
                     pitch={this.state.pitch}
                     dimensions={this.state.dimensions}
                     provenance={this.state.provenance}
+                    mouthpiece={this.state.mouthpiece}
                     literature={this.state.literature}
                     remarks={this.state.remarks}
+                    footnotes={this.state.footnotes}
+                    handleFootnotes={this.handleFootnotes}
+                    handleNewFootnote={this.handleNewFootnote}
+                    fileUpload={this.fileUpload}
                     onChange={this.handleUpdate}
                     handleSubmit={this.handleSubmit}
                     button="Update"
                     delete={this.handleDelete}
-                /> */}
-
-
-                <div>
-                    <form className="col s12 search" encType="multipart/form-data">
-                        <div className="row">
-                            <div className="input-field col s4">
-                                <input id="maker" name="maker" type="text" className="active" value={this.state.maker || ""} onChange={this.handleUpdate} required />
-                                <label className="active" htmlFor="maker">Maker</label>
-                            </div>
-                            <div className="input-field col s4">
-                                <input id="date" name="date" type="text" className="active" value={this.state.date || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="date">Date</label>
-                            </div>
-                            <div className="input-field col s4">
-                                <select name="type" className="browser-default" value={this.state.type || ""} onChange={this.handleUpdate}>
-                                    <option value=""></option>
-                                    <option value="Alto">Alto</option>
-                                    <option value="Tenor">Tenor</option>
-                                    <option value="Bass">Bass</option>
-                                    <option value="Sackbut">Sackbut</option>
-                                </select>
-                                <label className="active">Type</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s4">
-                                <input id="location" name="location" type="text" className="active" value={this.state.location || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="location">Location</label>
-                            </div>
-                            <div className="input-field col s4">
-                                <input id="signature" name="signature" type="text" className="active" value={this.state.signature || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="signature">Signature</label>
-                            </div>
-                            <div className="input-field col s4">
-                                <input id="pitch" name="pitch" type="text" className="active" value={this.state.pitch || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="pitch">Pitch</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s4">
-                                <input id="dimensions" name="dimensions" type="text" className="active" value={this.state.dimensions || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="dimensions">Dimensions</label>
-                            </div>
-                            <div className="input-field col s4">
-                                <input id="provenance" name="provenance" type="text" className="active" value={this.state.provenance || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="provenance">Provenance</label>
-                            </div>
-                            <div className="input-field col s4">
-                                <input id="mouthpiece" name="mouthpiece" type="text" className="active" value={this.state.mouthpiece || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="mouthpiece">Mouthpiece</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <textarea id="literature" name="literature" type="text" className="active" value={this.state.literature || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="literature">Literature</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <textarea id="remarks" name="remarks" type="text" className="active" value={this.state.remarks || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="remarks">Remarks</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <textarea id="footnotes" name="footnotes" type="text" className="active" value={this.state.footnotes || ""} onChange={this.handleUpdate} />
-                                <label className="active" htmlFor="footnotes">Foot Notes</label>
-                            </div>
-                        </div>
-                        <div className="row">
-                        {this.state.fileName.length > 4 ? 
-                            <div>
-                                <img src={this.state.image} alt="tromboneImage" />
-                                <div className="file-field input-field">
-                                    <div className="btn">
-                                        <span>Change Image</span>
-                                        <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
-                                    </div>
-                                    <div className="file-path-wrapper">
-                                        <input name="imagePath" className="file-path validate" type="text" />
-                                    </div>
-                                </div>
-                            </div>
-                            :
-                            <div className="file-field input-field">
-                                <div className="btn">
-                                    <span>Upload Image</span>
-                                    <input ref={(ref) => {this.file = ref}} type="file" accept="image/*" />
-                                </div>
-                                <div className="file-path-wrapper">
-                                    <input name="imagePath" className="file-path validate" type="text" />
-                                </div>
-                            </div>
-                        }
-                        </div>
-                        <div className="row">
-                            <button id="createTrombone" type="submit" onClick={this.handleSubmit}>Update</button>
-                            <button id="delete" onClick={this.handleDelete}>Delete</button>
-                        </div>
-                    </form>
-                </div>
+                />
 
             </Container>
         );
