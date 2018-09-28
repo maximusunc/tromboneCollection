@@ -1,8 +1,8 @@
 .mainLayout {
     text-align: center;
-    background-color: #A8D0E6;
+    background-color: rgb(214, 241, 255);
     position: relative;
-    opacity: 0.90;
+    opacity: 0.99;
 }
 .mainLayout::after {
     content: "";
@@ -21,3 +21,5 @@
     position: relative;
     height: 100%;
 }
+
+/* #A8D0E6 */
