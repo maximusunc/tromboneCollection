@@ -20,7 +20,8 @@ class Details extends Component {
     };
 
     componentDidMount() {
-        API.getTrombone(localStorage.getItem("id"))
+        var id = window.location.href.split("/")[5];
+        API.getTrombone(id)
             .then(res => this.setState({
                 maker: res.data.maker,
                 date: res.data.date,
@@ -60,7 +61,7 @@ class Details extends Component {
             paddingRight: 5,
         };
         const footnotes = this.state.footnotes.map((footnote, index) => (
-            <li className="footnote" style={footnoteStyle}>  {index + 1}. {footnote}  </li>
+            <li className="footnote" style={footnoteStyle} key={index}>  {index + 1}. {footnote}  </li>
         ));
         return (
             <div>
@@ -82,8 +83,8 @@ class Details extends Component {
                 </div>
 
                 <div id="minLinks">
-                    <Link to="/details" id="backLink" className="link">Back</Link>
-                    <button id="printScreen" className="link" type="button" onClick={this.printScreen}>Print or Save Screen</button>
+                    <Link to={"/details/" + window.location.href.split("/")[5]} id="backLink" className="link">Back</Link>
+                    <button id="printScreen" className="link" type="button" onClick={this.printScreen}>Print or Save</button>
                 </div>
                 
             </div>

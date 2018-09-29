@@ -21,12 +21,13 @@ class Update extends Component {
         footnotes: [],
     };
 
-    componentDidMount() {
-        this.getTrombone();
+    componentWillMount() {
+        var id = window.location.href.split("/")[4];
+        this.getTrombone(id);
     };
 
-    getTrombone() {
-        API.getTrombone(localStorage.getItem("id"))
+    getTrombone(id) {
+        API.getTrombone(id)
             .then(res => {
                 this.setState({
                     maker: res.data.maker,
@@ -60,8 +61,9 @@ class Update extends Component {
     };
 
     updateTrombone() {
+        var id = window.location.href.split("/")[4];
         // update trombone with entire state
-        API.updateTrombone(localStorage.getItem("id"), { ...this.state })
+        API.updateTrombone(id, { ...this.state })
             .then(res => {
                 alert("Trombone Updated");
                 history.push("/admin");
@@ -153,6 +155,7 @@ class Update extends Component {
                     handleFootnotes={this.handleFootnotes}
                     handleNewFootnote={this.handleNewFootnote}
                     fileUpload={this.fileUpload}
+                    image={this.state.image}
                     onChange={this.handleUpdate}
                     handleSubmit={this.handleSubmit}
                     button="Update"

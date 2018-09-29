@@ -22,7 +22,8 @@ class Details extends Component {
     };
 
     componentDidMount() {
-        API.getTrombone(localStorage.getItem("id"))
+        var id = window.location.href.split("/")[4];
+        API.getTrombone(id)
             .then(res => this.setState({
                 maker: res.data.maker,
                 date: res.data.date,
@@ -51,7 +52,7 @@ class Details extends Component {
                 
                 <Link to="/instruments" className="link" id="backLink">Back</Link>
 
-                <Link to={"/api/details/" + localStorage.getItem("id")} className="link">Printable Version</Link>
+                <Link to={"/api/details/" + window.location.href.split("/")[4]} className="link">Printable Version</Link>
                 
             </Container>
         )

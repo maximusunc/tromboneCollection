@@ -25,10 +25,6 @@ class Admin extends Component {
             .catch(err => console.log(err));
     };
 
-    handleClick = (id) => {
-        localStorage.setItem("id", id);
-    };
-
     searchChange = (event) => {
         var { name, value } = event.target;
         this.setState({[name]: value}, () => {
@@ -51,8 +47,7 @@ class Admin extends Component {
                 id={trombone._id}
                 maker={trombone.maker}
                 date={trombone.date}
-                link="/update"
-                handleClick={() => this.handleClick(trombone._id)}
+                link={"/update/" + trombone._id}
             />
         ));
         return (

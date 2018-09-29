@@ -1,6 +1,7 @@
 import React from "react";
 import "./updateForm.css";
 import Footnotes from "../footnotes";
+import { Link } from "react-router-dom";
 
 const UpdateForm = (props) => {
     const footnotes = props.footnotes.map((footnote, index) => (
@@ -112,6 +113,9 @@ const UpdateForm = (props) => {
                     ) : (null)}
                 </div>
             </form>
+
+            <Link to="/admin" className="link" id="backButton">Back</Link>
+
         </div>
     );
 };
