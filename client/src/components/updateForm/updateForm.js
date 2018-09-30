@@ -83,7 +83,7 @@ const UpdateForm = (props) => {
                 <div className="row">
                     {props.image && props.image.length > 4 ?
                         <div>
-                            <img src={props.image} alt="tromboneImage" />
+                            <img id="updatePic" src={props.image} alt="tromboneImage" />
                             <div className="file-field input-field">
                                 <div className="btn">
                                     <span>Change Image</span>
