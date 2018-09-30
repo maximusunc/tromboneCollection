@@ -73,13 +73,10 @@ class Update extends Component {
 
     handleDelete = (event) => {
         event.preventDefault();
+        var id = window.location.href.split("/")[4];
         // simple confirm before permanently deleting item
         if (window.confirm("Are you sure you want to delete this trombone? This action cannot be undone.")) {
-            // if this trombone had a picture, delete the picture
-            if (this.state.fileName) {
-                this.deleteOldImage(this.state.fileName);
-            }
-            API.deleteTrombone(localStorage.getItem("id"))
+            API.deleteTrombone(id)
                 .then(res => {
                     alert("Trombone Permanently Deleted");
                     history.push("/admin");
