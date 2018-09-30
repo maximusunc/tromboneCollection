@@ -20,7 +20,7 @@
 }
 .tromboneAnimate-enter.tromboneAnimate-enter-active {
     opacity: 1;
-    transition: all 2s ease-in;
+    transition: all 1s ease-in;
 }
 .tromboneAnimate-leave {
     opacity: 1;
@@ -28,5 +28,5 @@
 .tromboneAnimate-leave.tromboneAnimate-leave-active {
     opacity: 0.01;
     transform: translate(0px, 5px);
-    transition: all 1s ease-in;
+    transition: all 0.5s ease-in;
 }

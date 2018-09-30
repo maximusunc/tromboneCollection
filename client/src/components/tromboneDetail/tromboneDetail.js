@@ -1,9 +1,10 @@
 import React from "react";
 import "./tromboneDetail.css";
+import imageUnavailable from "../../images/no_image_available.jpeg";
 
 const Details = (props) =>
     <div>
-        <img id="pic" src={props.trombone.image ? (props.trombone.image) : "./images/trombones/no_image_available.jpeg"} alt={props.trombone.maker} />
+        <img id="pic" src={props.trombone.image ? (props.trombone.image) : imageUnavailable} alt={props.trombone.maker} />
         <ul className="details">
             <li className="detail"><h6>Maker:</h6> {props.trombone.maker}</li>
             <li className="detail"><h6>Date:</h6> {props.trombone.date}</li>

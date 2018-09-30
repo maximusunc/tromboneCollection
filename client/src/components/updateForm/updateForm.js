@@ -1,6 +1,7 @@
 import React from "react";
 import "./updateForm.css";
 import Footnotes from "../footnotes";
+import { Link } from "react-router-dom";
 
 const UpdateForm = (props) => {
     const footnotes = props.footnotes.map((footnote, index) => (
@@ -82,7 +83,7 @@ const UpdateForm = (props) => {
                 <div className="row">
                     {props.image && props.image.length > 4 ?
                         <div>
-                            <img src={props.image} alt="tromboneImage" />
+                            <img id="updatePic" src={props.image} alt="tromboneImage" />
                             <div className="file-field input-field">
                                 <div className="btn">
                                     <span>Change Image</span>
@@ -112,6 +113,9 @@ const UpdateForm = (props) => {
                     ) : (null)}
                 </div>
             </form>
+
+            <Link to="/admin" className="link" id="backButton">Back</Link>
+
         </div>
     );
 };

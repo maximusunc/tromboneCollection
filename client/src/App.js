@@ -15,12 +15,22 @@ import HowToUse from "./pages/howToUse.js";
 import Bibliography from "./pages/bibliography.js";
 import Contact from "./pages/contact.js";
 import Login from "./pages/login.js";
-import auth from "./utils/auth.js";
 import Admin from "./pages/admin.js";
+
+function readCookie() {
+  var cookieName = "authorized=";
+  var cookies = document.cookie.split(";");
+  for (var i = 0; i < cookies.length; i++) {
+    var name = cookies[i];
+    while (name.charAt(0) === " ") name = name.substring(1, name.length);
+    if (name.indexOf(cookieName) === 0) return true;
+  }
+  return false;
+};
 
 const PrivateRoute = ({component: Component, ...rest}) => (
   <Route {...rest} exact path="/admin" render={(props) => (
-    auth.isAuthenticated === true
+    (readCookie() === true)
       ? <Component {...props} />
       : <Redirect to={{
           pathname: '/login',
@@ -47,12 +57,12 @@ const App = () =>
             <Route exact path="/" component={Home} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/instruments" component={Instruments} />
-            <Route exact path="/details" component={Details} />
+            <Route exact path="/details/*" component={Details} />
             <Route exact path="/how-to-use" component={HowToUse} />
             <Route exact path="/bibliography" component={Bibliography} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/update" component={Update} />
+            <PrivateRoute exact path="/update/*" component={Update} />
             <PrivateRoute exact path="/create" component={Create} />
             <PrivateRoute exact path="/admin" component={Admin} />
             <Route path="/*" component={Home} />

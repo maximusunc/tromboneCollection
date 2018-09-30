@@ -21,12 +21,13 @@ class Update extends Component {
         footnotes: [],
     };
 
-    componentDidMount() {
-        this.getTrombone();
+    componentWillMount() {
+        var id = window.location.href.split("/")[4];
+        this.getTrombone(id);
     };
 
-    getTrombone() {
-        API.getTrombone(localStorage.getItem("id"))
+    getTrombone(id) {
+        API.getTrombone(id)
             .then(res => {
                 this.setState({
                     maker: res.data.maker,
@@ -60,8 +61,9 @@ class Update extends Component {
     };
 
     updateTrombone() {
+        var id = window.location.href.split("/")[4];
         // update trombone with entire state
-        API.updateTrombone(localStorage.getItem("id"), { ...this.state })
+        API.updateTrombone(id, { ...this.state })
             .then(res => {
                 alert("Trombone Updated");
                 history.push("/admin");
@@ -71,13 +73,10 @@ class Update extends Component {
 
     handleDelete = (event) => {
         event.preventDefault();
+        var id = window.location.href.split("/")[4];
         // simple confirm before permanently deleting item
         if (window.confirm("Are you sure you want to delete this trombone? This action cannot be undone.")) {
-            // if this trombone had a picture, delete the picture
-            if (this.state.fileName) {
-                this.deleteOldImage(this.state.fileName);
-            }
-            API.deleteTrombone(localStorage.getItem("id"))
+            API.deleteTrombone(id)
                 .then(res => {
                     alert("Trombone Permanently Deleted");
                     history.push("/admin");
@@ -153,6 +152,7 @@ class Update extends Component {
                     handleFootnotes={this.handleFootnotes}
                     handleNewFootnote={this.handleNewFootnote}
                     fileUpload={this.fileUpload}
+                    image={this.state.image}
                     onChange={this.handleUpdate}
                     handleSubmit={this.handleSubmit}
                     button="Update"

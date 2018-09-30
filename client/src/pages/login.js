@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import API from "../utils/API.js";
-import auth from "../utils/auth.js";
 
 class Login extends Component {
     state = {
@@ -10,13 +9,10 @@ class Login extends Component {
   
     login = (event) => {
         event.preventDefault();
-        const { history } = this.props;
         if (this.state.password.length > 0) {
             API.login(encodeURIComponent(this.state.password))
             .then(res => {
-                auth.authenticate(() => {
-                    history.push("/admin");
-                });
+                this.setCookie();
             })
             .catch(err => {
                 this.setState({password: "", tries: this.state.tries - 1});
@@ -29,6 +25,14 @@ class Login extends Component {
         } else {
             alert("Please enter a password");
         };
+    };
+
+    setCookie = () => {
+        const { history } = this.props;
+        var date = new Date();
+        date.setTime(date.getTime() + (2 * 24 * 60 * 60 * 1000));
+        document.cookie = "authorized=authorized; expires=" + date.toGMTString() + "; path=/";
+        history.push("/admin");
     };
   
     handlePassword = (event) => {
