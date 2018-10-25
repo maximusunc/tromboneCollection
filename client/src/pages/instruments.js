@@ -36,8 +36,7 @@ class Instruments extends Component {
             trombone.maker.toLowerCase().indexOf(this.state.maker.toLowerCase()) !== -1 && 
             trombone.type.indexOf(this.state.type) !== -1 &&
             trombone.date.indexOf(this.state.date) !== -1 &&
-            trombone.pitch.indexOf(this.state.pitch) !== -1)});
-        
+            trombone.pitch.toLowerCase().startsWith(this.state.pitch.toLowerCase()))});
     };
 
     render() {
