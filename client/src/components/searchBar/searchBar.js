@@ -17,16 +17,8 @@ const SearchBar = (props) =>
                 </div>
 
                 <div className="input-field col s3">
-                    <select className="browser-default" name="pitch" onChange={props.pitchChange}>
-                        <option value="" defaultValue></option>
-                        <option value="A">A</option>
-                        <option value="B-flat">B-flat</option>
-                        <option value="D">D</option>
-                        <option value="E-flat">E-flat</option>
-                        <option value="F">F</option>
-                        <option value="G">G</option>
-                    </select>
-                    <label className="active">Pitch</label>
+                    <input id="pitch" name="pitch" type="text" className="validate" value={props.pitch} onChange={props.pitchChange} />
+                    <label htmlFor="pitch">Pitch</label>
                 </div>
 
                 <div className="input-field col s3">
