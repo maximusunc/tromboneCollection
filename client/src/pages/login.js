@@ -16,10 +16,12 @@ class Login extends Component {
             })
             .catch(err => {
                 this.setState({password: "", tries: this.state.tries - 1});
-                alert("Password Incorrect. You have " + this.state.tries + " tries left.");
                 if (this.state.tries < 1) {
                     document.getElementById("login").setAttribute("disabled", true);
                     document.getElementById("login").style.backgroundColor = "red";
+                    alert("Password Incorrect. You have tried too many times.");
+                } else {
+                    alert("Password Incorrect.");
                 }
             });
         } else {
