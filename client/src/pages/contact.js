@@ -4,6 +4,10 @@ import tromboneForm from "../images/historicTromboneForm.pdf";
 
 const Contact = props => 
     <Container>
+
+        <h2>
+            Contact Us!
+        </h2>
         <p>
             This is the page where you can submit edits or new instruments.
         </p>

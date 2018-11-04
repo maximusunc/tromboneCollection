@@ -4,7 +4,7 @@ import API from "../utils/API.js";
 import Container from "../components/container";
 import { Link } from "react-router-dom";
 import Trombones from "../components/trombones";
-import { CSSTransitionGroup } from "react-transition-group";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Admin extends Component {
     state = {
@@ -57,27 +57,24 @@ class Admin extends Component {
                     maker={this.state.maker} 
                     date={this.state.date}
                     pitch={this.state.pitch}
-                    typeChange={this.searchChange}
-                    makerChange={this.searchChange}
-                    dateChange={this.searchChange}
-                    pitchChange={this.searchChange}
+                    searchChange={this.searchChange}
                 />
 
                 <Link id="create" to="/create">Create</Link>
 
-                <h2>
+                <h2 id="adminInstruments">
                     Instruments:
                 </h2>
 
                 <section className="tromboneList">
                     <ul>
-                        <CSSTransitionGroup
+                        <ReactCSSTransitionGroup
                             transitionName="tromboneAnimate"
-                            transitionEnterTimeout={1000}
-                            transitionLeaveTimeout={1000}
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={500}
                         >
                             {trombones}
-                        </CSSTransitionGroup>
+                        </ReactCSSTransitionGroup>
                     </ul>
                 </section>
 

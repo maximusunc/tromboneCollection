@@ -8,21 +8,21 @@ const SearchBar = (props) =>
             <h4 >Search</h4>
                 <div className="row">
                 <div className="input-field col s3">
-                    <input id="maker" name="maker" type="text" className="validate" value={props.maker} onChange={props.makerChange} />
+                    <input id="maker" name="maker" type="text" className="validate" value={props.maker} onChange={props.searchChange} />
                     <label htmlFor="maker">Maker</label>
                 </div>
                 <div className="input-field col s3">
-                    <input id="date" name="date" type="text" className="validate" value={props.date} onChange={props.dateChange} />
+                    <input id="date" name="date" type="text" className="validate" value={props.date} onChange={props.searchChange} />
                     <label htmlFor="date">Date</label>
                 </div>
 
                 <div className="input-field col s3">
-                    <input id="pitch" name="pitch" type="text" className="validate" value={props.pitch} onChange={props.pitchChange} />
+                    <input id="pitch" name="pitch" type="text" className="validate" value={props.pitch} onChange={props.searchChange} />
                     <label htmlFor="pitch">Pitch</label>
                 </div>
 
                 <div className="input-field col s3">
-                    <select className="browser-default" name="type" onChange={props.typeChange}>
+                    <select className="browser-default" name="type" onChange={props.searchChange}>
                         <option value="" defaultValue></option>
                         <option value="Soprano">Soprano</option>
                         <option value="Alto">Alto</option>
