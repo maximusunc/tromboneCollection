@@ -5,7 +5,6 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.17.1",
-    "bcrypt": "^1.0.3",
     "react": "^16.0.0",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.0.0",
