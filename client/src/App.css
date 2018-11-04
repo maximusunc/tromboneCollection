@@ -11,8 +11,11 @@ body {
   font-family: 'Rosarivo', serif;
 }
 h1 {
+  margin: 0px;
+  padding-top: 20px;
+}
+h2 {
   margin-top: 0px;
-  padding-top: 2%;
 }
 h3 {
   display: inline;

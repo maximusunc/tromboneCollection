@@ -5,7 +5,7 @@ import logo from "../../images/AMISBanner.jpg";
 const Footer = () =>
     <footer>
       <img id="AMIS" src={logo} alt="American Musical Instrument Society" />
-      <h5>&copy; Trombone Collection 2018</h5>
+      <p id="copyright">&copy; Trombone Collection 2018</p>
     </footer>;
 
 export default Footer;

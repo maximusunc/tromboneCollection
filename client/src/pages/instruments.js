@@ -3,7 +3,7 @@ import API from "../utils/API.js";
 import Container from "../components/container";
 import SearchBar from "../components/searchBar";
 import Trombones from "../components/trombones";
-import { CSSTransitionGroup } from "react-transition-group";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Instruments extends Component {
     state = {
@@ -12,7 +12,8 @@ class Instruments extends Component {
         type: "",
         maker: "",
         date: "",
-        pitch: ""
+        pitch: "",
+        loaded: false
     };
 
     componentDidMount() {
@@ -20,6 +21,7 @@ class Instruments extends Component {
             .then(res => {
                 this.setState({trombones: res.data});
                 this.setState({filtered: res.data});
+                this.setState({loaded: true});
             })
             .catch(err => console.log(err));
     };
@@ -57,27 +59,34 @@ class Instruments extends Component {
                     maker={this.state.maker} 
                     date={this.state.date}
                     pitch={this.state.pitch}
-                    typeChange={this.searchChange}
-                    makerChange={this.searchChange}
-                    dateChange={this.searchChange}
-                    pitchChange={this.searchChange}
+                    searchChange={this.searchChange}
                 />
 
                 <h2>
                     Instruments:
                 </h2>
 
+                {this.state.loaded ? 
+
                 <section className="tromboneList">
                     <ul>
-                        <CSSTransitionGroup
+                        <ReactCSSTransitionGroup
                             transitionName="tromboneAnimate"
-                            transitionEnterTimeout={1000}
-                            transitionLeaveTimeout={1000}
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={500}
                         >
                             {trombones}
-                        </CSSTransitionGroup>
+                        </ReactCSSTransitionGroup>
                     </ul>
                 </section>
+
+                :
+
+                <h5>
+                    Loading...
+                </h5>
+
+                }
 
                 
             </Container>

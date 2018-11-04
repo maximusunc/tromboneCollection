@@ -1,17 +1,21 @@
 header {
     text-align: center;
-    height: 100%;
+    width: 100%;
     margin: auto;
     color: white;
-    box-shadow: 0px 1px 10px 2px #29648A;
+    box-shadow: 0px 1px 5px 2px rgb(53, 87, 87);
     display: block;
-    position: relative;
-    background-color: #29648A;
-    opacity: 0.70;
+    position: fixed;
+    top: 0;
+    background-color: rgb(84,135,135,0.99);
+    opacity: 0.90;
     z-index: 2;
+    margin-bottom: 30px;
 }
 @media screen and (max-width: 650px) {
     #header {
         font-size: 28px;
     }
 }
+
+/* #29648A */

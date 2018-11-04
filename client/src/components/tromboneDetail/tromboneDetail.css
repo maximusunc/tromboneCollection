@@ -3,6 +3,8 @@
     margin: 0px 20px 20px 20px;
     height: 400px;
     width: 400px;
+    padding-right: 7px;
+    display: block;
 }
 .details {
     text-align: left;
@@ -11,13 +13,33 @@
 .detail {
     margin: 15px 0px;
 }
-li.footnote {
-    list-style-type: lower-roman;
+ol.detail {
+    list-style: none;
+    counter-reset: footnote;
+    position: relative;
+    clear: both;
+}
+.detail li {
+    counter-increment: footnote;
     font-size: 14px;
+    position: relative;
+}
+.detail li:before {
+    content: counter(footnote, lower-roman) " ";
+    font-weight: bold;
+    font-size: 0.8em;
+    position: absolute;
+    top: -3px;
+    left: -25px;
+    width: 15px;
+    text-align: right;
 }
 ol.detail {
     text-align: center;
 }
 h6 {
     display: inline-block;
+}
+.detail h6 {
+    margin-right: 5px;
 }
