@@ -56,9 +56,10 @@ class Details extends Component {
         };
         const footnoteStyle = {
             display: "inline",
-            listStyleType: "lower-roman",
             paddingLeft: 5,
             paddingRight: 5,
+            marginLeft: 10,
+            marginRight: 10
         };
         const footnotes = this.state.footnotes.map((footnote, index) => (
             <li className="footnote" style={footnoteStyle} key={index}>  {index + 1}. {footnote}  </li>
@@ -68,17 +69,17 @@ class Details extends Component {
                 <div id="printContents">
                     <ul className="details">
                         <li className="detail"><h6>Maker:</h6> {this.state.maker}</li>
-                        <li className="detail"><h6>Date:</h6> {this.state.date}</li>
-                        <li className="detail"><h6>Type:</h6> {this.state.type}</li>
-                        <li className="detail"><h6>Location:</h6> {this.state.location}</li>
-                        <li className="detail"><h6>Signature:</h6> {this.state.signature}</li>
-                        <li className="detail"><h6>Pitch:</h6> {this.state.pitch}</li>
-                        <li className="detail"><h6>Mouthpiece:</h6> {this.state.mouthpiece}</li>
-                        <li className="detail"><h6>Dimensions:</h6> {this.state.dimensions}</li>
-                        <li className="detail"><h6>Provenance:</h6> {this.state.provenance}</li>
-                        <li className="detail"><h6>Literature:</h6> {this.state.literature}</li>
-                        <li className="detail"><h6>Remarks:</h6> {this.state.remarks}</li>
-                        <ol className="detail" style={footnoteHeader}><h6>Foot Notes:</h6> {footnotes}</ol>
+                        {this.state.date ? <li className="detail"><h6>Date:</h6> {this.state.date}</li> : ""}
+                        {this.state.type ? <li className="detail"><h6>Type:</h6> {this.state.type}</li> : ""}
+                        {this.state.location ? <li className="detail"><h6>Location:</h6> {this.state.location}</li> : ""}
+                        {this.state.signature ? <li className="detail"><h6>Signature:</h6> {this.state.signature}</li> : ""}
+                        {this.state.pitch ? <li className="detail"><h6>Pitch:</h6> {this.state.pitch}</li> : ""}
+                        {this.state.mouthpiece ? <li className="detail"><h6>Mouthpiece:</h6> {this.state.mouthpiece}</li> : ""}
+                        {this.state.dimensions ? <li className="detail"><h6>Dimensions:</h6> {this.state.dimensions}</li> : ""}
+                        {this.state.provenance ? <li className="detail"><h6>Provenance:</h6> {this.state.provenance}</li> : ""}
+                        {this.state.literature ? <li className="detail"><h6>Literature:</h6> {this.state.literature}</li> : ""}
+                        {this.state.remarks ? <li className="detail"><h6>Remarks:</h6> {this.state.remarks}</li> : ""}
+                        {footnotes.length ? <ol className="detail" style={footnoteHeader}><h6>Foot Notes:</h6> {footnotes}</ol> : ""}
                     </ul>
                 </div>
 

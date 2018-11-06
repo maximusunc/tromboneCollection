@@ -13,7 +13,7 @@ const UpdateForm = (props) => {
         />
     ));
     return (
-        <div>
+        <div id="updateForm">
             <form className="col s12 search" encType="multipart/form-data">
                 <div className="row">
                     <div className="input-field col s4">

@@ -1,20 +1,17 @@
-nav {
-    text-align: center;
-    margin: 10px 0px;
-    background: none;
-    box-shadow: none;
-}
-nav .link {
+#navbar .link {
     margin: 5px 10px;
     padding: 3px;
-    color: #123c69;
+    color: white;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
     transition: transform 0.2s ease-in-out;
 }
-a.link.active {
-    color: white;
+#navbar a.link.active {
+    color: rgb(44, 71, 71);
+}
+#navbar a.link:hover {
+    color: rgb(44, 71, 71);
 }
 @media screen and (max-width: 650px) {
     nav {

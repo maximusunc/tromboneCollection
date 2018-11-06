@@ -3,6 +3,8 @@
     margin: 0px 20px 20px 20px;
     height: 400px;
     width: 400px;
+    padding-right: 7px;
+    display: block;
 }
 .details {
     text-align: left;
@@ -11,8 +13,11 @@
 .detail {
     margin: 15px 0px;
 }
-li.footnote {
-    list-style-type: lower-roman;
+ol.detail {
+    position: relative;
+    clear: both;
+}
+.detail li {
     font-size: 14px;
 }
 ol.detail {
@@ -20,4 +25,7 @@ ol.detail {
 }
 h6 {
     display: inline-block;
+}
+.detail h6 {
+    margin-right: 5px;
 }

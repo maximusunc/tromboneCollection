@@ -50,9 +50,11 @@ class Details extends Component {
                     trombone={this.state}
                 />
                 
-                <Link to="/instruments" className="link" id="backLink">Back</Link>
+                <div id="detailsLinks">
+                    <Link to="/instruments" className="link" id="backLink">Back</Link>
 
-                <Link to={"/api/details/" + window.location.href.split("/")[4]} className="link">Printable Version</Link>
+                    <Link to={"/api/details/" + window.location.href.split("/")[4]} className="link">Printable Version</Link>
+                </div>
                 
             </Container>
         )

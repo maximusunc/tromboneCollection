@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './../header';
-import Navbar from './../navbar';
+import BackToTop from './../backToTop';
 import Footer from './../footer';
 import "./mainLayout.css";
 
@@ -9,10 +9,10 @@ class MainLayout extends Component {
         return (
             <div className="mainLayout">
                 <Header />
-                <Navbar />
                 <div className="content">
                     {this.props.children}
                 </div>
+                <BackToTop scrollStepInPx="100" delayInMs="10"/>
                 <Footer />
             </div>
         );

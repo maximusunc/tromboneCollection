@@ -1,0 +1,32 @@
+#backToTop {
+    position: fixed;
+    bottom: 0;
+    right: 85px;
+    z-index: 99;
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 5px 5px 0px 0px;
+    box-shadow: 0px 1px 5px 2px rgb(53, 87, 87);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 1s;
+}
+#toTop {
+    position: relative;
+    padding: 10px;
+    background-color: rgb(197, 195, 195);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+#toTop:hover {
+    background-color: grey;
+}
+#arrow {
+    width: 20px;
+}

@@ -1,7 +1,11 @@
+.container {
+    min-height: 400px;
+}
 .link {
     margin: 5px 10px;
     padding: 3px;
-    color: #123c69;
+    color: rgb(84,135,135);
+    font-weight: bold;
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
@@ -9,32 +13,10 @@
 }
 .link:hover {
     transform: scale(1.2);
-    color: #52B3D1;
+    color: rgb(44, 71, 71);
 }
 #login {
     margin-left: 10px;
-}
-#create, #createTrombone, #update, #delete, #login {
-    font-size: 20px;
-    background-color: #659DBD;
-    border-radius: 5px;
-    position: relative;
-    top: 20px;
-    padding: 10px;
-    box-shadow: 0px 0px 2px 2px;
-    color: #123c69;
-    cursor: pointer;
-}
-#create:hover, #createTrombone:hover, #update:hover, #login:hover {
-    background-color: white;
-    color: #659DBD;
-}
-#delete {
-    margin-left: 20px;
-    background-color: red;
-}
-#delete:hover {
-    background-color: #BD0000;
 }
 #password {
     margin-left: 38%;
@@ -44,10 +26,10 @@
     margin: 20px 0px;
 }
 .contactLink {
-    color: #123c69;
+    color: rgb(84,135,135);
 }
 .contactLink:hover {
-    color: white;
+    color: rgb(44, 71, 71);
 }
 #printScreen {
     border: none;
@@ -56,10 +38,17 @@
 #backLink {
     margin-right: 30px;
 }
+#detailsLinks {
+    width: 100%;
+    clear: both;
+}
 #minLinks {
     width: 100%;
     text-align: center;
 }
 #newFootnote {
     margin-bottom: 15px;
+}
+#adminInstruments {
+    margin-top: 50px;
 }

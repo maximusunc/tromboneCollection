@@ -8,3 +8,28 @@
     height: 300px;
     width: 300px;
 }
+#updateForm {
+    margin-top: 15px;
+}
+#create, #createTrombone, #update, #delete, #login {
+    font-size: 20px;
+    background-color: rgb(84,135,135);
+    border-radius: 5px;
+    position: relative;
+    top: 20px;
+    padding: 10px;
+    box-shadow: 0px 0px 2px 2px rgb(53, 87, 87);
+    color: white;
+    cursor: pointer;
+}
+#create:hover, #createTrombone:hover, #update:hover, #login:hover {
+    background-color: white;
+    color: rgb(44, 71, 71);
+}
+#delete {
+    margin-left: 20px;
+    background-color: red;
+}
+#delete:hover {
+    background-color: rgb(133, 0, 0);
+}
