@@ -56,14 +56,13 @@ class Details extends Component {
         };
         const footnoteStyle = {
             display: "inline",
-            listStyleType: "lower-roman",
             paddingLeft: 5,
             paddingRight: 5,
             marginLeft: 10,
             marginRight: 10
         };
         const footnotes = this.state.footnotes.map((footnote, index) => (
-            <li className="footnote" style={footnoteStyle} key={index}>  {footnote}  </li>
+            <li className="footnote" style={footnoteStyle} key={index}>  {index + 1}. {footnote}  </li>
         ));
         return (
             <div>
