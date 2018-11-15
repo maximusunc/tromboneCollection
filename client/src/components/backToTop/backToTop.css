@@ -1,7 +1,7 @@
 #backToTop {
     position: fixed;
     bottom: 0;
-    right: 85px;
+    right: 10%;
     z-index: 99;
     width: 50px;
     height: 50px;
@@ -23,9 +23,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: 0.2s;
 }
 #toTop:hover {
     background-color: grey;
+    transform: scale(1.1);
 }
 #arrow {
     width: 20px;

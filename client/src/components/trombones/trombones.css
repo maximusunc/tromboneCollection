@@ -1,8 +1,8 @@
 .tromboneLink {
     position: relative;
-    display: inline-block;
-    width: calc(25% - 30px);
-    /* width: 90%; */
+    display: flex;
+    justify-content: center;
+    width: 220px;
     margin: 15px;
     padding: 5px;
     background: white;
@@ -13,6 +13,16 @@
 }
 .tromboneLink:hover {
     transform: scale(1.1);
+}
+.tromboneList ul {
+    display: flex;
+    justify-content: center;
+}
+.trombone {
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 /* React animations for changes in trombone search */
 .tromboneAnimate-enter {
