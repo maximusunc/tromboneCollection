@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import API from "../utils/API.js";
+import Container from "../components/container";
 
 class Login extends Component {
     state = {
@@ -41,7 +42,7 @@ class Login extends Component {
   
     render() {
         return (
-            <div>
+            <Container>
                 <h4>
                     Admin Login!
                 </h4>
@@ -62,7 +63,7 @@ class Login extends Component {
                     <button id="login" onClick={this.login}>Login</button>
                 </form>
   
-            </div>
+            </Container>
         );
     };
 };
