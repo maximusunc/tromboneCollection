@@ -3,7 +3,6 @@ import API from "../utils/API.js";
 import Container from "../components/container";
 import SearchBar from "../components/searchBar";
 import Trombones from "../components/trombones";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Instruments extends Component {
     state = {
@@ -75,13 +74,7 @@ class Instruments extends Component {
 
                 <section className="tromboneList">
                     <ul>
-                        <ReactCSSTransitionGroup
-                            transitionName="tromboneAnimate"
-                            transitionEnterTimeout={500}
-                            transitionLeaveTimeout={500}
-                        >
-                            {trombones}
-                        </ReactCSSTransitionGroup>
+                        {trombones}
                     </ul>
                 </section>
 

@@ -4,7 +4,6 @@ import API from "../utils/API.js";
 import Container from "../components/container";
 import { Link } from "react-router-dom";
 import Trombones from "../components/trombones";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Admin extends Component {
     state = {
@@ -68,13 +67,7 @@ class Admin extends Component {
 
                 <section className="tromboneList">
                     <ul>
-                        <ReactCSSTransitionGroup
-                            transitionName="tromboneAnimate"
-                            transitionEnterTimeout={500}
-                            transitionLeaveTimeout={500}
-                        >
-                            {trombones}
-                        </ReactCSSTransitionGroup>
+                        {trombones}
                     </ul>
                 </section>
 
