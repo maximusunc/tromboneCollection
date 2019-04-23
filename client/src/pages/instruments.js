@@ -13,17 +13,22 @@ class Instruments extends Component {
         maker: "",
         date: "",
         pitch: "",
+        order: "asc",
         loaded: false
     };
 
     componentDidMount() {
         API.getTrombones()
             .then(res => {
-                this.setState({trombones: res.data});
-                this.setState({filtered: res.data});
-                this.setState({loaded: true});
+                const trombones = this.chronSort(res.data, this.state.order);
+                this.setState({trombones, filtered: trombones, loaded: true});
             })
             .catch(err => console.log(err));
+    };
+
+    chronSort(trombones) {
+        trombones.sort((a, b) => (a.date > b.date) ? 1 : (a.date < b.date) ? -1 : 0);
+        return trombones;
     };
 
     searchChange = (event) => {
