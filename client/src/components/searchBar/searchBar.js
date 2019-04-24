@@ -28,6 +28,7 @@ const SearchBar = (props) =>
                         <option value="Alto">Alto</option>
                         <option value="Tenor">Tenor</option>
                         <option value="Bass">Bass</option>
+                        <option value="Contrabass">Contrabass</option>
                     </select>
                     <label className="active">Type</label>
                 </div>

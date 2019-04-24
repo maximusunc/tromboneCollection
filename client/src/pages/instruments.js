@@ -3,7 +3,6 @@ import API from "../utils/API.js";
 import Container from "../components/container";
 import SearchBar from "../components/searchBar";
 import Trombones from "../components/trombones";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 
 class Instruments extends Component {
     state = {
@@ -13,17 +12,22 @@ class Instruments extends Component {
         maker: "",
         date: "",
         pitch: "",
+        order: "asc",
         loaded: false
     };
 
     componentDidMount() {
         API.getTrombones()
             .then(res => {
-                this.setState({trombones: res.data});
-                this.setState({filtered: res.data});
-                this.setState({loaded: true});
+                const trombones = this.chronSort(res.data, this.state.order);
+                this.setState({trombones, filtered: trombones, loaded: true});
             })
             .catch(err => console.log(err));
+    };
+
+    chronSort(trombones) {
+        trombones.sort((a, b) => (a.date > b.date) ? 1 : (a.date < b.date) ? -1 : 0);
+        return trombones;
     };
 
     searchChange = (event) => {
@@ -70,13 +74,7 @@ class Instruments extends Component {
 
                 <section className="tromboneList">
                     <ul>
-                        <ReactCSSTransitionGroup
-                            transitionName="tromboneAnimate"
-                            transitionEnterTimeout={500}
-                            transitionLeaveTimeout={500}
-                        >
-                            {trombones}
-                        </ReactCSSTransitionGroup>
+                        {trombones}
                     </ul>
                 </section>
 
