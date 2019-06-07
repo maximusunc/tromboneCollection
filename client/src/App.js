@@ -9,8 +9,7 @@ import Home from "./pages/home.js";
 import Instruments from "./pages/instruments.js";
 import Details from "./pages/details.js";
 import MinDetails from "./pages/minDetails.js";
-import Update from "./pages/update.js";
-import Create from "./pages/create.js";
+import EditTrombone from "./pages/edit";
 import HowToUse from "./pages/howToUse.js";
 import Bibliography from "./pages/bibliography.js";
 import Contact from "./pages/contact.js";
@@ -62,8 +61,8 @@ const App = () =>
             <Route exact path="/bibliography" component={Bibliography} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/update/*" component={Update} />
-            <PrivateRoute exact path="/create" component={Create} />
+            <PrivateRoute exact path="/update/*" component={EditTrombone} />
+            <PrivateRoute exact path="/create/" component={EditTrombone} />
             <PrivateRoute exact path="/admin" component={Admin} />
             <Route path="/*" component={Home} />
           </Switch>

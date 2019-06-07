@@ -18,10 +18,15 @@ class Admin extends Component {
     componentDidMount() {
         API.getTrombones()
             .then(res => {
-                this.setState({trombones: res.data});
-                this.setState({filtered: res.data});
+                const trombones = this.chronSort(res.data);
+                this.setState({trombones, filtered: trombones});
             })
             .catch(err => console.log(err));
+    };
+
+    chronSort(trombones) {
+        trombones.sort((a, b) => (a.date > b.date) ? 1 : (a.date < b.date) ? -1 : 0);
+        return trombones;
     };
 
     searchChange = (event) => {
@@ -59,7 +64,7 @@ class Admin extends Component {
                     searchChange={this.searchChange}
                 />
 
-                <Link id="create" to="/create">Create</Link>
+                <Link id="create" to="/create/">Create</Link>
 
                 <h2 id="adminInstruments">
                     Instruments:

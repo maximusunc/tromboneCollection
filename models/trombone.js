@@ -35,11 +35,17 @@ const tromboneSchema = new Schema({
     remarks: {
         type: String
     },
-    image: {
-        type: String
+    images: {
+        type: Array,
+        items: {
+            type: String
+        }
     },
     footnotes: {
-        type: []
+        type: Array,
+        items: {
+            type: String
+        }
     }
 });
 

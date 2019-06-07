@@ -12,14 +12,13 @@ class Instruments extends Component {
         maker: "",
         date: "",
         pitch: "",
-        order: "asc",
         loaded: false
     };
 
     componentDidMount() {
         API.getTrombones()
             .then(res => {
-                const trombones = this.chronSort(res.data, this.state.order);
+                const trombones = this.chronSort(res.data);
                 this.setState({trombones, filtered: trombones, loaded: true});
             })
             .catch(err => console.log(err));

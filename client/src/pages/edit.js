@@ -4,8 +4,9 @@ import API from "../utils/API.js";
 import Container from "../components/container";
 import UpdateForm from "../components/updateForm";
 
-class Update extends Component {
+class EditTrombone extends Component {
     state = {
+        id: "",
         maker: "",
         date: "",
         type: "",
@@ -18,50 +19,47 @@ class Update extends Component {
         literature: "",
         remarks: "",
         images: [""],
-        footnotes: [],
+        footnotes: [""],
     };
 
-    componentWillMount() {
-        var id = window.location.href.split("/")[4];
-        this.getTrombone(id);
+    componentDidMount() {
+        const id = window.location.href.split("/")[4];
+        if (id) {
+            this.getTrombone(id);
+        }
     };
 
     getTrombone(id) {
         API.getTrombone(id)
             .then(res => {
-                this.setState({
-                    maker: res.data.maker,
-                    date: res.data.date,
-                    type: res.data.type,
-                    location: res.data.location,
-                    signature: res.data.signature,
-                    pitch: res.data.pitch,
-                    mouthpiece: res.data.mouthpiece,
-                    dimensions: res.data.dimensions,
-                    provenance: res.data.provenance,
-                    literature: res.data.literature,
-                    remarks: res.data.remarks,
-                    images: res.data.images,
-                    footnotes: res.data.footnotes,
-                });
+                this.setState({ ...res.data, id: id });
             })
             .catch(err => console.log(err));
-    }
+    };
 
     handleSubmit = (event) => {
         event.preventDefault();
         // user must input a maker
         const { maker } = this.state;
-        if (maker.length < 2) {
-            alert("You must at least provide a maker");
+        if (maker.length < 4) {
+            alert("The trombone must have a valid maker.");
         } else {
-            this.removeBlankFootnotes(this.state.footnotes);
-            this.updateTrombone();
+            this.removeBlankFootnotes();
+            this.addTrombone();
         };
     };
 
+    addTrombone() {
+        API.addTrombone({ ...this.state })
+            .then(res => {
+                alert("Trombone Added!");
+                history.push("/admin");
+            })
+            .catch(err => console.log(err));
+    };
+
     updateTrombone() {
-        var id = window.location.href.split("/")[4];
+        const { id } = this.state;
         // update trombone with entire state
         API.updateTrombone(id, { ...this.state })
             .then(res => {
@@ -69,13 +67,13 @@ class Update extends Component {
                 history.push("/admin");
             })
             .catch(err => console.log(err));
-    }
+    };
 
     handleDelete = (event) => {
         event.preventDefault();
-        var id = window.location.href.split("/")[4];
+        const { id } = this.state;
         // simple confirm before permanently deleting item
-        if (window.confirm("Are you sure you want to delete this trombone? This action cannot be undone.")) {
+        if (id && window.confirm("Are you sure you want to delete this trombone? This action cannot be undone.")) {
             API.deleteTrombone(id)
                 .then(res => {
                     alert("Trombone Permanently Deleted");
@@ -85,20 +83,15 @@ class Update extends Component {
         };
     };
 
-    // handles user input changes
-    handleUpdate = (event) => {
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
-    };
-
-    imageUpload = (event) => {
+    imageUpload(event) {
+        const { id } = event.target;
         const file = event.target.files[0] || undefined;
         if (file) {
             var reader = new FileReader();
             reader.onloadend = () => {
-                const { images } = this.state;
                 const image = reader.result;
-                images.push(image);
+                const { images } = this.state;
+                images[id] = image;
                 this.setState({ images });
             };
             reader.onerror = function (error) {
@@ -115,34 +108,37 @@ class Update extends Component {
         this.setState({ images });
     };
 
-    handleFootnotes = (event) => {
+    updateTextField = (event) => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
+    };
+
+    updateFootnote = (event) => {
         const { id, value } = event.target;
-        let newFootnotes = this.state.footnotes;
-        newFootnotes[id] = value;
-        this.setState({ footnotes: newFootnotes })
+        const { footnotes } = this.state;
+        footnotes[id] = value;
+        this.setState({ footnotes })
     };
 
     newFootnote = (event) => {
         event.preventDefault();
-        let newFootnote = this.state.footnotes;
-        newFootnote.push("");
-        this.setState({ footnotes: newFootnote });
+        const { footnotes } = this.state;
+        footnotes.push("");
+        this.setState({ footnotes });
     };
 
-    removeBlankFootnotes = (footnotes) => {
-        for (var i = footnotes.length - 1; i >= 0; i--) {
-            if (footnotes[i].length === 0) {
-                footnotes.splice(i, 1);
-            }
-        };
+    removeBlankFootnotes = () => {
+        const { footnotes } = this.state;
+        footnotes.filter((footnote) => footnote);
+        this.setState({ footnotes });
     };
 
     render() {
+        const { id } = this.state;
+        const title = id ? "Update" : "Create";
         return (
             <Container>
-                <h1>
-                    Update!
-                </h1>
+                <h1>{title}!</h1>
 
                 <UpdateForm 
                     date={this.state.date}
@@ -157,14 +153,14 @@ class Update extends Component {
                     literature={this.state.literature}
                     remarks={this.state.remarks}
                     footnotes={this.state.footnotes}
-                    handleFootnotes={this.handleFootnotes}
-                    handleNewFootnote={this.newFootnote}
+                    updateFootnote={this.updateFootnote}
+                    newFootnote={this.newFootnote}
+                    images={this.state.images}
                     imageUpload={this.imageUpload}
                     newImage={this.newImage}
-                    images={this.state.images}
-                    onChange={this.handleUpdate}
+                    onChange={this.updateTextField}
                     handleSubmit={this.handleSubmit}
-                    button="Update"
+                    button={title}
                     delete={this.handleDelete}
                 />
 
@@ -173,4 +169,4 @@ class Update extends Component {
     };
 };
 
-export default Update;
+export default EditTrombone;

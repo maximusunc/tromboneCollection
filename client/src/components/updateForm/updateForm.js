@@ -1,15 +1,24 @@
 import React from "react";
 import "./updateForm.css";
 import Footnotes from "../footnotes";
+import Image from "../images/images";
 import { Link } from "react-router-dom";
 
 const UpdateForm = (props) => {
+    const images = props.images.map((image, index) => (
+        <Image
+            key={index}
+            id={index}
+            image={image}
+            imageUpload={props.imageUpload}
+        />
+    ));
     const footnotes = props.footnotes.map((footnote, index) => (
         <Footnotes
             key={index}
             id={index}
             footnote={footnote}
-            handleUpdate={props.handleFootnotes}
+            handleUpdate={props.updateFootnotes}
         />
     ));
     return (
@@ -79,36 +88,15 @@ const UpdateForm = (props) => {
                     <label className="active" htmlFor="footnotes">Foot Notes</label>
                     {footnotes}
                 </div>
-                <button id="newFootnote" onClick={props.handleNewFootnote}>New Footnote</button>
+                <button type="button" id="newFootnote" onClick={props.newFootnote}>New Footnote</button>
                 <div className="row">
-                    {props.image && props.image.length > 4 ?
-                        <div>
-                            <img id="updatePic" src={props.image} alt="tromboneImage" />
-                            <div className="file-field input-field">
-                                <div className="btn">
-                                    <span>Change Image</span>
-                                    <input id="fileUpload" type="file" accept="image/*" onChange={props.fileUpload} />
-                                </div>
-                                <div className="file-path-wrapper">
-                                    <input name="imagePath" className="file-path validate" type="text" />
-                                </div>
-                            </div>
-                        </div>
-                        :
-                        <div className="file-field input-field">
-                            <div className="btn">
-                                <span>Upload Image</span>
-                                <input id="fileUpload" type="file" accept="image/*" onChange={props.fileUpload} />
-                            </div>
-                            <div className="file-path-wrapper">
-                                <input name="imagePath" className="file-path validate" type="text" />
-                            </div>
-                        </div>
-                    }
+                    <label className="active" htmlFor="images">Images</label>
+                    {images}
                 </div>
+                <button type="button" id="newImage" onClick={props.newImage}>New Image</button>
                 <div className="row">
                     <button id="createTrombone" type="button" onClick={props.handleSubmit}>{props.button}</button>
-                    {props.delete ? (
+                    {props.button === "Update" ? (
                         <button id="delete" type="button" onClick={props.delete}>Delete</button>
                     ) : (null)}
                 </div>
