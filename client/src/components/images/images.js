@@ -8,7 +8,7 @@ const Image = (props) =>
                 <div className="file-field input-field">
                     <div className="btn">
                         <span>Change Image</span>
-                        <input id="fileUpload" type="file" accept="image/*" onChange={props.imageUpload} />
+                        <input id={props.id} type="file" accept="image/*" onChange={props.imageUpload} />
                     </div>
                     <div className="file-path-wrapper">
                         <input name="imagePath" className="file-path validate" type="text" />
@@ -19,7 +19,7 @@ const Image = (props) =>
             <div className="file-field input-field">
                 <div className="btn">
                     <span>Upload Image</span>
-                    <input id="fileUpload" type="file" accept="image/*" onChange={props.imageUpload} />
+                    <input id={props.id} type="file" accept="image/*" onChange={props.imageUpload} />
                 </div>
                 <div className="file-path-wrapper">
                     <input name="imagePath" className="file-path validate" type="text" />

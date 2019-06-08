@@ -1,13 +1,23 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./tromboneDetail.css";
 import imageUnavailable from "../../images/no_image_available.jpeg";
 
 const Details = (props) =>
     <div>
-        <Carousel>
-            <img id="pic" src={props.trombone.image ? (props.trombone.image) : imageUnavailable} alt={props.trombone.maker} />
-        </Carousel>
+        <div id="pics">
+            <Carousel showThumbs={false} width={"100%"}>
+                {props.trombone.images.map((image, i) => {
+                    console.log('image', image);
+                    return (
+                        <div key={i}>
+                            <img src={image ? (image) : imageUnavailable} alt={props.trombone.maker} />
+                        </div>
+                    );
+                })}
+            </Carousel>
+        </div>
         <ul className="details">
             <li className="detail"><h6>Maker:</h6> {props.trombone.maker}</li>
             {props.trombone.date ? <li className="detail"><h6>Date:</h6> {props.trombone.date}</li> : ""}

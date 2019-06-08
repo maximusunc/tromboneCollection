@@ -5,20 +5,23 @@ import Image from "../images/images";
 import { Link } from "react-router-dom";
 
 const UpdateForm = (props) => {
-    const images = props.images.map((image, index) => (
-        <Image
-            key={index}
-            id={index}
-            image={image}
-            imageUpload={props.imageUpload}
-        />
-    ));
+    const images = props.images.map((image, index) => {
+        console.log('image', image);
+        return (
+            <Image
+                key={index}
+                id={index}
+                image={image}
+                imageUpload={props.imageUpload}
+            />
+        );
+    });
     const footnotes = props.footnotes.map((footnote, index) => (
         <Footnotes
             key={index}
             id={index}
             footnote={footnote}
-            handleUpdate={props.updateFootnotes}
+            updateFootnote={props.updateFootnote}
         />
     ));
     return (

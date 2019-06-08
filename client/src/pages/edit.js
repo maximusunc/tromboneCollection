@@ -45,11 +45,16 @@ class EditTrombone extends Component {
             alert("The trombone must have a valid maker.");
         } else {
             this.removeBlankFootnotes();
-            this.addTrombone();
+            if (this.state.id) {
+                this.updateTrombone();
+            } else {
+                this.addTrombone();
+            }
         };
     };
 
     addTrombone() {
+        console.log('state before add', this.state);
         API.addTrombone({ ...this.state })
             .then(res => {
                 alert("Trombone Added!");
@@ -60,6 +65,7 @@ class EditTrombone extends Component {
 
     updateTrombone() {
         const { id } = this.state;
+        console.log('state', this.state);
         // update trombone with entire state
         API.updateTrombone(id, { ...this.state })
             .then(res => {
@@ -83,14 +89,14 @@ class EditTrombone extends Component {
         };
     };
 
-    imageUpload(event) {
+    imageUpload = (event) => {
         const { id } = event.target;
         const file = event.target.files[0] || undefined;
+        const { images } = this.state;
         if (file) {
             var reader = new FileReader();
             reader.onloadend = () => {
                 const image = reader.result;
-                const { images } = this.state;
                 images[id] = image;
                 this.setState({ images });
             };

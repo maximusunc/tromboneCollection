@@ -2,19 +2,19 @@ import React from 'react';
 import { Router, Route, Redirect, Switch } from "react-router-dom";
 import './App.css';
 import "./pages/pages.css"
-import history from "./history.js";
+import history from "./history";
 import MainLayout from "./components/mainLayout";
 import EmptyLayout from "./components/emptyLayout";
-import Home from "./pages/home.js";
-import Instruments from "./pages/instruments.js";
-import Details from "./pages/details.js";
-import MinDetails from "./pages/minDetails.js";
+import Home from "./pages/home";
+import Instruments from "./pages/instruments";
+import Details from "./pages/details";
+import MinDetails from "./pages/minDetails";
 import EditTrombone from "./pages/edit";
-import HowToUse from "./pages/howToUse.js";
-import Bibliography from "./pages/bibliography.js";
-import Contact from "./pages/contact.js";
-import Login from "./pages/login.js";
-import Admin from "./pages/admin.js";
+import HowToUse from "./pages/howToUse";
+import Bibliography from "./pages/bibliography";
+import Contact from "./pages/contact";
+import Login from "./pages/login";
+import Admin from "./pages/admin";
 
 function readCookie() {
   var cookieName = "authorized=";
@@ -53,8 +53,6 @@ const App = () =>
         <MainLayout>
           {/* this inner switch is for the main page routes */}
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/home" component={Home} />
             <Route exact path="/instruments" component={Instruments} />
             <Route exact path="/details/*" component={Details} />
             <Route exact path="/how-to-use" component={HowToUse} />
