@@ -1,5 +1,9 @@
 .container {
     min-height: 400px;
+    width: 75%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 }
 .link {
     margin: 5px 10px;
@@ -14,12 +18,6 @@
 .link:hover {
     transform: scale(1.2);
     color: rgb(44, 71, 71);
-}
-#login {
-    margin-left: 10px;
-}
-#password {
-    margin-left: 38%;
 }
 .bibliography li {
     text-align: left;
@@ -46,9 +44,6 @@
     width: 100%;
     text-align: center;
 }
-#newFootnote {
-    margin-bottom: 15px;
-}
 #adminInstruments {
-    margin-top: 50px;
+    margin-top: 35px;
 }

@@ -1,23 +1,28 @@
-.large-textarea {
-    height: 120px;
-}
 #backButton {
-    margin-top: 20px;
+    margin: 20px auto 0px auto;
 }
 #updatePic {
-    height: 300px;
     width: 300px;
+    height: 200px;
 }
 #updateForm {
     margin-top: 15px;
+    width: 100%;
+    opacity: 0.65;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 20px;
+}
+#login, #create {
+    display: flex;
+    margin: 20px auto;
+    padding: 3px;
 }
 #create, #createTrombone, #update, #delete, #login {
     font-size: 20px;
     background-color: rgb(84,135,135);
     border-radius: 5px;
     position: relative;
-    top: 20px;
-    padding: 10px;
     box-shadow: 0px 0px 2px 2px rgb(53, 87, 87);
     color: white;
     cursor: pointer;
@@ -32,4 +37,10 @@
 }
 #delete:hover {
     background-color: rgb(133, 0, 0);
+}
+#newFootnote {
+    margin: 15px;
+}
+.footnote {
+    margin: 10px 0px;
 }

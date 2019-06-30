@@ -1,122 +1,122 @@
 import React from "react";
-import "./updateForm.css";
-import Footnotes from "../footnotes";
 import { Link } from "react-router-dom";
+import { Paper, Grid, NativeSelect, TextField, Input, InputLabel, FormControl, Button } from "@material-ui/core";
+import AddCircleOutline from "@material-ui/icons/AddCircleOutline";
+import "./updateForm.css";
+import Footnotes from "./footnotes/footnotes";
+import Image from "./images/images";
 
 const UpdateForm = (props) => {
+    const images = props.images.map((image, index) => {
+        return (
+            <Image
+                key={index}
+                index={index}
+                image={image}
+                imageUpload={props.imageUpload}
+                imageDelete={props.imageDelete}
+            />
+        );
+    });
     const footnotes = props.footnotes.map((footnote, index) => (
         <Footnotes
             key={index}
-            id={index}
+            index={index}
             footnote={footnote}
-            handleUpdate={props.handleFootnotes}
+            updateFootnote={props.updateFootnote}
         />
     ));
     return (
-        <div id="updateForm">
-            <form className="col s12 search" encType="multipart/form-data">
-                <div className="row">
-                    <div className="input-field col s4">
-                        <input id="maker" name="maker" type="text" className="active" value={props.maker || ""} onChange={props.onChange} required />
-                        <label className="active" htmlFor="maker">Maker</label>
-                    </div>
-                    <div className="input-field col s4">
-                        <input id="date" name="date" type="text" className="active" value={props.date || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="date">Date</label>
-                    </div>
-                    <div className="input-field col s4">
-                        <select name="type" className="browser-default" value={props.type || ""} onChange={props.onChange}>
-                            <option value=""></option>
-                            <option value="Soprano">Soprano</option>
-                            <option value="Alto">Alto</option>
-                            <option value="Tenor">Tenor</option>
-                            <option value="Bass">Bass</option>
-                        </select>
-                        <label className="active">Type</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="input-field col s4">
-                        <input id="location" name="location" type="text" className="active" value={props.location || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="location">Location</label>
-                    </div>
-                    <div className="input-field col s4">
-                        <input id="signature" name="signature" type="text" className="active" value={props.signature || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="signature">Signature</label>
-                    </div>
-                    <div className="input-field col s4">
-                        <input id="pitch" name="pitch" type="text" className="active" value={props.pitch || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="pitch">Pitch</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="input-field col s4">
-                        <input id="dimensions" name="dimensions" type="text" className="active" value={props.dimensions || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="dimensions">Dimensions</label>
-                    </div>
-                    <div className="input-field col s4">
-                        <input id="provenance" name="provenance" type="text" className="active" value={props.provenance || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="provenance">Provenance</label>
-                    </div>
-                    <div className="input-field col s4">
-                        <input id="mouthpiece" name="mouthpiece" type="text" className="active" value={props.mouthpiece || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="mouthpiece">Mouthpiece</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="input-field col s12">
-                        <textarea id="literature" name="literature" type="text" className="active large-textarea" value={props.literature || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="literature">Literature</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="input-field col s12">
-                        <textarea id="remarks" name="remarks" type="text" className="active large-textarea" value={props.remarks || ""} onChange={props.onChange} />
-                        <label className="active" htmlFor="remarks">Remarks</label>
-                    </div>
-                </div>
-                <div className="row" id="footnotes">
-                    <label className="active" htmlFor="footnotes">Foot Notes</label>
-                    {footnotes}
-                </div>
-                <button id="newFootnote" onClick={props.handleNewFootnote}>New Footnote</button>
-                <div className="row">
-                    {props.image && props.image.length > 4 ?
-                        <div>
-                            <img id="updatePic" src={props.image} alt="tromboneImage" />
-                            <div className="file-field input-field">
-                                <div className="btn">
-                                    <span>Change Image</span>
-                                    <input id="fileUpload" type="file" accept="image/*" onChange={props.fileUpload} />
-                                </div>
-                                <div className="file-path-wrapper">
-                                    <input name="imagePath" className="file-path validate" type="text" />
-                                </div>
-                            </div>
-                        </div>
-                        :
-                        <div className="file-field input-field">
-                            <div className="btn">
-                                <span>Upload Image</span>
-                                <input id="fileUpload" type="file" accept="image/*" onChange={props.fileUpload} />
-                            </div>
-                            <div className="file-path-wrapper">
-                                <input name="imagePath" className="file-path validate" type="text" />
-                            </div>
-                        </div>
-                    }
-                </div>
-                <div className="row">
-                    <button id="createTrombone" type="button" onClick={props.handleSubmit}>{props.button}</button>
-                    {props.delete ? (
-                        <button id="delete" type="button" onClick={props.delete}>Delete</button>
-                    ) : (null)}
-                </div>
-            </form>
-
+        <form encType="multipart/form-data">
+            <Paper id="updateForm">
+                <Grid container spacing={3}>
+                    <Grid item xs={4}>
+                        <TextField fullWidth id="maker" value={props.maker || ""} onChange={props.onChange} required label="Maker" />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <TextField fullWidth id="date" value={props.date || ""} onChange={props.onChange} label="Date" />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <FormControl fullWidth>
+                            <InputLabel htmlFor="typeSelect">Type</InputLabel>
+                            <NativeSelect
+                                onChange={props.onChange}
+                                id="type"
+                                value={props.type || ""}
+                                input={<Input id="typeSelect" />}
+                            >
+                                <option value=""></option>
+                                <option value="Soprano">Soprano</option>
+                                <option value="Alto">Alto</option>
+                                <option value="Tenor">Tenor</option>
+                                <option value="Bass">Bass</option>
+                            </NativeSelect>
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <TextField fullWidth id="location" value={props.location || ""} onChange={props.onChange} label="Location" />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <TextField fullWidth id="signature" value={props.signature || ""} onChange={props.onChange} label="Signature" />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <TextField fullWidth id="pitch" value={props.pitch || ""} onChange={props.onChange} label="Pitch" />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <TextField fullWidth id="dimensions" value={props.dimensions || ""} onChange={props.onChange} label="Dimensions" />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <TextField fullWidth id="provenance" value={props.provenance || ""} onChange={props.onChange} label="Provenance" />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <TextField fullWidth id="mouthpiece" value={props.mouthpiece || ""} onChange={props.onChange} label="Mouthpiece" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField variant="outlined" fullWidth id="literature" multiline rows={3} value={props.literature || ""} onChange={props.onChange} label="Literature" />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField variant="outlined" fullWidth id="remarks" multiline rows={3} value={props.remarks || ""} onChange={props.onChange} label="Remarks" />
+                    </Grid>
+                    <Grid item xs={12} id="footnotes">
+                        <h4>Foot Notes</h4>
+                        {footnotes}
+                        <Button type="button" variant="outlined" id="newFootnote" onClick={props.newFootnote} disableRipple>
+                            <AddCircleOutline />
+                            New Footnote
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <h4>Images</h4>
+                        {images}
+                        <Button variant="outlined" id="newImage" onClick={props.newImage} disableRipple>
+                            <AddCircleOutline />
+                            New Image
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button
+                            id="createTrombone"
+                            type="button"
+                            onClick={props.handleSubmit}
+                            disableRipple
+                        >
+                            {props.button}
+                        </Button>
+                        {props.button === "Update" && (
+                            <Button
+                                id="delete"
+                                type="button"
+                                onClick={props.delete}
+                                disableRipple
+                            >
+                                Delete
+                            </Button>
+                        )}
+                    </Grid>
+                </Grid>
+            </Paper>
             <Link to="/admin" className="link" id="backButton">Back</Link>
-
-        </div>
+        </form>
     );
 };
 

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Container from "../components/container";
+import Container from "../components/container/container";
 
 class Bibliography extends Component {
     state = { };

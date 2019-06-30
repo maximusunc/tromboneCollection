@@ -1,17 +1,22 @@
-#pic {
+#pics {
     float: left;
-    margin: 0px 20px 20px 20px;
+    margin: 0px 20px 25px 20px;
     height: 400px;
     width: 400px;
     padding-right: 7px;
     display: block;
 }
+.imageEdit {
+    color: #fff !important;
+    font: 'Rosarivo', serif !important;
+}
 .details {
     text-align: left;
     display: inline;
+    padding: 0px;
 }
 .detail {
-    margin: 15px 0px;
+    margin: 20px 0px;
 }
 ol.detail {
     position: relative;

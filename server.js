@@ -1,7 +1,6 @@
 const express = require("express");
 const PORT = process.env.PORT || 3001;
 const app = express();
-const aws = require("aws-sdk");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -33,6 +32,7 @@ mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/tromboneCollection",
+  { useNewUrlParser: true }
 );
 
 // Send every request to the React app
