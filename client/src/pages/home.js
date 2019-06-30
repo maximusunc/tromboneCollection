@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-// import API from "../utils/API.js";
-import Container from "../components/container";
+import Container from "../components/container/container";
 
 class Home extends Component {
     state = { };

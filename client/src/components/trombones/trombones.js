@@ -1,6 +1,6 @@
 import React from "react";
-import "./trombones.css";
 import { Link } from "react-router-dom";
+import "./trombones.css";
 
 const Instruments = (props) =>  
     <Link className="tromboneLink" to={props.link} >

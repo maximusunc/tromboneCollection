@@ -3,8 +3,8 @@ import { Router, Route, Redirect, Switch } from "react-router-dom";
 import './App.css';
 import "./pages/pages.css"
 import history from "./history";
-import MainLayout from "./components/mainLayout";
-import EmptyLayout from "./components/emptyLayout";
+import MainLayout from "./layouts/mainLayout/mainLayout";
+import EmptyLayout from "./layouts/emptyLayout/emptyLayout";
 import Home from "./pages/home";
 import Instruments from "./pages/instruments";
 import Details from "./pages/details";

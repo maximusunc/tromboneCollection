@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../components/container";
+import Container from "../components/container/container";
 import tromboneForm from "../images/historicTromboneForm.pdf";
 
 const Contact = props => 

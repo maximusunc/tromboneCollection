@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import API from "../utils/API.js";
-import Container from "../components/container";
+import Container from "../components/container/container";
+import { TextField, Button } from "@material-ui/core";
 
 class Login extends Component {
     state = {
@@ -18,10 +19,6 @@ class Login extends Component {
             .catch(err => {
                 this.setState({password: "", tries: this.state.tries - 1});
                 alert("Password Incorrect. You have " + this.state.tries + " tries left.");
-                if (this.state.tries < 1) {
-                    document.getElementById("login").setAttribute("disabled", true);
-                    document.getElementById("login").style.backgroundColor = "red";
-                }
             });
         } else {
             alert("Please enter a password");
@@ -41,26 +38,32 @@ class Login extends Component {
     };
   
     render() {
+        const disabled = this.state.tries === 0;
+        const color = disabled ? 'secondary' : 'primary';
         return (
             <Container>
-                <h4>
-                    Admin Login!
-                </h4>
+                <h3>Admin Login!</h3>
 
-                <form className="col s3" >
-                    <div className="row">
-                        <div className="input-field col s3" id="password">
-                            <input 
-                                type="password" 
-                                name="password" 
-                                autoFocus="autoFocus" 
-                                value={this.state.password}
-                                onChange={this.handlePassword}
-                            />
-                            <label htmlFor="password">Password</label>
-                        </div>
-                    </div>
-                    <button id="login" onClick={this.login}>Login</button>
+                <form>
+                    <TextField 
+                        type="password" 
+                        name="password" 
+                        autoFocus 
+                        value={this.state.password}
+                        onChange={this.handlePassword}
+                        label="Password"
+                        disabled={disabled}
+                    />
+                    <Button
+                        id="login"
+                        variant="contained"
+                        color={color}
+                        onClick={this.login}
+                        disabled={disabled}
+                        type="submit"
+                    >
+                        Login
+                    </Button>
                 </form>
   
             </Container>

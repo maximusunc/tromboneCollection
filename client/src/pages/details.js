@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import API from "../utils/API.js";
-import Container from "../components/container";
-import TromboneDetail from "../components/tromboneDetail";
 import { Link } from "react-router-dom";
+import API from "../utils/API.js";
+import Container from "../components/container/container";
+import TromboneDetail from "../components/tromboneDetail/tromboneDetail";
 
 class Details extends Component {
     state = {
@@ -31,7 +31,6 @@ class Details extends Component {
 
     render() {
         const ready = !!this.state.maker;
-        console.log('state', this.state);
         return (
             <Container>
                 {ready &&

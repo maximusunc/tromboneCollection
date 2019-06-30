@@ -17,13 +17,11 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.224.1",
     "axios": "^0.17.1",
     "body-parser": "^1.18.2",
     "express": "^4.15.4",
     "mongoose": "^5.0.1",
     "node-gyp": "^3.6.2",
-    "react-responsive-carousel": "^3.1.49",
     "uuid": "^3.2.1"
   }
 }

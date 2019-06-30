@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import history from "../history";
 import API from "../utils/API.js";
-import Container from "../components/container";
-import UpdateForm from "../components/updateForm";
+import Container from "../components/container/container";
+import UpdateForm from "../components/updateForm/updateForm";
 
 class EditTrombone extends Component {
     state = {
@@ -44,17 +44,21 @@ class EditTrombone extends Component {
         if (maker.length < 4) {
             alert("The trombone must have a valid maker.");
         } else {
-            this.removeBlankFootnotes();
-            if (this.state.id) {
-                this.updateTrombone();
-            } else {
-                this.addTrombone();
-            }
+            // remove empty footnotes and images before submitting
+            let { footnotes, images } = this.state;
+            footnotes = footnotes.filter(footnote => footnote.length > 0);
+            images = images.filter(image => image.length > 0);
+            this.setState({ footnotes, images }, () => {
+                if (this.state.id) {
+                    this.updateTrombone();
+                } else {
+                    this.addTrombone();
+                }
+            });
         };
     };
 
     addTrombone() {
-        console.log('state before add', this.state);
         API.addTrombone({ ...this.state })
             .then(res => {
                 alert("Trombone Added!");
@@ -65,7 +69,6 @@ class EditTrombone extends Component {
 
     updateTrombone() {
         const { id } = this.state;
-        console.log('state', this.state);
         // update trombone with entire state
         API.updateTrombone(id, { ...this.state })
             .then(res => {
@@ -89,15 +92,14 @@ class EditTrombone extends Component {
         };
     };
 
-    imageUpload = (event) => {
-        const { id } = event.target;
+    imageUpload = (event, index) => {
         const file = event.target.files[0] || undefined;
         const { images } = this.state;
         if (file) {
             var reader = new FileReader();
             reader.onloadend = () => {
                 const image = reader.result;
-                images[id] = image;
+                images[index] = image;
                 this.setState({ images });
             };
             reader.onerror = function (error) {
@@ -114,15 +116,16 @@ class EditTrombone extends Component {
         this.setState({ images });
     };
 
-    updateTextField = (event) => {
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
-    };
+    imageDelete = (id) => {
+        const { images } = this.state;
+        images.splice(id, 1);
+        this.setState({ images });
+    }
 
-    updateFootnote = (event) => {
-        const { id, value } = event.target;
+    updateFootnote = (event, index) => {
+        const { value } = event.target;
         const { footnotes } = this.state;
-        footnotes[id] = value;
+        footnotes[index] = value;
         this.setState({ footnotes })
     };
 
@@ -133,10 +136,9 @@ class EditTrombone extends Component {
         this.setState({ footnotes });
     };
 
-    removeBlankFootnotes = () => {
-        const { footnotes } = this.state;
-        footnotes.filter((footnote) => footnote);
-        this.setState({ footnotes });
+    updateTextField = (event) => {
+        const { id, value } = event.target;
+        this.setState({ [id]: value });
     };
 
     render() {
@@ -163,6 +165,7 @@ class EditTrombone extends Component {
                     newFootnote={this.newFootnote}
                     images={this.state.images}
                     imageUpload={this.imageUpload}
+                    imageDelete={this.imageDelete}
                     newImage={this.newImage}
                     onChange={this.updateTextField}
                     handleSubmit={this.handleSubmit}

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Container from "../components/container";
+import Container from "../components/container/container";
 
 class HowToUse extends Component {
     state = { };

@@ -4,11 +4,15 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@material-ui/core": "^4.1.1",
+    "@material-ui/icons": "^4.2.0",
     "axios": "^0.17.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+    "react-slick": "^0.24.0",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "react-scripts start",

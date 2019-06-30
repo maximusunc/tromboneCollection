@@ -1,9 +1,9 @@
 import React, {Component} from "react";
-import SearchBar from "../components/searchBar";
+import { Button } from "@material-ui/core";
 import API from "../utils/API.js";
-import Container from "../components/container";
-import { Link } from "react-router-dom";
-import Trombones from "../components/trombones";
+import SearchBar from "../components/searchBar/searchBar";
+import Container from "../components/container/container";
+import Trombones from "../components/trombones/trombones";
 
 class Admin extends Component {
     state = {
@@ -25,7 +25,17 @@ class Admin extends Component {
     };
 
     chronSort(trombones) {
-        trombones.sort((a, b) => (a.date > b.date) ? 1 : (a.date < b.date) ? -1 : 0);
+        trombones.sort((a, b) => {
+            let [date1] = a.date.match(/\d{4}|\d{2}/);
+            let [date2] = b.date.match(/\d{4}|\d{2}/);
+            if (date1.length === 2) {
+                date1 *= 100;
+            }
+            if (date2.length === 2) {
+                date2 *= 100;
+            }
+            return date1 - date2;
+        });
         return trombones;
     };
 
@@ -43,6 +53,11 @@ class Admin extends Component {
             trombone.date.indexOf(this.state.date) !== -1 &&
             trombone.pitch.indexOf(this.state.pitch) !== -1)});
     };
+
+    create = () => {
+        const { history } = this.props;
+        history.push("/create");
+    }
 
     render() {
         const trombones = this.state.filtered.map(trombone => (
@@ -63,19 +78,21 @@ class Admin extends Component {
                     pitch={this.state.pitch}
                     searchChange={this.searchChange}
                 />
-
-                <Link id="create" to="/create/">Create</Link>
-
-                <h2 id="adminInstruments">
-                    Instruments:
-                </h2>
-
+                <Button
+                    id="create"
+                    variant="contained"
+                    color="primary"
+                    onClick={this.create}
+                    disableRipple
+                >
+                    Create
+                </Button>
+                <h2 id="adminInstruments">Instruments:</h2>
                 <section className="tromboneList">
-                    <ul>
+                    <ul style={{ padding: 0 }}>
                         {trombones}
                     </ul>
                 </section>
-
             </Container>
         );
     };
