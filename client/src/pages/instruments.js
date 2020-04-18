@@ -26,6 +26,9 @@ class Instruments extends Component {
 
     chronSort(trombones) {
         trombones.sort((a, b) => {
+            if (!a.date || !b.date) {
+                return 0;
+            }
             let [date1] = a.date.match(/\d{4}|\d{2}/);
             let [date2] = b.date.match(/\d{4}|\d{2}/);
             if (date1.length === 2) {
@@ -55,15 +58,6 @@ class Instruments extends Component {
     };
 
     render() {
-        const trombones = this.state.filtered.map(trombone => (
-            <Trombones
-                key={trombone._id}
-                id={trombone._id}
-                maker={trombone.maker}
-                date={trombone.date}
-                link={"/details/" + trombone._id}
-            />
-        ));
         return (
             <Container>
                 <SearchBar 
@@ -78,7 +72,15 @@ class Instruments extends Component {
                 {this.state.loaded ? 
                     <section className="tromboneList">
                         <ul style={{ padding: 0 }}>
-                            {trombones}
+                            {this.state.filtered.map((trombone) => (
+                                <Trombones
+                                    key={trombone._id}
+                                    id={trombone._id}
+                                    maker={trombone.maker}
+                                    date={trombone.date}
+                                    link={"/details/" + trombone._id}
+                                />
+                            ))}
                         </ul>
                     </section>
                 :

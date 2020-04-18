@@ -5,7 +5,7 @@ import "./pages/pages.css"
 import history from "./history";
 import MainLayout from "./layouts/mainLayout/mainLayout";
 import EmptyLayout from "./layouts/emptyLayout/emptyLayout";
-import Home from "./pages/home";
+import Home from "./pages/home/home";
 import Instruments from "./pages/instruments";
 import Details from "./pages/details";
 import MinDetails from "./pages/minDetails";

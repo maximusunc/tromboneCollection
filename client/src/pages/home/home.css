@@ -1,0 +1,9 @@
+#homePageImage {
+    width: 100%;
+    object-fit: fill;
+    border-radius: 10px;
+}
+#homePageImageContainer {
+    display: flex;
+    height: 200px;
+}

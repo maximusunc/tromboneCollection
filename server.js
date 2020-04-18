@@ -10,11 +10,12 @@ const routes = require("./routes");
 app.use(bodyParser.urlencoded({ limit: "20mb", extended: false }));
 app.use(bodyParser.json({ limit: "20mb" }));
 
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
-};
+} else {
+  app.use(express.static("client/src"));
+}
 
 // handles admin password
 app.get("/login/:password", function(req, res) {
