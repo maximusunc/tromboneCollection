@@ -3,6 +3,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const CryptoJS = require('crypto-js');
 const routes = require("./routes");
 
 // Configure body parser for AJAX requests
@@ -17,11 +18,20 @@ if (process.env.NODE_ENV === "production") {
 
 // handles admin password
 app.get("/login/:password", function(req, res) {
-  if (decodeURI(req.params.password) === "SackBut#1") {
-    res.status(200).send("Good password");    
+  const hash = CryptoJS.HmacSHA256(req.params.password, process.env.PSWD_SECRET || 'local_test');
+  if (process.env.PSWD_SECRET) {
+    if (decodeURI(hash) === "2ceff18447880e20f63796ae330ca5ef90de5fdc576068ee3422a8bb7503225f") {
+      res.status(200).send("Authorized");    
+    } else {
+      res.status(401).send("Unauthorized");
+    };
   } else {
-    res.status(401).send("Bad password");
-  };
+    if (decodeURI(hash) === "065730ada2dd4669658f3b6221dd543d8073708a0d00309d7bff2d8b57c538cc") {
+      res.status(200).send("Authorized");    
+    } else {
+      res.status(401).send("Unauthorized");
+    };
+  }
 });
 
 // Add routes, both API and view

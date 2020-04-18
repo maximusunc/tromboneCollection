@@ -28,8 +28,9 @@ class Login extends Component {
     setCookie = () => {
         const { history } = this.props;
         var date = new Date();
+        // 2 days
         date.setTime(date.getTime() + (2 * 24 * 60 * 60 * 1000));
-        document.cookie = "authorized=authorized; expires=" + date.toGMTString() + "; path=/";
+        document.cookie = "authorized=ecb0705c8343ba8dca57c2317dc23baae5f0a6fca6ea36b96aa698ed6db8d515; expires=" + date.toGMTString() + "; path=/";
         history.push("/admin");
     };
   
