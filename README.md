@@ -32,6 +32,10 @@ yarn start
 ```
 
 ## Deployment
+- Run:
+```
+yarn build
+```
 - Push to Development branch first. That should create an automatic heroku build at trombonecatalog.herokuapp.com
 - Make sure everything works correctly there
 - Merge into Master branch. That will create an automatic heroku build at trombonecollection.herokuapp.com
