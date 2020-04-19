@@ -5,5 +5,11 @@
 }
 #homePageImageContainer {
     display: flex;
-    height: 200px;
+    height: 275px;
+}
+
+@media screen and (max-width: 700px) {
+    #homePageImageContainer {
+        height: 200px;
+    }
 }
