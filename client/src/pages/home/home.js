@@ -1,12 +1,13 @@
 import React from "react";
 import Container from "../../components/container/container";
 import './home.css';
+import trombonePic from '../../images/tromboneBackground.jpeg';
 
 export default function Home() {
   return (
     <Container>
       <div id="homePageImageContainer">
-        <img src="../images/tromboneBackground.jpeg" alt="trombone" id="homePageImage" />
+        <img src={trombonePic} alt="trombone" id="homePageImage" />
       </div>
       <h1>
         Welcome!

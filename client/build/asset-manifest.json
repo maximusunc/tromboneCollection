@@ -1,13 +1,14 @@
 {
   "main.css": "static/css/main.e3a4e60e.css",
   "main.css.map": "static/css/main.e3a4e60e.css.map",
-  "main.js": "static/js/main.97fffd7a.js",
-  "main.js.map": "static/js/main.97fffd7a.js.map",
+  "main.js": "static/js/main.e354f15b.js",
+  "main.js.map": "static/js/main.e354f15b.js.map",
   "static/media/AMISBanner.jpg": "static/media/AMISBanner.50e18d80.jpg",
   "static/media/historicTromboneForm.pdf": "static/media/historicTromboneForm.89dfba57.pdf",
   "static/media/no_image_available.jpeg": "static/media/no_image_available.1c98fa4a.jpeg",
   "static/media/slick.eot": "static/media/slick.ced611da.eot",
   "static/media/slick.svg": "static/media/slick.f97e3bbf.svg",
   "static/media/slick.ttf": "static/media/slick.d41f55a7.ttf",
-  "static/media/slick.woff": "static/media/slick.b7c9e1e4.woff"
+  "static/media/slick.woff": "static/media/slick.b7c9e1e4.woff",
+  "static/media/tromboneBackground.jpeg": "static/media/tromboneBackground.90d632cc.jpeg"
 }
