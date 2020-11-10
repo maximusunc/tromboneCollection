@@ -5,7 +5,7 @@ import "./pages/pages.css"
 import history from "./history";
 import MainLayout from "./layouts/mainLayout/mainLayout";
 import EmptyLayout from "./layouts/emptyLayout/emptyLayout";
-import Home from "./pages/home";
+import Home from "./pages/home/home";
 import Instruments from "./pages/instruments";
 import Details from "./pages/details";
 import MinDetails from "./pages/minDetails";
@@ -18,11 +18,12 @@ import Admin from "./pages/admin";
 
 function readCookie() {
   var cookieName = "authorized=";
+  const key = "ecb0705c8343ba8dca57c2317dc23baae5f0a6fca6ea36b96aa698ed6db8d515";
   var cookies = document.cookie.split(";");
   for (var i = 0; i < cookies.length; i++) {
     var name = cookies[i];
     while (name.charAt(0) === " ") name = name.substring(1, name.length);
-    if (name.indexOf(cookieName) === 0) return true;
+    if (name.indexOf(cookieName) === 0 && name.indexOf(key) > -1) return true;
   }
   return false;
 };

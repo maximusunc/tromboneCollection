@@ -94,14 +94,6 @@ const UpdateForm = (props) => {
                         </Button>
                     </Grid>
                     <Grid item xs={12}>
-                        <Button
-                            id="createTrombone"
-                            type="button"
-                            onClick={props.handleSubmit}
-                            disableRipple
-                        >
-                            {props.button}
-                        </Button>
                         {props.button === "Update" && (
                             <Button
                                 id="delete"
@@ -112,6 +104,14 @@ const UpdateForm = (props) => {
                                 Delete
                             </Button>
                         )}
+                        <Button
+                            id="createTrombone"
+                            type="button"
+                            onClick={props.handleSubmit}
+                            disableRipple
+                        >
+                            {props.button}
+                        </Button>
                     </Grid>
                 </Grid>
             </Paper>

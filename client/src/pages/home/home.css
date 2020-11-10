@@ -1,0 +1,15 @@
+#homePageImage {
+    width: 100%;
+    object-fit: fill;
+    border-radius: 10px;
+}
+#homePageImageContainer {
+    display: flex;
+    height: 275px;
+}
+
+@media screen and (max-width: 700px) {
+    #homePageImageContainer {
+        height: 200px;
+    }
+}

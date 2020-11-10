@@ -34,3 +34,11 @@ h6 {
 .detail h6 {
     margin-right: 5px;
 }
+
+@media screen and (max-width: 600px) {
+    #pics {
+        width: 100%;
+        display: contents;
+        object-fit: contain;
+    }
+}

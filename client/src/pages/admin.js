@@ -26,6 +26,9 @@ class Admin extends Component {
 
     chronSort(trombones) {
         trombones.sort((a, b) => {
+            if (!a.date || !b.date) {
+                return 0;
+            }
             let [date1] = a.date.match(/\d{4}|\d{2}/);
             let [date2] = b.date.match(/\d{4}|\d{2}/);
             if (date1.length === 2) {
