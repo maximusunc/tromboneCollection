@@ -2,6 +2,7 @@
   "name": "trombonecollection",
   "version": "1.0.0",
   "description": "Database of all historic trombones made before 1800",
+  "repository": "https://github.com/maximusunc/tromboneCollection",
   "main": "server.js",
   "scripts": {
     "server": "node server.js",
