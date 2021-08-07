@@ -1,15 +1,32 @@
 #homePageImage {
     width: 100%;
-    object-fit: fill;
     border-radius: 10px;
+    filter: grayscale(60%);
 }
 #homePageImageContainer {
-    display: flex;
-    height: 275px;
+    position: relative;
+    width: 50%;
+    margin: auto;
+}
+#photoCredit {
+    position: absolute;
+    bottom: 7px;
+    right: 5px;
+    margin: 0;
+    color: white;
+    font-size: 10px;
+}
+#viewCollectionButton {
+    margin: auto;
+    font-size: 20px;
+    background-color: rgb(84,135,135);
+}
+#viewCollectionButton:hover {
+    background-color: rgb(77, 167, 167);
 }
 
 @media screen and (max-width: 700px) {
     #homePageImageContainer {
-        height: 200px;
+        width: 100%;
     }
 }
