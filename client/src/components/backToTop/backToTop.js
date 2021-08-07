@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
+import IconButton from '@material-ui/core/IconButton';
+import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+
 import "./backToTop.css";
-import arrow from "../../images/arrow-up.png";
 
 function BackToTop(props) {
     const intervalId = useRef('');
@@ -33,9 +35,9 @@ function BackToTop(props) {
 
     return (
         <div id="backToTop">
-            <button id="toTop" onClick={() => scrollToTop()}>
-                <img id="arrow" src={arrow} alt="arrow-up"></img>
-            </button>
+            <IconButton onClick={scrollToTop}>
+                <ArrowUpwardIcon />
+            </IconButton>
         </div>
     );
 }

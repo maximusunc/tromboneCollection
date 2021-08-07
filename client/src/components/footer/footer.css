@@ -20,6 +20,6 @@ p#copyright {
 }
 @media screen and (max-width: 600px) {
     #AMIS {
-        width: 100%;
+        width: 85%;
     }
 }

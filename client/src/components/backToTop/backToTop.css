@@ -14,21 +14,3 @@
     opacity: 0;
     transition: 1s;
 }
-#toTop {
-    position: relative;
-    padding: 10px;
-    background-color: rgb(197, 195, 195);
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: 0.2s;
-}
-#toTop:hover {
-    background-color: grey;
-    transform: scale(1.1);
-}
-#arrow {
-    width: 20px;
-}
