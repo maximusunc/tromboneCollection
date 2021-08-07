@@ -15,7 +15,7 @@ cd ..
 ### Setting up MongoDB
 In a terminal, make sure you have mongo installed, then run commands
 ```
-mongod --db-path ./db
+mongod --dbpath ./db
 ```
 That will start a mongo server
 *If you want to modify the db in the terminal, run the following commands*
