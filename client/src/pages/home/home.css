@@ -2,10 +2,11 @@
     width: 100%;
     border-radius: 10px;
     filter: grayscale(60%);
+    box-shadow: 0 0 8px 8px white inset;
 }
 #homePageImageContainer {
     position: relative;
-    width: 50%;
+    width: 75%;
     margin: auto;
 }
 #photoCredit {
