@@ -32,6 +32,9 @@ const tromboneSchema = new Schema({
     literature: {
         type: String
     },
+    external_link: {
+        type: String
+    },
     remarks: {
         type: String
     },

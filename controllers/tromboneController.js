@@ -15,7 +15,7 @@ module.exports = {
     },
     updateTrombone: function(req, res) {
         db.Trombone
-            .update({ _id: req.params.id }, req.body)
+            .updateOne({ _id: req.params.id }, req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
