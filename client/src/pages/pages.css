@@ -47,3 +47,10 @@
 #adminInstruments {
     margin-top: 35px;
 }
+
+.howtoList {
+    display: block;
+}
+.howtoList li {
+    list-style-type: circle;
+}
