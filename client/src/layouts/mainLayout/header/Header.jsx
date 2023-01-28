@@ -5,7 +5,7 @@ import Navbar from './navbar/Navbar';
 export default function Header() {
   return (
     <header>
-      <h1 id="header">Historic Trombone Collection</h1>
+      <h1 id="header">Historic Trombone Database</h1>
       <Navbar />
     </header>
   );
