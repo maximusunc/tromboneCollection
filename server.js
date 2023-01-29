@@ -1,5 +1,4 @@
 const express = require("express");
-const PORT = process.env.PORT || 3001;
 const app = express();
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -8,6 +7,8 @@ const dotenv = require('dotenv');
 const routes = require("./routes");
 
 dotenv.config();
+
+const PORT = process.env.PORT || 3001;
 
 // Configure body parser for AJAX requests
 app.use(bodyParser.urlencoded({ limit: "20mb", extended: false }));
