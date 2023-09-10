@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo } from 'react';
 import { useHistory, useRouteMatch } from 'react-router-dom';
 import API from '../../utils/API.js';
-import useTromboneStore from '../../utils/useTromboneStore';
+import useTromboneEditor from '../../utils/useTromboneEditor';
 import Container from '../../components/container/Container';
 import UpdateForm from './updateForm/UpdateForm';
 
 export default function EditTrombone() {
-    const trombone = useTromboneStore();
+    const trombone = useTromboneEditor();
     const history = useHistory();
 
     const tromboneIdMatch = useRouteMatch('/update/:id');

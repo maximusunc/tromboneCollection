@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Paper, NativeSelect, InputLabel, Input, FormControl, TextField } from "@material-ui/core";
 import "./searchBar.css";
 
+import TromboneContext from '../../context/trombones';
 
-export default function SearchBar({ searchBar }) {
+export default function SearchBar() {
+    const { searchBar } = useContext(TromboneContext);
+
     return ( 
         <Paper id="searchBar">
             <h2>Search</h2>

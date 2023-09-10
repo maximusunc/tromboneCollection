@@ -22,7 +22,7 @@ function tromboneReducer(state, fields) {
   return { ...state, ...fields };
 }
 
-export default function useTromboneStore() {
+export default function useTromboneEditor() {
   const [properties, update] = useReducer(tromboneReducer, defaultTrombone);
   return {
     properties,
