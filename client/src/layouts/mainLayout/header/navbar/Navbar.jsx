@@ -10,7 +10,8 @@ export default function Navbar() {
             <NavLink to="/how-to-use" activeClassName="active" className="link">How To Use</NavLink>
             <NavLink to="/bibliography" activeClassName="active" className="link">Bibliography</NavLink>
             <NavLink to="/contact" activeClassName="active" className="link">Contact</NavLink>
-            <NavLink to="/admin" activeClassName="active" className="link">Admin</NavLink>
+            {/* the CMS is a separate page served from client/public/admin */}
+            <a href="/admin/" className="link">Admin</a>
         </div>
     );
 }

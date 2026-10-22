@@ -1,7 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter, Route,
-  Redirect, Switch,
+  BrowserRouter, Route, Switch,
 } from 'react-router-dom';
 
 import './App.css';
@@ -12,35 +11,9 @@ import Home from './pages/home/Home';
 import Instruments from './pages/instruments/Instruments';
 import Details from './pages/instruments/details/Details';
 import MinDetails from './pages/MinDetails';
-import EditTrombone from './pages/editTrombone/Edit';
 import HowToUse from './pages/HowToUse';
 import Bibliography from './pages/Bibliography';
 import Contact from './pages/contact/Contact';
-import Login from './pages/admin/Login';
-import Admin from './pages/admin/Admin';
-
-function readCookie() {
-  var cookieName = 'authorized=';
-  const key = 'ecb0705c8343ba8dca57c2317dc23baae5f0a6fca6ea36b96aa698ed6db8d515';
-  var cookies = document.cookie.split(';');
-  for (var i = 0; i < cookies.length; i++) {
-    var name = cookies[i];
-    while (name.charAt(0) === ' ') name = name.substring(1, name.length);
-    if (name.indexOf(cookieName) === 0 && name.indexOf(key) > -1) return true;
-  }
-  return false;
-};
-
-const PrivateRoute = ({component: Component, ...rest}) => (
-  <Route {...rest} exact path='/admin' render={(props) => (
-    (readCookie() === true)
-      ? <Component {...props} />
-      : <Redirect to={{
-          pathname: '/login',
-          state: {from: props.location}
-        }} />
-  )} />
-)
 
 const App = () => 
   <BrowserRouter>
@@ -62,10 +35,6 @@ const App = () =>
             <Route exact path="/how-to-use" component={HowToUse} />
             <Route exact path="/bibliography" component={Bibliography} />
             <Route exact path="/contact" component={Contact} />
-            <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/update/*" component={EditTrombone} />
-            <PrivateRoute exact path="/create/" component={EditTrombone} />
-            <PrivateRoute exact path="/admin" component={Admin} />
             <Route path="/*" component={Home} />
           </Switch>
         </MainLayout>
