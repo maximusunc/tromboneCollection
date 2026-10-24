@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import "./trombones.css";
 
 export default function Trombone(props) {

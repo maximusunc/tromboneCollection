@@ -6,10 +6,10 @@ import mircat from "./mircat.png";
 const Footer = () =>
     <footer>
       <div style={{ marginTop: 10 }}>
-        <a href="https://mircat.org/" target="_blank">
+        <a href="https://mircat.org/" target="_blank" rel="noreferrer noopener">
           <img id="MIRcat" src={mircat} alt="MIRcat Musical Instrument Research Catalog" />
         </a>
-        <a href="https://www.amis.org/" target="_blank">
+        <a href="https://www.amis.org/" target="_blank" rel="noreferrer noopener">
           <img id="AMIS" src={logo} alt="American Musical Instrument Society" />
         </a>
       </div>

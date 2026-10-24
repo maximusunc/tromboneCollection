@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
-import IconButton from '@material-ui/core/IconButton';
-import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
+import IconButton from '@mui/material/IconButton';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 import "./backToTop.css";
 

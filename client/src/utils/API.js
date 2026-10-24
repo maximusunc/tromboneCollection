@@ -1,5 +1,3 @@
-import axios from "axios";
-
 // trombones are bundled into a static file at build time by scripts/build-data.js
 let trombonesRequest;
 
@@ -7,10 +5,15 @@ export default {
     // gets all trombones
     getTrombones: function() {
         if (!trombonesRequest) {
-            trombonesRequest = axios.get("/data/trombones.json");
+            trombonesRequest = fetch("/data/trombones.json").then(res => {
+                if (!res.ok) {
+                    throw new Error(`Failed to load trombones: ${res.status}`);
+                }
+                return res.json();
+            });
             trombonesRequest.catch(() => { trombonesRequest = undefined; });
         }
-        return trombonesRequest.then(res => ({ ...res, data: [...res.data] }));
+        return trombonesRequest.then(data => ({ data: [...data] }));
     },
     // gets the details of a specific trombone
     getTrombone: function(id) {
@@ -19,7 +22,7 @@ export default {
             if (!trombone) {
                 throw new Error(`Trombone ${id} not found`);
             }
-            return { ...res, data: trombone };
+            return { data: trombone };
         });
     },
 };
