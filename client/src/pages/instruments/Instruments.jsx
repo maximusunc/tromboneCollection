@@ -6,6 +6,7 @@ import FacetFilter from '../../components/ui/FacetFilter';
 import RecordTable from '../../components/ui/RecordTable';
 import Loading from '../../components/loading';
 import { FACETS, searchTerms, filterRecords, facetCounts, sortRecords, toCsv } from '../../utils/filterRecords';
+import { refKey } from '../../utils/records';
 import './instruments.css';
 
 import TromboneContext from '../../context/trombones';
@@ -17,18 +18,24 @@ export default function Instruments() {
     const [filtersOpen, setFiltersOpen] = useState(false);
 
     const query = params.get('q') || '';
+    // ?cites=Carter 2012 comes from the bibliography's "Cited in N records" links
+    const cites = params.get('cites') || '';
     const sortKey = params.get('sort') || 'date';
     const sortDir = params.get('dir') === 'desc' ? 'desc' : 'asc';
     const selected = Object.fromEntries(FACETS.map(f => [f.key, params.getAll(f.key)]));
-    const activeFilters = FACETS.reduce((n, f) => n + selected[f.key].length, 0);
+    const activeFilters = FACETS.reduce((n, f) => n + selected[f.key].length, 0) + (cites ? 1 : 0);
     const terms = useMemo(() => searchTerms(query), [query]);
 
-    const results = useMemo(
-        () => sortRecords(filterRecords(trombones, terms, selected), sortKey, sortDir),
-        // selected is rebuilt every render; params captures it
-        [trombones, terms, params, sortKey, sortDir],
+    const pool = useMemo(
+        () => (cites ? trombones.filter(record => record.refs.includes(refKey(cites))) : trombones),
+        [trombones, cites],
     );
-    const facets = useMemo(() => facetCounts(trombones, terms, selected), [trombones, terms, params]);
+    const results = useMemo(
+        () => sortRecords(filterRecords(pool, terms, selected), sortKey, sortDir),
+        // selected is rebuilt every render; params captures it
+        [pool, terms, params, sortKey, sortDir],
+    );
+    const facets = useMemo(() => facetCounts(pool, terms, selected), [pool, terms, params]);
 
     function update(change) {
         const next = new URLSearchParams(params);
@@ -71,6 +78,7 @@ export default function Instruments() {
     }
 
     const summary = [
+        cites && `citing ${cites}`,
         query && `matching “${query}”`,
         ...FACETS.filter(f => selected[f.key].length).map(f => `${f.title}: ${selected[f.key].join(', ')}`),
     ].filter(Boolean).join(' · ');

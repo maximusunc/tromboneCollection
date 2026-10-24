@@ -18,21 +18,6 @@
     color: var(--brand);
 }
 
-.bibliography {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    max-width: 90ch;
-}
-.bibliography li {
-    padding: var(--space-2) 0 var(--space-2) 1.5em;
-    text-indent: -1.5em;
-    border-bottom: 1px solid var(--rule);
-}
-.bibliography li.target {
-    background: var(--brass-tint);
-}
-
 .howto {
     max-width: 90ch;
     padding-left: 1.5em;
@@ -71,4 +56,8 @@
     #printContents {
         padding: 0;
     }
+}
+
+.siglaList li.target {
+    background: var(--brass-tint);
 }

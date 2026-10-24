@@ -1,3 +1,5 @@
+import SIGLA from '../data/sigla.json';
+
 // Derived fields for trombone records. The raw fields are free text copied from
 // the printed catalogue, so these are best-effort readings used for sorting and filtering.
 
@@ -60,7 +62,21 @@ export function holding(record) {
     return (record.location || '').split(';')[0].trim();
 }
 
+// longest codes first so "D-Ms" wins over "D-M…" style prefixes
+const SIGLA_BY_LENGTH = [...SIGLA].sort((a, b) => b.code.length - a.code.length);
+
+// the museum or collection a record's location names, from the sigla list on How To Use
+export function museum(record) {
+    const location = holding(record).replace(/^[^A-Za-z]*(location:\s*)?/i, '');
+    return SIGLA_BY_LENGTH.find(({ code }) => location.startsWith(code)
+        && !/[A-Za-z0-9]/.test(location.charAt(code.length))) || null;
+}
+
 export function siglum(record) {
+    const known = museum(record);
+    if (known) {
+        return known.code;
+    }
     const match = holding(record).match(/^[A-Z]{1,3}-[A-Za-zÜÖ()]+/);
     return match ? match[0] : '';
 }
@@ -77,7 +93,13 @@ export function fold(text) {
 const SEARCH_FIELDS = ['maker', 'date', 'type', 'location', 'signature', 'pitch', 'provenance', 'literature', 'remarks'];
 
 export function searchText(record) {
-    return fold(SEARCH_FIELDS.map(field => record[field]).join(' '));
+    const place = museum(record);
+    return fold([...SEARCH_FIELDS.map(field => record[field]), place && place.name].join(' '));
+}
+
+// "Myers A 1998" and "MyersA 1998" are the same reference
+export function refKey(key) {
+    return fold(key).replace(/[^a-z0-9]/g, '');
 }
 
 // "Anton Schnitzer Sr., Nuremberg" -> "anton schnitzer"
@@ -96,8 +118,9 @@ export function makerKey(record) {
 
 // "Jahn 1925: 24; *Van der Meer 1979: 91-92" -> [{ text, key }]; key is null when no "Author Year" can be read
 export function literatureRefs(literature) {
+    // references are separated by ";" and sometimes by ". " before the next "Author Year"
     return (literature || '')
-        .split(';')
+        .split(/;|\.\s+(?=\*?[A-ZÀ-Ž][^;:.]{0,40}?\s?\d{4}[a-z]?\b)/)
         .map(part => part.trim().replace(/\.$/, ''))
         .filter(Boolean)
         .map(part => {
@@ -115,6 +138,8 @@ export function enrich(record) {
         status: status(record),
         city: city(record),
         holding: holding(record),
+        museum: museum(record),
+        refs: literatureRefs(record.literature).filter(ref => ref.key).map(ref => refKey(ref.key)),
         search: searchText(record),
     };
 }

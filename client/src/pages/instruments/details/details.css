@@ -68,6 +68,10 @@
 .sideBox p:last-child {
     margin-bottom: 0;
 }
+.holdingName {
+    font-size: 14px;
+    font-weight: 500;
+}
 .citeTabs {
     display: flex;
     gap: 2px;

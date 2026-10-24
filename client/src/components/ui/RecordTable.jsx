@@ -41,7 +41,7 @@ export default function RecordTable({ records, columns = COLUMNS.map(c => c.key)
                 );
             case 'location':
                 return (
-                    <td key={key} className="colLocation">
+                    <td key={key} className="colLocation" title={record.museum ? record.museum.name : undefined}>
                         <Highlight text={record.holding} terms={terms} />
                     </td>
                 );

@@ -75,7 +75,7 @@ export default function Details() {
                     <RecordFields trombone={trombone} />
                     <div className="recordActions">
                         <Link className="btn btn-secondary" to={`/api/details/${id}`}>Printable version</Link>
-                        <Link className="btn btn-quiet" to="/contact">Suggest a correction</Link>
+                        <Link className="btn btn-quiet" to={`/contact?record=${id}`}>Suggest a correction</Link>
                     </div>
                 </article>
 
@@ -84,6 +84,7 @@ export default function Details() {
                     {trombone.holding && (
                         <section className="sideBox" aria-labelledby="holdingTitle">
                             <h2 id="holdingTitle">Holding</h2>
+                            {trombone.museum && <p className="holdingName">{trombone.museum.name}</p>}
                             <p className="mono">{trombone.holding}</p>
                             {holdingSiglum && (
                                 <p>
@@ -92,7 +93,11 @@ export default function Details() {
                                     </Link>
                                 </p>
                             )}
-                            <p><Link to="/how-to-use#sigla">What the sigla mean</Link></p>
+                            <p>
+                                <Link to={trombone.museum ? `/how-to-use#siglum-${trombone.museum.code}` : '/how-to-use#sigla'}>
+                                    {trombone.museum ? `About the code ${trombone.museum.code}` : 'What the sigla mean'}
+                                </Link>
+                            </p>
                         </section>
                     )}
                 </aside>

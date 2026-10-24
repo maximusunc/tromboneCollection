@@ -1,0 +1,83 @@
+.bibTools {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: grid;
+    gap: var(--space-2);
+    padding: var(--space-2) 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+}
+.bibLetters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    font-size: 13px;
+}
+.bibLetters a,
+.bibLetters span {
+    min-width: 24px;
+    padding: 2px 4px;
+    text-align: center;
+    border-radius: var(--radius-sm);
+}
+.bibLetters a {
+    font-weight: 600;
+    text-decoration: none;
+}
+.bibLetters a:hover {
+    background: var(--brand-tint);
+}
+.bibLetters span {
+    color: var(--rule-strong);
+}
+.bibGroup h2 {
+    margin: var(--space-6) 0 0;
+    padding-bottom: var(--space-1);
+    border-bottom: 1px solid var(--rule-strong);
+    font-size: 14px;
+    scroll-margin-top: 110px;
+}
+.bibEntry {
+    display: grid;
+    grid-template-columns: 11em minmax(0, 1fr);
+    gap: var(--space-4);
+    padding: var(--space-2) var(--space-2) var(--space-2) 0;
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 110px;
+}
+.bibEntry.target {
+    background: var(--brass-tint);
+}
+.bibKey {
+    padding-left: var(--space-1);
+    color: var(--brand-strong);
+    font-weight: 600;
+}
+.bibText {
+    max-width: 80ch;
+    padding-left: 1.5em;
+    text-indent: -1.5em;
+    overflow-wrap: anywhere;
+}
+.bibCited {
+    display: block;
+    margin-top: 2px;
+    text-indent: 0;
+    font-size: 12px;
+    text-decoration: none;
+}
+.bibCited:hover {
+    text-decoration: underline;
+}
+.bibNotice {
+    padding: var(--space-2) var(--space-3);
+    background: var(--brass-tint);
+    max-width: none;
+}
+@media (max-width: 640px) {
+    .bibEntry {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2px;
+    }
+}
