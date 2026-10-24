@@ -1,7 +1,7 @@
 // GET /oauth/auth
 // Starts the GitHub login for Decap CMS (client/public/admin).
-// Needs GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET set in the Cloudflare Pages project.
-export async function onRequestGet({ request, env }) {
+// Needs GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET set as secrets on the Cloudflare Worker.
+export async function handleAuth(request, env) {
     const url = new URL(request.url);
     const state = crypto.randomUUID();
 

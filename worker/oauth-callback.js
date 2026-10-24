@@ -1,7 +1,7 @@
 // GET /oauth/callback
 // GitHub redirects here after login. Exchanges the code for a token and hands it
 // back to the Decap CMS window that opened this popup.
-export async function onRequestGet({ request, env }) {
+export async function handleCallback(request, env) {
     const url = new URL(request.url);
     const code = url.searchParams.get("code");
     const state = url.searchParams.get("state");
