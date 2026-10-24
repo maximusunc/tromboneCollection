@@ -1,21 +1,21 @@
-header {
-    text-align: center;
-    width: 100%;
-    margin: auto;
-    color: white;
-    box-shadow: 0px 1px 5px 2px rgb(53, 87, 87);
-    display: block;
-    /* position: absolute; */
-    /* top: 0; */
-    background-color: rgb(84,135,135);
-    /* opacity: 0.90; */
-    z-index: 2;
-    margin-bottom: 30px;
+.topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+    padding: 10px var(--space-4);
+    background: var(--brand-strong);
+    color: var(--on-brand);
 }
-@media screen and (max-width: 650px) {
-    #header {
-        font-size: 28px;
-    }
+.topBarName {
+    color: var(--on-brand);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    white-space: nowrap;
 }
-
-/* #29648A */
+.topBarName:hover {
+    color: var(--on-brand);
+}

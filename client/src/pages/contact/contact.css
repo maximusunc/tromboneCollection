@@ -1,0 +1,110 @@
+.contactForm {
+    max-width: 720px;
+    margin-top: var(--space-4);
+}
+.contactKinds {
+    display: grid;
+    gap: var(--space-1);
+    margin: 0 0 var(--space-4);
+    padding: 0;
+    border: 0;
+}
+.contactKinds legend {
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+}
+.contactKinds label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    cursor: pointer;
+}
+.contactKinds input {
+    margin: 0;
+    accent-color: var(--brand);
+}
+.contactSection {
+    display: grid;
+    gap: var(--space-3);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--rule);
+}
+.contactGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.contactGrid .wide {
+    grid-column: 1 / -1;
+}
+.contactRecord {
+    display: grid;
+    gap: 2px;
+}
+.field {
+    display: grid;
+    gap: var(--space-1);
+}
+.field > span {
+    font-size: 13px;
+    font-weight: 600;
+}
+.field small {
+    color: var(--ink-muted);
+    font-weight: 400;
+    font-size: 12px;
+}
+.field input,
+.field textarea,
+.field select {
+    width: 100%;
+    padding: 7px var(--space-2);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+}
+.field textarea {
+    resize: vertical;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--ink-muted);
+}
+.contactActions {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--rule);
+}
+.contactError {
+    margin: var(--space-2) 0 0;
+    color: var(--danger);
+    font-size: 13px;
+}
+.contactError:empty {
+    display: none;
+}
+.contactFallback {
+    max-width: 720px;
+    margin-top: var(--space-6);
+    padding: var(--space-4);
+    border: 1px solid var(--rule);
+    background: var(--surface-raised);
+}
+.contactFallback h2 {
+    font-size: 14px;
+}
+.contactFallback pre {
+    padding: var(--space-3);
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    font: 12px/1.5 var(--font-mono);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+.contactPdf {
+    margin-top: var(--space-6);
+}
+@media (max-width: 640px) {
+    .contactGrid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

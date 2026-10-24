@@ -1,0 +1,376 @@
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 7px 12px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    font: 600 13px/1.2 var(--font-plex);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.btn-primary {
+    background: var(--brand);
+    color: var(--on-brand);
+}
+.btn-primary:hover {
+    background: var(--brand-strong);
+    color: var(--on-brand);
+}
+.btn-secondary {
+    background: var(--surface);
+    color: var(--brand);
+    border-color: var(--rule-strong);
+}
+.btn-secondary:hover {
+    border-color: var(--brand);
+}
+.btn-quiet {
+    background: transparent;
+    color: var(--brand);
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.btn-quiet:hover {
+    background: var(--brand-tint);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Badges */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 7px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.badge::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+}
+.badge-dated {
+    background: var(--brand-tint);
+    color: var(--brand-strong);
+}
+.badge-circa {
+    background: var(--brass-tint);
+    color: var(--brass);
+}
+.badge-circa::before {
+    background: transparent;
+    border: 1.5px solid currentColor;
+}
+.badge-partial {
+    background: var(--surface-sunken);
+    color: var(--ink-muted);
+}
+.badge-partial::before {
+    border-radius: 0;
+    height: 3px;
+}
+.badge-type {
+    color: var(--ink-muted);
+    border: 1px solid var(--rule-strong);
+}
+.badge-type::before {
+    display: none;
+}
+
+/* Search field */
+.searchField {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: 36px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+}
+.searchField:focus-within {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+.searchField svg {
+    flex: none;
+    color: var(--ink-muted);
+}
+.searchField input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+}
+.searchField input::placeholder {
+    color: var(--ink-muted);
+}
+
+/* Facets */
+.facet {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    font-size: 13px;
+}
+.facet legend {
+    padding: 0;
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+}
+.facet ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.facet label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 3px 6px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+.facet label:hover {
+    background: var(--surface-sunken);
+}
+.facet input {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    accent-color: var(--brand);
+}
+.facetCount {
+    margin-left: auto;
+    color: var(--ink-muted);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+.facetBar {
+    height: 3px;
+    margin: 0 6px 4px 29px;
+    border-radius: 2px;
+    background: var(--rule);
+}
+.facetBar i {
+    display: block;
+    height: 100%;
+    border-radius: 2px;
+    background: var(--brand);
+}
+.facet .empty {
+    color: var(--ink-muted);
+}
+
+/* Record table */
+.tableWrap {
+    overflow-x: auto;
+    border: 1px solid var(--rule);
+    border-radius: var(--radius-sm);
+}
+.recordTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+.recordTable th {
+    position: sticky;
+    top: 0;
+    padding: 6px var(--space-2);
+    border-bottom: 1px solid var(--rule-strong);
+    background: var(--surface-raised);
+    color: var(--ink-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+}
+.recordTable th button {
+    all: unset;
+    cursor: pointer;
+}
+.recordTable th button:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+.recordTable th[aria-sort] {
+    color: var(--brand);
+}
+.recordTable td {
+    padding: 6px var(--space-2);
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+}
+.recordTable tbody tr:nth-child(even) td {
+    background: var(--surface-raised);
+}
+.recordTable tbody tr:hover td {
+    background: var(--brand-tint);
+}
+.recordTable tr:last-child td {
+    border-bottom: 0;
+}
+.recordTable .colDate {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    white-space: nowrap;
+}
+.recordTable .colMaker {
+    min-width: 220px;
+}
+.recordTable .colMaker a {
+    color: var(--ink);
+    font-weight: 500;
+    text-decoration: none;
+}
+.recordTable .colMaker a:hover {
+    color: var(--brand);
+    text-decoration: underline;
+}
+.recordTable .colLocation {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    min-width: 120px;
+}
+.recordTable .colPitch {
+    min-width: 90px;
+    max-width: 220px;
+}
+.clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+/* on phones each row becomes a stacked entry: date and status, maker, then type, pitch and location */
+@media (max-width: 640px) {
+    .recordTable,
+    .recordTable tbody {
+        display: block;
+    }
+    .recordTable thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+    }
+    .recordTable tr {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 2px var(--space-2);
+        padding: var(--space-2) var(--space-3);
+        border-bottom: 1px solid var(--rule);
+    }
+    .recordTable tbody tr:nth-child(even) {
+        background: var(--surface-raised);
+    }
+    .recordTable tbody tr td,
+    .recordTable tbody tr:nth-child(even) td,
+    .recordTable tbody tr:hover td {
+        padding: 0;
+        border: 0;
+        background: none;
+    }
+    .recordTable .colMaker,
+    .recordTable .colPitch,
+    .recordTable .colLocation {
+        grid-column: 1 / -1;
+        min-width: 0;
+        max-width: none;
+    }
+    .recordTable .colStatus {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    .recordTable .colType,
+    .recordTable .colPitch {
+        color: var(--ink-muted);
+    }
+}
+
+/* Record fields */
+.recordFields {
+    display: grid;
+    grid-template-columns: 8.5em 1fr;
+    margin: 0;
+    border-top: 1px solid var(--rule);
+    font-size: 14px;
+}
+.recordFields dt,
+.recordFields dd {
+    margin: 0;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--rule);
+}
+.recordFields dt {
+    padding-top: 8px;
+    padding-right: var(--space-3);
+    color: var(--ink-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+.recordFields dd {
+    overflow-wrap: anywhere;
+}
+.inscription {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    background: var(--surface-sunken);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+}
+.refs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.ref {
+    padding: 2px 8px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    text-decoration: none;
+}
+a.ref:hover {
+    border-color: var(--brand);
+    background: var(--brand-tint);
+}
+span.ref {
+    color: var(--ink);
+    border-style: dashed;
+}
+.footnotes {
+    margin: 0;
+    padding-left: 1.4em;
+}
+@media (max-width: 600px) {
+    .recordFields {
+        grid-template-columns: 1fr;
+    }
+    .recordFields dt {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+}

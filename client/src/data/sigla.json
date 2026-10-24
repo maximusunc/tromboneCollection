@@ -1,0 +1,378 @@
+[
+ {
+  "code": "A-G",
+  "name": "Graz, Grazer Öffentliche Sammlungen"
+ },
+ {
+  "code": "A-K",
+  "name": "Kremsmünster, Schloss Kremsegg"
+ },
+ {
+  "code": "A-L",
+  "name": "Linz, Oberösterreisches Landesmuseum"
+ },
+ {
+  "code": "A-LA",
+  "name": "Lambach, Monastery"
+ },
+ {
+  "code": "A-S",
+  "name": "Salzburg, Museo Carolino Augusteum"
+ },
+ {
+  "code": "A-SE",
+  "name": "Seitenstettin, Stift (as of June 1999, instruments on loan to Innsbrucker Bläserkreis)"
+ },
+ {
+  "code": "A-Wk",
+  "name": "Vienna, Kunsthistorisches Museum, Sammlung alter Musikinstrumente"
+ },
+ {
+  "code": "A-Wg",
+  "name": "Vienna, Gesellschaft der Musikfreunde"
+ },
+ {
+  "code": "B-A",
+  "name": "Antwerp, Museum Vleeshuis"
+ },
+ {
+  "code": "B-Bcm",
+  "name": "Brussels, Conservatory of Music, Instrument Museum"
+ },
+ {
+  "code": "B-Bma",
+  "name": "Brussels, Musée de l'Armée"
+ },
+ {
+  "code": "CH-BAhm",
+  "name": "Basel, Historisches Museum, Collection of Ancient Instruments"
+ },
+ {
+  "code": "CH-BAhh",
+  "name": "Basel, private collection of Heinrich Huber"
+ },
+ {
+  "code": "CH-BE",
+  "name": "Bern, Historical Museum"
+ },
+ {
+  "code": "CH-BI",
+  "name": "Binningen, private collection of E.W. Buser"
+ },
+ {
+  "code": "CH-BU",
+  "name": "Burgdorf (Switzerland), Rittersaalverein Historisches Museum"
+ },
+ {
+  "code": "CH-R",
+  "name": "Rheinfelden, Fricktaler Museum"
+ },
+ {
+  "code": "CH-Z",
+  "name": "Zurich, Landesmueum"
+ },
+ {
+  "code": "CH-ZIM",
+  "name": "Zimmerwald, private collection of Karl Burri"
+ },
+ {
+  "code": "CR-O",
+  "name": "Olomouc, Krajské Vastivédné Muzeum"
+ },
+ {
+  "code": "CR-Pn",
+  "name": "Prague, Hudebni Oddeleni Narodniho Muzea"
+ },
+ {
+  "code": "CR-Ps",
+  "name": "Prague, Strahov Monastery (lost; inventory of 1747 repr. in Keller 1975)"
+ },
+ {
+  "code": "CR-Psm",
+  "name": "Prague, Symposium Musicum (ensemble)"
+ },
+ {
+  "code": "D-A",
+  "name": "Altötting, Wallfahrts- und Heimatmuseum"
+ },
+ {
+  "code": "D-B",
+  "name": "Berlin, Muzikinstrumenten-Museum"
+ },
+ {
+  "code": "D-BT",
+  "name": "Berthelsdorf near Herrnhut (Saxony), Kirchgemeinde."
+ },
+ {
+  "code": "D-BR",
+  "name": "Bremen, Focke Museum"
+ },
+ {
+  "code": "D-BRA",
+  "name": "Braunschweig, Städtisches Museum"
+ },
+ {
+  "code": "D-E",
+  "name": "Eisenach, Bacchaus"
+ },
+ {
+  "code": "D-F(M)",
+  "name": "Frankfurt-am-Main, Historisches Museum"
+ },
+ {
+  "code": "D-F(O)",
+  "name": "Frankfurt (Oder), Museum Viadrina"
+ },
+ {
+  "code": "D-G",
+  "name": "Gotha, Regionalmuseum"
+ },
+ {
+  "code": "D-HAL",
+  "name": "Halle, Händel-Haus"
+ },
+ {
+  "code": "D-HAM",
+  "name": "Hamburg, Museum für Hamburgische Geschichte"
+ },
+ {
+  "code": "D-HAR",
+  "name": "Harburg, Furstlich Oettingen-Wallersteinische Sammlungen."
+ },
+ {
+  "code": "D-I",
+  "name": "Ingolstadt, Bavarian Army Museum."
+ },
+ {
+  "code": "D-K",
+  "name": "Cologne, Musikinstrumentensammlung des Kölnischen Stadtmuseums"
+ },
+ {
+  "code": "D-KA",
+  "name": "Kassel, Hessisches Landesmuseum"
+ },
+ {
+  "code": "D-LE",
+  "name": "Leipzig, Musikinstrumentenmuseum der Universität Leipzig"
+ },
+ {
+  "code": "D-LÜ",
+  "name": "Lübeck, St. Annen-Museum"
+ },
+ {
+  "code": "D-N",
+  "name": "Nuremberg, Germanisches Nationalmuseum"
+ },
+ {
+  "code": "D-Mbn",
+  "name": "Munich, Bayerischen Nationalmuseum"
+ },
+ {
+  "code": "D-Md",
+  "name": "Munich, Deutsches Museum"
+ },
+ {
+  "code": "D-Ms",
+  "name": "Munich, Musikinstrumentenmuseum im Stadtmuseum"
+ },
+ {
+  "code": "D-MA",
+  "name": "Markneukirchen, Musikinstrumenten-Museum"
+ },
+ {
+  "code": "D-R",
+  "name": "Rosenheim, Städtisches Museum"
+ },
+ {
+  "code": "D-Ruhland",
+  "name": "private collection, Konrad Ruhland"
+ },
+ {
+  "code": "D-Ssw",
+  "name": "Schmalkalden, Heimatmuseum, Schloss Wilhelmsburg"
+ },
+ {
+  "code": "D-Ssg",
+  "name": "Schmalkalden, Stadtkirch St. Georg"
+ },
+ {
+  "code": "D-SI",
+  "name": "Sigmaringen an der Donau, Sammlung der Musikinstrumente im Fürstlich-Hohenzollernschen Schloss"
+ },
+ {
+  "code": "D-T",
+  "name": "Taubenheim (Spree), Evangelisch Lutherische Kirchgemeinde."
+ },
+ {
+  "code": "D-W",
+  "name": "Weissenfels, Schlossmuseum"
+ },
+ {
+  "code": "DK-Kcc",
+  "name": "Copenhagen, Dansk Muzikmuseet (formerly Musikhistorik Museum og Carl Claudius Samling)"
+ },
+ {
+  "code": "DK-Kmm",
+  "name": "Copenhagen, Musikhistorisk Museum"
+ },
+ {
+  "code": "E-B",
+  "name": "Barcelona, Museu de la Música"
+ },
+ {
+  "code": "EI-D",
+  "name": "Dublin***"
+ },
+ {
+  "code": "F-N",
+  "name": "Nice, Musée du Palais Lascaris"
+ },
+ {
+  "code": "F-P",
+  "name": "Paris, Musée de Musique (formerly Musée instrumental du Conservatoire National Superieur de Musique)"
+ },
+ {
+  "code": "GB-E",
+  "name": "Edinburgh, University Collection"
+ },
+ {
+  "code": "GB-Lbh",
+  "name": "London, Boosey & Hawkes Collection"
+ },
+ {
+  "code": "GB-Lh",
+  "name": "London, Horniman Museum"
+ },
+ {
+  "code": "GB-Lmp",
+  "name": "Private collection of Reginald Morley-Pegge"
+ },
+ {
+  "code": "H-B",
+  "name": "Budapest, Magyar Mezeti Múzeum"
+ },
+ {
+  "code": "I-F",
+  "name": "Florence, Conservatorio di Musica Luigi Cherubini"
+ },
+ {
+  "code": "I-M",
+  "name": "Modena, Museo Civico di Storia e Arte Medievale e Moderna di Modena"
+ },
+ {
+  "code": "I-V",
+  "name": "Verona, Accademia Filarmonica"
+ },
+ {
+  "code": "JA-H",
+  "name": "Hamamatsu, City Museum of Musical Instruments"
+ },
+ {
+  "code": "L-R",
+  "name": "Riga (Latvia), Museum of Riga History and Navigation"
+ },
+ {
+  "code": "NL-A",
+  "name": "Amsterdam, [see Plenkers]"
+ },
+ {
+  "code": "NL-DH",
+  "name": "The Hague, Gemeentemuseum"
+ },
+ {
+  "code": "PL-G",
+  "name": "Danzig (Gdánsk), former collection*****"
+ },
+ {
+  "code": "PL-Pn",
+  "name": "Poznán (Poland), National Museum"
+ },
+ {
+  "code": "PL-Ps",
+  "name": "Poznán, coll. of Zdzislaw Szulc***** acquired ca. 1950 by PL Poznán;catalogue 1939"
+ },
+ {
+  "code": "PL-W",
+  "name": "Wroclaw (Poland; formerly Breslau, Germany), Schlesisches Museum für Kunstgewerbe und Altertümer (destroyed 1945; collection lost)"
+ },
+ {
+  "code": "R-SP",
+  "name": "St. Petersburg, Museum of Musical Instruments"
+ },
+ {
+  "code": "S-G",
+  "name": "Göteborg, ***"
+ },
+ {
+  "code": "S-L",
+  "name": "Lund, Kulturhistoriska Museet"
+ },
+ {
+  "code": "S-S",
+  "name": "Stockholm, Musikmuseet"
+ },
+ {
+  "code": "S-Smmc",
+  "name": "Stockholm, Maria Magdalena Church"
+ },
+ {
+  "code": "S-Skk",
+  "name": "Stockholm, Kataryna Kirka"
+ },
+ {
+  "code": "S-Sn",
+  "name": "Stockhom, Nydahl Collection (Stiftelsen Musikkulturens Främjande)"
+ },
+ {
+  "code": "US-AA",
+  "name": "Ann Arbor, University of Michigan, Stearns Collection of Musical Instruments"
+ },
+ {
+  "code": "US-BE",
+  "name": "Bethlehem (PA), Moravian Museum"
+ },
+ {
+  "code": "US-BO",
+  "name": "Boston, Museum of Fine Arts"
+ },
+ {
+  "code": "US-CAe",
+  "name": "Cambridge (MA), The Eddy Collection of Musical Instruments"
+ },
+ {
+  "code": "US-D",
+  "name": "Dearborn (MI), Henry Ford Museum"
+ },
+ {
+  "code": "US-GN",
+  "name": "Gnadenhutten (OH), John Heckewelder Memorial Moravian Church"
+ },
+ {
+  "code": "US-LI",
+  "name": "Lititz (PA), Moravian Church (Brethren's House)"
+ },
+ {
+  "code": "US-NAZ",
+  "name": "Nazareth (PA), Whitefield House"
+ },
+ {
+  "code": "US-NH",
+  "name": "New Haven (CT), Yale University Collection"
+ },
+ {
+  "code": "US-P",
+  "name": "Providence (RI), Rhode Island Historical Society"
+ },
+ {
+  "code": "US-NY",
+  "name": "New York, Center for Musical Antiquities [dealer]"
+ },
+ {
+  "code": "US-VE",
+  "name": "Vermillion (SD), Shrine to Music Museum"
+ },
+ {
+  "code": "US-WS",
+  "name": "Winston-Salem (NC), Boys’ School Museum (Old Salem)"
+ }
+]

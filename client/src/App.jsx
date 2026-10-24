@@ -12,6 +12,7 @@ import MinDetails from './pages/MinDetails';
 import HowToUse from './pages/HowToUse';
 import Bibliography from './pages/Bibliography';
 import Contact from './pages/contact/Contact';
+import NotFound from './pages/NotFound';
 
 import useTrombones from './utils/useTrombones';
 import TromboneContext from './context/trombones';
@@ -34,7 +35,10 @@ export default function App() {
             <Route path="/how-to-use" element={<HowToUse />} />
             <Route path="/bibliography" element={<Bibliography />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<Home />} />
+            <Route path="/" element={<Home />} />
+            {/* the old navigation linked to /home */}
+            <Route path="/home" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </TromboneContext.Provider>

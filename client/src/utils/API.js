@@ -15,14 +15,4 @@ export default {
         }
         return trombonesRequest.then(data => ({ data: [...data] }));
     },
-    // gets the details of a specific trombone
-    getTrombone: function(id) {
-        return this.getTrombones().then(res => {
-            const trombone = res.data.find(tbone => tbone._id === id);
-            if (!trombone) {
-                throw new Error(`Trombone ${id} not found`);
-            }
-            return { data: trombone };
-        });
-    },
 };

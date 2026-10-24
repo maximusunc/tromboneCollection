@@ -7,11 +7,12 @@ import "./mainLayout.css";
 export default function MainLayout(props) {
     return (
         <div className="mainLayout">
+            <a href="#main" className="skipLink">Skip to content</a>
             <Header />
-            <div className="content">
+            <main id="main" className="content">
                 {props.children}
-            </div>
-            <BackToTop scrollStepInPx="100" delayInMs="10"/>
+            </main>
+            <BackToTop />
             <Footer />
         </div>
     );
