@@ -1,0 +1,18 @@
+// Cloudflare Workers config: https://developers.cloudflare.com/workers/wrangler/configuration/
+// Build with `yarn build`, then deploy with `npx wrangler deploy`.
+{
+  "name": "trombonecollection",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./client/build",
+    "binding": "ASSETS",
+    // unknown paths like /details/<id> load the React app
+    "not_found_handling": "single-page-application",
+    // the CMS login is handled in worker/index.js
+    "run_worker_first": ["/oauth/*"]
+  },
+  "observability": {
+    "enabled": true
+  }
+}

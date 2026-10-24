@@ -1,28 +1,25 @@
 import axios from "axios";
 
+// trombones are bundled into a static file at build time by scripts/build-data.js
+let trombonesRequest;
+
 export default {
     // gets all trombones
     getTrombones: function() {
-        return axios.get("/api/trombones");
+        if (!trombonesRequest) {
+            trombonesRequest = axios.get("/data/trombones.json");
+            trombonesRequest.catch(() => { trombonesRequest = undefined; });
+        }
+        return trombonesRequest.then(res => ({ ...res, data: [...res.data] }));
     },
     // gets the details of a specific trombone
     getTrombone: function(id) {
-        return axios.get(`/api/trombones/${id}`);
-    },
-    // admin can update existing trombones
-    updateTrombone: function(id, state) {
-        return axios.put(`/api/trombones/${id}`, state);
-    },
-    // admin can delete existing trombones
-    deleteTrombone: function(id) {
-        return axios.delete(`/api/trombones/${id}`);
-    },
-    // admin can add trombones to db
-    addTrombone: function(trombone) {
-        console.log(trombone);
-        return axios.post("/api/trombones", trombone);
-    },
-    login: function(password) {
-        return axios.get(`/login/${password}`);
+        return this.getTrombones().then(res => {
+            const trombone = res.data.find(tbone => tbone._id === id);
+            if (!trombone) {
+                throw new Error(`Trombone ${id} not found`);
+            }
+            return { ...res, data: trombone };
+        });
     },
 };

@@ -1,0 +1,58 @@
+# Decap CMS configuration: https://decapcms.org/docs/configuration-options/
+# Saving in the CMS commits to GitHub, which triggers a Cloudflare Pages rebuild.
+backend:
+  name: github
+  repo: maximusunc/tromboneCollection
+  branch: master
+  # base_url is set to the current site in index.html; the endpoint is functions/oauth/auth.js
+  auth_endpoint: oauth/auth
+
+# lets `npm run cms` edit local files when the site is running on localhost
+local_backend: true
+
+site_url: /
+media_folder: client/public/uploads
+public_folder: /uploads
+
+collections:
+  - name: trombones
+    label: Trombones
+    label_singular: Trombone
+    folder: content/trombones
+    format: json
+    extension: json
+    create: true
+    delete: true
+    identifier_field: maker
+    summary: "{{date}} {{maker}}"
+    slug: "{{year}}{{month}}{{day}}{{hour}}{{minute}}{{second}}-{{maker}}"
+    sortable_fields: [date, maker, type, location]
+    fields:
+      - { name: maker, label: Maker, widget: string, pattern: ['.{4,}', 'The trombone must have a valid maker.'] }
+      - { name: date, label: Date, widget: string, required: false }
+      - name: type
+        label: Type
+        widget: select
+        required: false
+        options: [Soprano, Alto, Tenor, Bass, Contrabass]
+      - { name: location, label: Location, widget: string, required: false }
+      - { name: signature, label: Signature, widget: string, required: false }
+      - { name: pitch, label: Pitch, widget: string, required: false }
+      - { name: dimensions, label: Dimensions, widget: string, required: false }
+      - { name: provenance, label: Provenance, widget: string, required: false }
+      - { name: mouthpiece, label: Mouthpiece, widget: string, required: false }
+      - { name: external_link, label: External Link, widget: string, required: false }
+      - { name: literature, label: Literature, widget: text, required: false }
+      - { name: remarks, label: Remarks, widget: text, required: false }
+      - name: footnotes
+        label: Foot Notes
+        label_singular: Footnote
+        widget: list
+        required: false
+        field: { name: footnote, label: Footnote, widget: text }
+      - name: images
+        label: Images
+        label_singular: Image
+        widget: list
+        required: false
+        field: { name: image, label: Image, widget: image }
