@@ -11,7 +11,7 @@ export default function Bibliography() {
             <ul className="bibliography">
                 <li>300 Jahre 1985    300 Jahre Johann Sebastian Bach: Sein Werk in Handschriften und Dokumenten Musikinstrumente seine Zeit seine Zeitgenossen: Eine Ausstellung der Internationalen Bachademie. Tutzing: Hans Schnedier, 1985</li>
                 <li>Albert 1927         Hanns Albert. “Leben und Werke des Komponisten und Dirigenten Abraham Megerle (1607-1680).” diss. Univ. of Munich, 1927.</li>
-                <li>Antiquities 1980   Center for Musical Antiquities: Catalog (1980). [New York{'}'}, 1980.</li>
+                <li>Antiquities 1980   Center for Musical Antiquities: Catalog (1980). [New York], 1980.</li>
                 <li>Ausstellung 1951  Ausstellung Alte Musik _ Veranstaltet durch die Stadt München im Bayerischen Nationalmuseum, November-Dezember 1951***** (pub.)</li>
                 <li>Bachmann-Geiser 1998</li>
                 <li>Bachmann-Geiser, Brigitte. Letter to the author, 24 December 1998.</li>
@@ -31,7 +31,7 @@ export default function Bibliography() {
                 <li>Borders 1988        James M. Borders. European and American Wind and Percussion Instruments: Catalogue of the Stearns Collection of Musical Instruments, University of Michigan. Ann Arbor: University of Michigan Press, 1988.</li>
                 <li>Borggrefe et al 1997    Heiner Borggrefe, Vera Lüpkes, and Hans Ottomeyer. Moritz der Gelehrte: Ein Renaissancefürst in Europa. Eurasberg: Edition Minerva.</li>
                 <li>Boshof et al 2004    Egon Boshof, Max Brunner, and Elisabeth Vavra, eds. Geschichte der Menschen am Inn. Katalog der ersten Bayerisch-Oberösterreichischen Landesausstellung 2004. Regensburg: Verlag Pustet, Regenburg 2004.</li>
-                <li>Bossert 1911      Gustav Bossert. "Die Hofkapelle unter Eberhard III&gt;" Württembergische Viertelharsheft für Landesgeschichte. N.F. No. 20 Stuttgart, 1911.</li>
+                <li>Bossert 1911      Gustav Bossert. "Die Hofkapelle unter Eberhard III." Württembergische Viertelharsheft für Landesgeschichte. N.F. No. 20 Stuttgart, 1911.</li>
                 <li>Carse 1951        Catalogue of the Adam Carse Collection of Old Musical Wind Instruments. London: London County Council, 1951.</li>
                 <li>Carter 1998       Stewart Carter. “Early Trombones in America’s Shrine to Music Museum.” Historic Brass Society Journal XXXX.</li>
                 <li>Carter 200X        Michaelstein</li>
