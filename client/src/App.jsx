@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter, Route, Switch,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router';
 
 import './App.css';
 import './pages/pages.css'
@@ -24,27 +22,21 @@ export default function App() {
   return (
     <BrowserRouter>
       <TromboneContext.Provider value={trombones}>
-      {/* this outer switch case is just for the empty layout to not load all the css */}
-        <Switch>
-          <Route exact path="/api/details/*">
-            {/* this loads minimal css and just the information for a specific instrument */}
-            <EmptyLayout>
-              <MinDetails />
-            </EmptyLayout>
+        <Routes>
+          {/* this loads minimal css and just the information for a specific instrument */}
+          <Route element={<EmptyLayout><Outlet /></EmptyLayout>}>
+            <Route path="/api/details/:id" element={<MinDetails />} />
           </Route>
-          {/* if the empty layout isn't hit, load the rest of the css in */}
-          <MainLayout>
-            {/* this inner switch is for the main page routes */}
-            <Switch>
-              <Route exact path="/instruments" component={Instruments} />
-              <Route exact path="/details/*" component={Details} />
-              <Route exact path="/how-to-use" component={HowToUse} />
-              <Route exact path="/bibliography" component={Bibliography} />
-              <Route exact path="/contact" component={Contact} />
-              <Route path="/*" component={Home} />
-            </Switch>
-          </MainLayout>
-        </Switch>
+          {/* everything else gets the full layout */}
+          <Route element={<MainLayout><Outlet /></MainLayout>}>
+            <Route path="/instruments" element={<Instruments />} />
+            <Route path="/details/:id" element={<Details />} />
+            <Route path="/how-to-use" element={<HowToUse />} />
+            <Route path="/bibliography" element={<Bibliography />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Home />} />
+          </Route>
+        </Routes>
       </TromboneContext.Provider>
     </BrowserRouter>
   );

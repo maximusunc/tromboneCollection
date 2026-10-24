@@ -4,22 +4,26 @@
   "description": "Database of all historic trombones made before 1800",
   "repository": "https://github.com/maximusunc/tromboneCollection",
   "private": true,
+  "workspaces": [
+    "client"
+  ],
   "scripts": {
     "data": "node scripts/build-data.js",
-    "start": "npm run data && node scripts/start-client.js",
-    "build": "npm run data && node scripts/build.js",
-    "cms": "decap-server",
-    "export-mongo": "node scripts/export-mongo.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "yarn install --cwd ./client",
+    "start": "npm run data && npm run dev -w client",
+    "build": "npm run data && npm run build -w client",
     "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy",
+    "cms": "decap-server",
+    "export-mongo": "node scripts/export-mongo.js"
   },
   "author": "Max Wang",
   "license": "ISC",
+  "engines": {
+    "node": ">=22.22.0"
+  },
   "devDependencies": {
-    "decap-server": "3.11.3",
-    "mongodb": "^6.20.0",
-    "wrangler": "4.147.0"
+    "decap-server": "^3.11.3",
+    "mongodb": "^7.7.0",
+    "wrangler": "^4.148.0"
   }
 }

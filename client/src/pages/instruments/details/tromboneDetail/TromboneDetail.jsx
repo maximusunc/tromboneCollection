@@ -1,9 +1,12 @@
 import React from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+import SlickSlider from "react-slick";
 import "./tromboneDetail.css";
 import imageUnavailable from "./no_image_available.jpeg";
+
+// react-slick is a CommonJS package, so the production build wraps its default export
+const Slider = SlickSlider.default || SlickSlider;
 
 export default function Details(props) {
     const images = props.trombone.images.length ? props.trombone.images.map((image, i) => (

@@ -30,3 +30,8 @@ label {
 input {
     border-bottom: 1px solid black !important;
 }
+/* newer Material UI cuts long labels off with an ellipsis, which hides "Maker" on phones */
+.search label {
+    overflow: visible;
+    max-width: none;
+}
