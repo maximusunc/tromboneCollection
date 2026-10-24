@@ -4,11 +4,9 @@ import Container from "../components/container/Container";
 export default function HowToUse() {
     return (
         <Container>
-            <h2>
-                Guide to use:
-            </h2>
+            <h1 className="pageTitle">How to read a record</h1>
 
-            <ol>
+            <ol className="howto">
                 <li>
                     Abbreviations:
                     <ul className="howtoList">
@@ -34,8 +32,8 @@ export default function HowToUse() {
                 <li>Signatures are copied here exactly as they appear in the secondary sources from which they are derived unless the author has examined the instrument personally. All signatures appear on the garland of the instrument unless otherwise indicated.</li>
                 <li>Information on pitch is reported exactly as it appears in the cited secondary source(s) unless the author has examined the instrument personally. Thus, many seventeenth-century tenor trombones are reported here to be in B-flat, even though it is unlikely that this was the nominal pitch for any trombone during the period in question. Seventeenth-century instruments reported by modern writers to be in B-flat were probably considered to be in A at “high” pitch (Praetorius’ CammerThon, essentially equivalent to the pitch known as Chorton in most areas of Germany in the 18th century).</li>
                 <li>All instruments are assumed to have no slide stockings unless otherwise indicated.</li>
-                <li>
-                    Guide to MUSEUM SIGLA:
+                <li id="sigla">
+                    Guide to museum sigla:
                     <ul className="howtoList">
                         <li>A-G = Graz, Grazer Öffentliche Sammlungen</li>
                         <li>A-K = Kremsmünster, Schloss Kremsegg</li>

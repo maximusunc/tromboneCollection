@@ -1,0 +1,30 @@
+/* Research ledger tokens, from the Historic Trombone Database design system */
+:root {
+    --surface: #ffffff;
+    --surface-raised: #f6f8f9;
+    --surface-sunken: #eaeef0;
+    --ink: #16191c;
+    --ink-muted: #4a535a;
+    --rule: #d5dadd;
+    --rule-strong: #7a858c;
+    --brand: #17575a;
+    --brand-strong: #0e3f41;
+    --on-brand: #ffffff;
+    --brand-tint: #e0edee;
+    --brass: #7d5410;
+    --brass-tint: #fff0bf;
+    --focus-ring: #1f5fbf;
+
+    --font-plex: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-12: 48px;
+
+    --radius-sm: 3px;
+}

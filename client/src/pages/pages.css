@@ -1,58 +1,74 @@
 .container {
-    min-height: 400px;
-    width: 75%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: var(--space-4) var(--space-4) var(--space-8);
 }
-.link {
-    margin: 5px 10px;
-    padding: 3px;
-    color: rgb(84,135,135);
-    font-weight: bold;
+.pageTitle {
+    margin-top: var(--space-2);
+}
+.textLink {
+    font-weight: 500;
     text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    transition: transform 0.2s ease-in-out;
 }
-.link:hover {
-    transform: scale(1.2);
-    color: rgb(44, 71, 71);
-}
-.bibliography li {
-    text-align: left;
-    margin: 20px 0px;
+.textLink:hover {
+    text-decoration: underline;
 }
 .contactLink {
-    color: rgb(84,135,135);
+    color: var(--brand);
 }
-.contactLink:hover {
-    color: rgb(44, 71, 71);
+
+.bibliography {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 90ch;
 }
-#printScreen {
-    border: none;
-    cursor: pointer;
+.bibliography li {
+    padding: var(--space-2) 0 var(--space-2) 1.5em;
+    text-indent: -1.5em;
+    border-bottom: 1px solid var(--rule);
 }
-#backLink {
-    margin-right: 30px;
+.bibliography li.target {
+    background: var(--brass-tint);
 }
-#detailsLinks {
-    width: 100%;
-    clear: both;
+
+.howto {
+    max-width: 90ch;
+    padding-left: 1.5em;
+}
+.howto > li {
+    margin: var(--space-2) 0;
+}
+.howtoList {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-2) 0;
+}
+.howtoList li {
+    padding: 3px 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+#printContents {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4);
 }
 #minLinks {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+}
+.printSource {
+    margin-top: var(--space-4);
+    font-size: 12px;
 }
 @media print {
     #minLinks {
         display: none;
     }
-}
-
-.howtoList {
-    display: block;
-}
-.howtoList li {
-    list-style-type: circle;
+    #printContents {
+        padding: 0;
+    }
 }

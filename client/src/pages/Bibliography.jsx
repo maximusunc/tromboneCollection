@@ -1,14 +1,46 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useSearchParams } from "react-router";
 import Container from "../components/container/Container";
+import { fold } from "../utils/records";
+
+// entries are written as "Author Year  Full reference", so a short citation from a record
+// (?ref=Carter 2012) is found by matching the start of an entry's text
+function findEntry(list, ref) {
+    const key = fold(ref).replace(/\s+/g, " ");
+    return Array.from(list.querySelectorAll("li")).find(li =>
+        fold(li.textContent).replace(/\s+/g, " ").trim().startsWith(key));
+}
 
 export default function Bibliography() {
+    const [params] = useSearchParams();
+    const ref = params.get("ref");
+    const list = useRef(null);
+    const [missing, setMissing] = useState(false);
+
+    useEffect(() => {
+        if (!ref || !list.current) {
+            return undefined;
+        }
+        const entry = findEntry(list.current, ref);
+        setMissing(!entry);
+        if (!entry) {
+            return undefined;
+        }
+        entry.classList.add("target");
+        entry.scrollIntoView({ block: "center" });
+        return () => entry.classList.remove("target");
+    }, [ref]);
+
     return (
         <Container>
-            <h2>
-                Bibliography:
-            </h2>
+            <h1 className="pageTitle">Bibliography</h1>
+            {missing && (
+                <p className="muted">
+                    “{ref}” isn’t listed in the bibliography yet. <Link to="/bibliography">Show the full list</Link>.
+                </p>
+            )}
 
-            <ul className="bibliography">
+            <ul className="bibliography" ref={list}>
                 <li>300 Jahre 1985    300 Jahre Johann Sebastian Bach: Sein Werk in Handschriften und Dokumenten Musikinstrumente seine Zeit seine Zeitgenossen: Eine Ausstellung der Internationalen Bachademie. Tutzing: Hans Schnedier, 1985</li>
                 <li>Albert 1927         Hanns Albert. “Leben und Werke des Komponisten und Dirigenten Abraham Megerle (1607-1680).” diss. Univ. of Munich, 1927.</li>
                 <li>Antiquities 1980   Center for Musical Antiquities: Catalog (1980). [New York], 1980.</li>

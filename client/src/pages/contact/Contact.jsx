@@ -5,9 +5,7 @@ import tromboneForm from "./historicTromboneForm.pdf";
 export default function Contact() {
     return (
         <Container>
-            <h2>
-                Contact Us!
-            </h2>
+            <h1 className="pageTitle">Contact</h1>
             <p>
                 This is the page where you can submit edits or new instruments.
             </p>

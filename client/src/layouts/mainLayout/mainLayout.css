@@ -1,24 +1,19 @@
 .mainLayout {
-    text-align: center;
-    background-color: #F0F4F8;
-    position: relative;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
-    /* padding-top: 175px; */
 }
-/* .mainLayout::after {
-    content: "";
-    background-image: url("../../images/trombone_cover.jpg");
-    background-size: 100% 100%;
-    opacity: 0.20;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
-} */
 .content {
-    position: relative;
-    height: 100%;
-    padding-bottom: 200px;
+    flex: 1;
+}
+.skipLink {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 10;
+    padding: var(--space-2) var(--space-3);
+    background: var(--surface);
+}
+.skipLink:focus {
+    left: var(--space-2);
 }
