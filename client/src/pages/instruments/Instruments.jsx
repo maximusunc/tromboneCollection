@@ -4,7 +4,7 @@ import Container from '../../components/container/Container';
 import SearchField from '../../components/ui/SearchField';
 import FacetFilter from '../../components/ui/FacetFilter';
 import RecordTable from '../../components/ui/RecordTable';
-import Loading from '../../components/loading';
+import Loading, { LoadError } from '../../components/loading';
 import { FACETS, searchTerms, filterRecords, facetCounts, sortRecords, toCsv } from '../../utils/filterRecords';
 import { refKey } from '../../utils/records';
 import './instruments.css';
@@ -142,7 +142,7 @@ export default function Instruments() {
                         )}
                     </>
                 ) : (
-                    error ? <p>{error}</p> : <Loading message="Loading…" positionStatic />
+                    error ? <LoadError message={error} /> : <Loading />
                 )}
             </Container>
         </div>

@@ -16,7 +16,7 @@ export default function useTrombones() {
         })
         .catch(err => {
           console.log(err);
-          setError('Failed to load trombones.');
+          setError('The catalogue couldn’t be loaded.');
         });
   }, []);
 

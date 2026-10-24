@@ -37,6 +37,11 @@
     background: var(--brand-tint);
 }
 
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 /* Badges */
 .badge {
     display: inline-flex;

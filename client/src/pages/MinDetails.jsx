@@ -1,17 +1,22 @@
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router";
 import RecordFields from "../components/ui/RecordFields";
+import Loading, { LoadError } from "../components/loading";
 import TromboneContext from "../context/trombones";
 import { clean } from "../utils/records";
 
 // This page is for printing purposes mainly, minimal css
 export default function MinDetails() {
     const { id } = useParams();
-    const { trombones, loaded } = useContext(TromboneContext);
+    const { trombones, loaded, error } = useContext(TromboneContext);
     const trombone = trombones.find(tbone => tbone._id === id);
 
     if (!loaded) {
-        return null;
+        return (
+            <div id="printContents">
+                {error ? <LoadError message={error} /> : <Loading message="Loading record…" rows={8} />}
+            </div>
+        );
     }
     if (!trombone) {
         return <p style={{ padding: 16 }}>Record not found. <Link to="/instruments">Browse all instruments</Link>.</p>;

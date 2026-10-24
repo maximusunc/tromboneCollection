@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useParams } from 'react-router';
 import Container from '../../../components/container/Container';
-import Loading from '../../../components/loading';
+import Loading, { LoadError } from '../../../components/loading';
 import Badge from '../../../components/ui/Badge';
 import RecordFields from '../../../components/ui/RecordFields';
 import RecordTable from '../../../components/ui/RecordTable';
@@ -29,7 +29,7 @@ export default function Details() {
     }, [trombone]);
 
     if (!loaded) {
-        return <Container>{error ? <p>{error}</p> : <Loading message="Loading…" positionStatic />}</Container>;
+        return <Container>{error ? <LoadError message={error} /> : <Loading message="Loading record…" rows={8} />}</Container>;
     }
     if (!trombone) {
         return (

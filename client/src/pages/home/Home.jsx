@@ -2,6 +2,7 @@ import React, { useContext, useMemo, useState } from "react";
 import { Link, useNavigate } from 'react-router';
 import Container from "../../components/container/Container";
 import SearchField from "../../components/ui/SearchField";
+import Loading, { LoadError } from "../../components/loading";
 import RecordTable from "../../components/ui/RecordTable";
 import TromboneContext from "../../context/trombones";
 import { FACETS } from "../../utils/filterRecords";
@@ -12,7 +13,7 @@ const GLANCE = ['type', 'century', 'city'];
 
 export default function Home() {
   const navigate = useNavigate();
-  const { trombones, loaded } = useContext(TromboneContext);
+  const { trombones, loaded, error } = useContext(TromboneContext);
   const [query, setQuery] = useState('');
 
   const glance = useMemo(() => FACETS.filter(f => GLANCE.includes(f.key)).map(facet => ({
@@ -54,6 +55,7 @@ export default function Home() {
         </figure>
       </section>
 
+      {!loaded && (error ? <LoadError message={error} /> : <Loading message="Loading the collection…" rows={5} />)}
       {loaded && (
         <>
           <section className="homeGlance" aria-labelledby="glanceTitle">
