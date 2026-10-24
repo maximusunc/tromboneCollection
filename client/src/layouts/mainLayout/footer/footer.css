@@ -10,9 +10,11 @@ footer {
     background-color: white;
     opacity: 0.70;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
 }
-#AMIS {
-    margin-top: 10px;
+#AMIS, #MIRcat {
+    height: 100px;
 }
 p#copyright {
     text-align: center;

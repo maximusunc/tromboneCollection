@@ -2,7 +2,8 @@
 node_modules
 .vscode
 rootkey.csv
-.envclient/build
+.env
+client/build
 client/public/data
 .wrangler
 .dev.vars
