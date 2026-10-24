@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router";
 import Container from "../components/container/Container";
 
 export default function HowToUse() {
+    const { hash } = useLocation();
+
+    // record pages link to #sigla; the router doesn't scroll to anchors on its own
+    useEffect(() => {
+        if (hash) {
+            document.getElementById(hash.slice(1))?.scrollIntoView();
+        }
+    }, [hash]);
+
     return (
         <Container>
             <h1 className="pageTitle">How to read a record</h1>
