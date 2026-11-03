@@ -24,6 +24,6 @@
   "devDependencies": {
     "decap-server": "^3.11.3",
     "mongodb": "^7.7.0",
-    "wrangler": "^4.148.0"
+    "wrangler": "^4.157.0"
   }
 }
